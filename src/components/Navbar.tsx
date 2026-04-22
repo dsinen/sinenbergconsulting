@@ -29,9 +29,9 @@ export function Navbar() {
       }`}
       style={{ borderBottom: "1px solid rgba(255,255,255,0.18)" }}
     >
-      <div className="mx-auto max-w-[1100px] px-6 h-[60px] md:h-[72px] flex items-center justify-between">
+      <div className="mx-auto max-w-[1100px] px-6 h-[72px] md:h-[88px] flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logoDark} alt="Sinenberg Consulting" className="h-8 md:h-10 w-auto" />
+          <img src={logoDark} alt="Sinenberg Consulting" className="h-12 md:h-16 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -66,7 +66,7 @@ export function Navbar() {
       {open && (
         <div className="fixed inset-0 z-50 bg-[#0B2A5B] flex flex-col p-6 md:hidden">
           <div className="flex items-center justify-between">
-            <img src={logoDark} alt="Sinenberg" className="h-8" />
+            <img src={logoDark} alt="Sinenberg" className="h-12" />
             <button aria-label="Fechar" onClick={() => setOpen(false)} className="text-white p-2">
               <Icon icon="solar:close-circle-outline" width="32" height="32" />
             </button>

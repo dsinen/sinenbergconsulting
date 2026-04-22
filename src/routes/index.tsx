@@ -493,7 +493,7 @@ function HomePage() {
       {/* ───────── FOOTER ───────── */}
       <footer className="py-12" style={{ backgroundColor: "#06173A", color: "#fff" }}>
         <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <img src={logoDark} alt="Sinenberg Consulting" className="h-10" />
+          <img src={logoDark} alt="Sinenberg Consulting" className="h-16 md:h-20 w-auto" />
           <div className="flex items-center gap-4">
             <a
               href={INSTAGRAM}
