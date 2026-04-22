@@ -37,6 +37,10 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Sinenberg Consulting" },
+      { name: "twitter:description", content: "Consultoria Estratégica para Empresas Tech" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f6a6cea9-4e41-4559-97df-6059fc92af60/id-preview-75d1c0ff--a689ad27-1e37-44c6-bc86-42664b6f5246.lovable.app-1776823976947.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f6a6cea9-4e41-4559-97df-6059fc92af60/id-preview-75d1c0ff--a689ad27-1e37-44c6-bc86-42664b6f5246.lovable.app-1776823976947.png" },
     ],
     links: [
       {
