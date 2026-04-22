@@ -66,7 +66,7 @@ export function Navbar() {
       {open && (
         <div className="fixed inset-0 z-50 bg-[#0B2A5B] flex flex-col p-6 md:hidden">
           <div className="flex items-center justify-between">
-            <img src={logoDark} alt="Sinenberg" className="h-8" />
+            <img src={logoDark} alt="Sinenberg" className="h-12" />
             <button aria-label="Fechar" onClick={() => setOpen(false)} className="text-white p-2">
               <Icon icon="solar:close-circle-outline" width="32" height="32" />
             </button>
