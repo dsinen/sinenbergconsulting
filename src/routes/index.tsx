@@ -79,7 +79,7 @@ const services = [
   {
     name: "Consultoria — Modelo Completo",
     audience: "Para empresas tech B2B (R$1M–R$50M) prontas para profissionalizar a operação de ponta a ponta.",
-    duration: "Programa estruturado de longo prazo",
+    duration: "Programa robusto de transformação",
     deliverables: [
       "Diagnóstico estratégico completo",
       "Plano de crescimento com prioridades trimestrais",
@@ -90,7 +90,7 @@ const services = [
   {
     name: "Diagnóstico Estratégico",
     audience: "Para fundadores que precisam de um raio-X claro antes de decidir os próximos passos.",
-    duration: "Sprint focado",
+    duration: "Sprint de curto prazo",
     deliverables: [
       "Mapeamento de gargalos de crescimento",
       "Análise de dependências do fundador",
@@ -102,19 +102,24 @@ const services = [
 
 const testimonials = [
   {
-    name: "Mauricio Tripodoro",
-    role: "Tech Product Lead na Linx",
-    text: "Tive o prazer de trabalhar com o Daniel na Linx/Stone no segmento de Postos e Conveniência de forma próxima por vários anos. Ele desempenhou um papel relevante para o negócio, liderando a gestão de relacionamento e negócios com stakeholders-chave em distribuidoras de combustíveis. Teve papel essencial ao conectar as demandas desses clientes a toda cadeia de desenvolvimento de produtos gerenciando as entregas de ponta a ponta. Daniel demonstra entendimento estratégico, antecipação de movimentos de mercado e pronta atenção às demandas de clientes. Possui habilidade para articular acordos entre múltiplas partes interessadas, visão de produto e oferta, capacidade de negociação em situações complexas, além de uma serenidade ímpar que torna seu convívio muito agradável.",
+    name: "Alexandre Fernandes",
+    role: "Gerente de Negócios · Vibra Energia/BR Mania",
+    text: "Daniel é o tipo de profissional que faz a diferença: propositivo e honesto nas relações comerciais. Contar com um parceiro como ele é sinônimo de confiança, agilidade e construção de valor mútuo.",
+  },
+  {
+    name: "Maurício Tripodoro",
+    role: "IT & Project Management · Linx/Stone",
+    text: "Daniel liderou a gestão de relacionamento com stakeholders-chave em distribuidoras de combustíveis, conectando demandas de clientes a toda a cadeia de produtos. Demonstra entendimento estratégico, antecipação de movimentos de mercado e habilidade para articular acordos entre múltiplas partes.",
+  },
+  {
+    name: "Rodrigo Oliveira",
+    role: "Product Marketing Manager · Linx",
+    text: "Daniel participou ativamente de grandes projetos na Linx, como a chegada da OXXO ao Brasil. Seu olhar atento aos movimentos do mercado fez com que se antecipasse em diversas frentes. Atuou muito além das especificações do seu cargo — extremamente competente e comprometido.",
   },
   {
     name: "Fabiana Guiachetto",
     role: "Head de Growth & Canais na Totvs",
-    text: "É um profissional focado, dedicado a sua carteira de clientes, preocupado em criar uma relação ganha-ganha e com ótima relação interpessoal. Éramos de verticais diferentes na Linx, mas eu estando a frente de um produto Cross sempre estava em contato com ele para conseguirmos levar inovação para os clientes da sua carteira. Foi um ótimo encontro, e espero que se repita ;) Trabalhar com pessoas que acreditam no poder do time é essencial hoje em dia.",
-  },
-  {
-    name: "Alexandre Fernandes",
-    role: "Analista de Negócios na Petrobras",
-    text: "Tive o privilégio de trabalhar com o Daniel como cliente do grupo Linx/Stone, durante o meu período de atuação na BR Mania e no qual ele atuou como especialista em produtos, negócios e relacionamento comercial. Foi um elo fundamental entre nossas empresas e um grande facilitador de soluções. Desde o início, ficou claro que Daniel é o tipo de profissional que faz a diferença: propositivo, conciliador e, acima de tudo, honesto nas relações comerciais. Em um mercado tão dinâmico e competitivo, contar com um parceiro como o Daniel é sinônimo de confiança, agilidade e construção de valor mútuo.",
+    text: "É um profissional focado, dedicado a sua carteira de clientes, preocupado em criar uma relação ganha-ganha e com ótima relação interpessoal. Trabalhar com pessoas que acreditam no poder do time é essencial hoje em dia.",
   },
 ];
 
@@ -375,9 +380,9 @@ function HomePage() {
                 receita previsível e uma operação que funciona sem o fundador no meio de tudo.
               </p>
               <p>
-                Mais de duas décadas dentro de empresas como Linx/Stone construíram a base do meu método:
-                visão estratégica, articulação entre áreas e execução com indicadores vivos. É o que aplico
-                hoje na Sinenberg Consulting, com cada cliente.
+                Mais de duas décadas dentro de grandes empresas que me ajudaram a construir a base do meu
+                método: visão estratégica, articulação entre áreas e execução com indicadores vivos. É o
+                que aplico hoje na Sinenberg Consulting, com cada cliente.
               </p>
             </div>
 
@@ -418,7 +423,7 @@ function HomePage() {
             </h2>
           </div>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <div className="mt-16 grid md:grid-cols-2 gap-6">
             {testimonials.map((t, i) => (
               <div
                 key={t.name}
@@ -502,7 +507,7 @@ function HomePage() {
               aria-label="Instagram"
               className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#2EC4FF] hover:text-[#0B2A5B] hover:border-[#2EC4FF] transition"
             >
-              <Icon icon="solar:instagram-outline" width="20" />
+              <Icon icon="ph:instagram-logo" width="20" />
             </a>
             <a
               href={LINKEDIN}
