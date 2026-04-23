@@ -423,7 +423,7 @@ function HomePage() {
             </h2>
           </div>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <div className="mt-16 grid md:grid-cols-2 gap-6">
             {testimonials.map((t, i) => (
               <div
                 key={t.name}
