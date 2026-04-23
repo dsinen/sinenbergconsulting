@@ -6,6 +6,25 @@ import { useReveal } from "@/hooks/useReveal";
 import heroPhoto from "@/assets/daniel-hero.jpg";
 import aboutPhoto from "@/assets/daniel-about.jpg";
 import logoDark from "@/assets/logo-dark.png";
+import logoLinx from "@/assets/logos/linx.png";
+import logoStone from "@/assets/logos/stone.png";
+import logoVivo from "@/assets/logos/vivo.png";
+import logoIpiranga from "@/assets/logos/ipiranga.png";
+import logoBR from "@/assets/logos/br.gif";
+import logoOxxo from "@/assets/logos/oxxo.png";
+import logoShell from "@/assets/logos/shell.png";
+import logoFast from "@/assets/logos/fast.png";
+
+const companies = [
+  { name: "Linx", src: logoLinx },
+  { name: "Stone", src: logoStone },
+  { name: "Vivo", src: logoVivo },
+  { name: "Ipiranga", src: logoIpiranga },
+  { name: "BR Petrobras", src: logoBR },
+  { name: "OXXO", src: logoOxxo },
+  { name: "Shell", src: logoShell },
+  { name: "Fast Shop", src: logoFast },
+];
 
 const CTA = "https://w.app/sinenbergconsulting";
 const INSTAGRAM = "https://www.instagram.com/dsinen";
@@ -191,6 +210,30 @@ function HomePage() {
             <div className="hero-photo-wrap aspect-[4/5] rounded-2xl overflow-hidden">
               <img src={heroPhoto} alt="Daniel Sinenberg" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── EMPRESAS ───────── */}
+      <section className="py-20 md:py-24 bg-[#f5f8fc] border-y border-[#e3ebf4]">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="reveal text-center text-sm md:text-base text-[#4a5b73] tracking-wide">
+            Mais de 20 anos construindo crescimento em empresas como
+          </p>
+          <div className="reveal mt-10 md:mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-x-6 gap-y-10 items-center">
+            {companies.map((c) => (
+              <div
+                key={c.name}
+                className="flex items-center justify-center h-12"
+              >
+                <img
+                  src={c.src}
+                  alt={c.name}
+                  loading="lazy"
+                  className="max-h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
