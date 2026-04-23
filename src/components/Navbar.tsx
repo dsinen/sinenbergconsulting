@@ -29,9 +29,9 @@ export function Navbar() {
       }`}
       style={{ borderBottom: "1px solid rgba(255,255,255,0.18)" }}
     >
-      <div className="mx-auto max-w-[1100px] px-6 h-[88px] md:h-[112px] flex items-center justify-between">
+      <div className="mx-auto max-w-[1100px] px-6 h-[104px] md:h-[140px] flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logoDark} alt="Sinenberg Consulting" className="h-16 md:h-24 w-auto" />
+          <img src={logoDark} alt="Sinenberg Consulting" className="h-20 md:h-32 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
