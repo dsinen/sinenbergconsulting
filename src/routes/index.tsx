@@ -498,8 +498,10 @@ function HomePage() {
       {/* ───────── FOOTER ───────── */}
       <footer className="py-12" style={{ backgroundColor: "#06173A", color: "#fff" }}>
         <div className="mx-auto max-w-[1100px] px-6 grid grid-cols-1 md:grid-cols-3 items-center gap-8">
-          <p className="text-xs text-white/60 text-center md:text-left order-2 md:order-1">
-            © 2026 Sinenberg Consulting — Todos os direitos reservados.
+          <p className="text-xs text-white/60 text-center md:text-left order-2 md:order-1 leading-relaxed">
+            © 2026 Sinenberg Consulting
+            <br />
+            Todos os direitos reservados.
           </p>
           <div className="flex items-center justify-center gap-5 order-1 md:order-2">
             <a
@@ -507,18 +509,23 @@ function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-14 h-14 rounded-full bg-[#2EC4FF] text-[#0B2A5B] flex items-center justify-center hover:-translate-y-1 hover:brightness-110 transition shadow-[0_10px_30px_-10px_rgba(46,196,255,0.6)]"
+              className="w-14 h-14 rounded-full text-white flex items-center justify-center hover:-translate-y-1 hover:brightness-110 transition shadow-[0_10px_30px_-10px_rgba(225,48,108,0.6)]"
+              style={{
+                background:
+                  "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+              }}
             >
-              <Icon icon="ph:instagram-logo" width="28" />
+              <Icon icon="ph:instagram-logo-fill" width="28" />
             </a>
             <a
               href={LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="w-14 h-14 rounded-full bg-[#2EC4FF] text-[#0B2A5B] flex items-center justify-center hover:-translate-y-1 hover:brightness-110 transition shadow-[0_10px_30px_-10px_rgba(46,196,255,0.6)]"
+              className="w-14 h-14 rounded-full text-white flex items-center justify-center hover:-translate-y-1 hover:brightness-110 transition shadow-[0_10px_30px_-10px_rgba(10,102,194,0.6)]"
+              style={{ backgroundColor: "#0A66C2" }}
             >
-              <Icon icon="ph:linkedin-logo" width="28" />
+              <Icon icon="ph:linkedin-logo-fill" width="28" />
             </a>
           </div>
           <div className="flex justify-center md:justify-end order-3">
