@@ -50,7 +50,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold text-sm px-5 py-2.5 hover:brightness-110 transition"
           >
-            Agendar Sessão
+            Fale comigo
           </a>
         </nav>
 
