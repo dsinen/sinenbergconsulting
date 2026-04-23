@@ -502,27 +502,24 @@ function HomePage() {
               </p>
             </div>
 
-            <blockquote
-              className="mt-10 p-7 rounded-2xl relative"
-              style={{ background: "rgba(46,196,255,0.08)", borderLeft: "3px solid #2EC4FF" }}
-            >
-              <span
-                aria-hidden
-                className="absolute -top-4 left-5 font-serif text-7xl text-[#2EC4FF]/40 leading-none"
-              >
-                "
-              </span>
-              <p
-                className="font-serif italic text-white"
-                style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)", lineHeight: 1.4 }}
-              >
-                Ajudar empresas de tecnologia a transformar crescimento desorganizado em
-                crescimento estruturado e previsível.
-              </p>
-              <footer className="mt-3 text-xs uppercase tracking-[0.2em] text-[#2EC4FF]">
-                Missão
-              </footer>
-            </blockquote>
+          </div>
+        </div>
+
+        {/* Missão card */}
+        <div className="relative mx-auto max-w-[860px] px-6 mt-20">
+          <div
+            className="reveal rounded-3xl p-10 md:p-14 text-center border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]"
+            style={{
+              background: "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,196,255,0.06) 100%)",
+              backgroundColor: "#082248",
+            }}
+          >
+            <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#2EC4FF] font-semibold px-3 py-1 rounded-full border border-[#2EC4FF]/40">
+              Missão
+            </span>
+            <p className="mt-6 font-serif font-semibold text-white text-xl md:text-2xl lg:text-3xl leading-snug">
+              Ajudar empresas de tecnologia a transformar crescimento desorganizado em crescimento estruturado e previsível.
+            </p>
           </div>
         </div>
       </section>
