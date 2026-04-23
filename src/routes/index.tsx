@@ -105,6 +105,9 @@ const services = [
       "Reestruturação comercial e de processos",
       "Acompanhamento executivo recorrente",
     ],
+    ctaLabel: "Falar sobre a Consultoria Completa",
+    ctaLink:
+      "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20tenho%20interesse%20na%20Consultoria%20Completa%20da%20Sinenberg%20Consulting.",
   },
   {
     name: "Diagnóstico Estratégico",
@@ -116,6 +119,9 @@ const services = [
       "Identificação de oportunidades de receita",
       "Roadmap priorizado de ações",
     ],
+    ctaLabel: "Quero o Diagnóstico Estratégico",
+    ctaLink:
+      "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20tenho%20interesse%20no%20Diagn%C3%B3stico%20Estrat%C3%A9gico.",
   },
 ];
 
@@ -375,12 +381,12 @@ function HomePage() {
                 </ul>
 
                 <a
-                  href={CTA}
+                  href={s.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#0B2A5B] text-white font-semibold px-6 py-3 hover:-translate-y-0.5 hover:brightness-110 transition"
                 >
-                  Quero saber mais
+                  {s.ctaLabel}
                   <Icon icon="solar:arrow-right-outline" width="18" />
                 </a>
               </div>
