@@ -7,7 +7,7 @@ import heroPhoto from "@/assets/daniel-hero.jpg";
 import aboutPhoto from "@/assets/daniel-about.jpg";
 import logoDark from "@/assets/logo-dark.png";
 
-const CTA = "https://wa.link/qijedd";
+const CTA = "https://w.app/sinenbergconsulting";
 const INSTAGRAM = "https://www.instagram.com/dsinen";
 const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg";
 
