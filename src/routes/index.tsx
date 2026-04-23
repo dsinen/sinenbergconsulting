@@ -479,8 +479,8 @@ function HomePage() {
               Imagine sua empresa crescendo com clareza, processo e previsibilidade.
             </h2>
             <p className="mt-8 text-white/85 text-lg max-w-2xl mx-auto leading-relaxed">
-              Uma conversa de 30 minutos é suficiente para entender se faz sentido trabalharmos
-              juntos. Você sai com diagnóstico claro, recomendações práticas — e sem compromisso.
+              Uma conversa de 20 minutos é suficiente para entender se faz sentido trabalharmos
+              juntos. Você sai com pré diagnóstico claro, recomendações práticas — e sem compromisso.
             </p>
             <a
               href={CTA}
