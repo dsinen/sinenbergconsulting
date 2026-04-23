@@ -479,8 +479,8 @@ function HomePage() {
               Imagine sua empresa crescendo com clareza, processo e previsibilidade.
             </h2>
             <p className="mt-8 text-white/85 text-lg max-w-2xl mx-auto leading-relaxed">
-              Uma conversa de 30 minutos é suficiente para entender se faz sentido trabalharmos
-              juntos. Você sai com diagnóstico claro, recomendações práticas — e sem compromisso.
+              Uma conversa de 20 minutos é suficiente para entender se faz sentido trabalharmos
+              juntos. Você sai com pré diagnóstico claro, recomendações práticas — e sem compromisso.
             </p>
             <a
               href={CTA}
@@ -497,31 +497,33 @@ function HomePage() {
 
       {/* ───────── FOOTER ───────── */}
       <footer className="py-12" style={{ backgroundColor: "#06173A", color: "#fff" }}>
-        <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <img src={logoDark} alt="Sinenberg Consulting" className="h-16 md:h-20 w-auto" />
-          <div className="flex items-center gap-4">
+        <div className="mx-auto max-w-[1100px] px-6 grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+          <p className="text-xs text-white/60 text-center md:text-left order-2 md:order-1">
+            © 2026 Sinenberg Consulting — Todos os direitos reservados.
+          </p>
+          <div className="flex items-center justify-center gap-5 order-1 md:order-2">
             <a
               href={INSTAGRAM}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#2EC4FF] hover:text-[#0B2A5B] hover:border-[#2EC4FF] transition"
+              className="w-14 h-14 rounded-full bg-[#2EC4FF] text-[#0B2A5B] flex items-center justify-center hover:-translate-y-1 hover:brightness-110 transition shadow-[0_10px_30px_-10px_rgba(46,196,255,0.6)]"
             >
-              <Icon icon="ph:instagram-logo" width="20" />
+              <Icon icon="ph:instagram-logo" width="28" />
             </a>
             <a
               href={LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#2EC4FF] hover:text-[#0B2A5B] hover:border-[#2EC4FF] transition"
+              className="w-14 h-14 rounded-full bg-[#2EC4FF] text-[#0B2A5B] flex items-center justify-center hover:-translate-y-1 hover:brightness-110 transition shadow-[0_10px_30px_-10px_rgba(46,196,255,0.6)]"
             >
-              <Icon icon="ph:linkedin-logo" width="20" />
+              <Icon icon="ph:linkedin-logo" width="28" />
             </a>
           </div>
-          <p className="text-sm text-white/70 text-center md:text-right">
-            © 2026 Sinenberg Consulting — Todos os direitos reservados.
-          </p>
+          <div className="flex justify-center md:justify-end order-3">
+            <img src={logoDark} alt="Sinenberg Consulting" className="h-16 md:h-20 w-auto" />
+          </div>
         </div>
       </footer>
     </div>
