@@ -88,7 +88,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="mt-4 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold text-base px-8 py-3"
             >
-              Agendar Sessão
+              Fale comigo
             </a>
           </nav>
         </div>
