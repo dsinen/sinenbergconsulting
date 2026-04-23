@@ -507,7 +507,7 @@ function HomePage() {
               aria-label="Instagram"
               className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#2EC4FF] hover:text-[#0B2A5B] hover:border-[#2EC4FF] transition"
             >
-              <Icon icon="solar:instagram-outline" width="20" />
+              <Icon icon="ph:instagram-logo" width="20" />
             </a>
             <a
               href={LINKEDIN}
