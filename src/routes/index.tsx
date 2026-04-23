@@ -90,7 +90,7 @@ const services = [
   {
     name: "Diagnóstico Estratégico",
     audience: "Para fundadores que precisam de um raio-X claro antes de decidir os próximos passos.",
-    duration: "Sprint focado",
+    duration: "Sprint de curto prazo",
     deliverables: [
       "Mapeamento de gargalos de crescimento",
       "Análise de dependências do fundador",
