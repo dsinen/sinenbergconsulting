@@ -380,9 +380,9 @@ function HomePage() {
                 receita previsível e uma operação que funciona sem o fundador no meio de tudo.
               </p>
               <p>
-                Mais de duas décadas dentro de empresas como Linx/Stone construíram a base do meu método:
-                visão estratégica, articulação entre áreas e execução com indicadores vivos. É o que aplico
-                hoje na Sinenberg Consulting, com cada cliente.
+                Mais de duas décadas dentro de grandes empresas que me ajudaram a construir a base do meu
+                método: visão estratégica, articulação entre áreas e execução com indicadores vivos. É o
+                que aplico hoje na Sinenberg Consulting, com cada cliente.
               </p>
             </div>
 
