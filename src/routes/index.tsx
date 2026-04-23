@@ -79,7 +79,7 @@ const services = [
   {
     name: "Consultoria — Modelo Completo",
     audience: "Para empresas tech B2B (R$1M–R$50M) prontas para profissionalizar a operação de ponta a ponta.",
-    duration: "Programa estruturado de longo prazo",
+    duration: "Programa robusto de transformação",
     deliverables: [
       "Diagnóstico estratégico completo",
       "Plano de crescimento com prioridades trimestrais",
