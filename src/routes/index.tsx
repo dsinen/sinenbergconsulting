@@ -389,6 +389,82 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── FIT / NO-FIT ───────── */}
+      <section className="py-[120px] bg-white">
+        <div className="mx-auto max-w-[1100px] px-6">
+          <div className="reveal text-center max-w-2xl mx-auto">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
+              Fit
+            </span>
+            <h2 className="mt-4 font-serif text-3xl md:text-5xl text-[#0B2A5B] leading-tight">
+              Esse trabalho é para você se...
+            </h2>
+          </div>
+
+          <div className="mt-16 grid md:grid-cols-2 gap-6">
+            {/* Faz sentido */}
+            <div className="reveal p-8 md:p-10 rounded-2xl bg-[#f5f8fc] border border-[#d9e3ef]">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center">
+                  <Icon icon="solar:check-circle-bold" width="24" />
+                </div>
+                <h3 className="font-serif text-xl md:text-2xl text-[#0B2A5B]">
+                  Faz sentido se...
+                </h3>
+              </div>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "Sua empresa de tecnologia B2B fatura entre R$1M e R$50M",
+                  "Você já passou do product-market fit e cresceu por demanda",
+                  "Vendas e decisões importantes ainda passam por você",
+                  "A operação está começando a ranger com o crescimento",
+                  "Você está pronto para profissionalizar a estrutura",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-[#1f2a3d] leading-relaxed">
+                    <Icon
+                      icon="solar:check-circle-outline"
+                      width="22"
+                      className="shrink-0 mt-0.5 text-[#16a34a]"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Não é o momento */}
+            <div className="reveal p-8 md:p-10 rounded-2xl bg-[#f7f8fa] border border-[#e3e6eb]">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#94a3b8]/15 text-[#64748b] flex items-center justify-center">
+                  <Icon icon="solar:close-circle-bold" width="24" />
+                </div>
+                <h3 className="font-serif text-xl md:text-2xl text-[#0B2A5B]">
+                  Não é o momento se...
+                </h3>
+              </div>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "A empresa ainda está validando produto ou modelo de negócio",
+                  "Faturamento ainda abaixo de R$1M",
+                  "Não há disposição para revisar processos e papéis",
+                  "A expectativa é por uma solução pronta em poucas semanas",
+                  "O fundador busca um interino para “tocar o comercial”",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-[#4a5b73] leading-relaxed">
+                    <Icon
+                      icon="solar:close-circle-outline"
+                      width="22"
+                      className="shrink-0 mt-0.5 text-[#94a3b8]"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ───────── COMO O PROJETO ACONTECE ───────── */}
       <section className="py-[120px] bg-[#f5f8fc]">
         <div className="mx-auto max-w-[1200px] px-6">
