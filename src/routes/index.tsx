@@ -389,6 +389,79 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── COMO O PROJETO ACONTECE ───────── */}
+      <section className="py-[120px] bg-[#f5f8fc]">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="reveal text-center max-w-2xl mx-auto">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
+              Metodologia
+            </span>
+            <h2 className="mt-4 font-serif text-3xl md:text-5xl text-[#0B2A5B] leading-tight">
+              Como o projeto acontece
+            </h2>
+            <p className="mt-4 text-[#4a5b73] text-base md:text-lg">
+              Um ciclo estruturado de 6 meses, com cadência clara desde o primeiro dia.
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="reveal mt-16 relative">
+            {/* connector line - desktop horizontal */}
+            <div className="hidden lg:block absolute top-7 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#2EC4FF]/20 via-[#1F6FDB]/40 to-[#2EC4FF]/20" />
+            {/* connector line - mobile vertical */}
+            <div className="lg:hidden absolute top-0 bottom-0 left-7 w-[2px] bg-gradient-to-b from-[#2EC4FF]/20 via-[#1F6FDB]/40 to-[#2EC4FF]/20" />
+
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 relative">
+              {[
+                { icon: "solar:flag-2-outline", step: "Kick-off", when: "Mês 1", text: "Briefing executivo, alinhamento de prazos e prioridades." },
+                { icon: "solar:magnifer-outline", step: "Diagnóstico", when: "Mês 1", text: "Entrevistas com lideranças, análise de dados e visita." },
+                { icon: "solar:clipboard-list-outline", step: "Plano de Ação", when: "Mês 1", text: "Apresentação e validação do plano com cronograma de implementação." },
+                { icon: "solar:settings-outline", step: "Implementação", when: "Meses 2 a 5", text: "Execução com ponto focal do cliente e reuniões mensais de resultados." },
+                { icon: "solar:chart-2-outline", step: "Acompanhamento", when: "Mês 6", text: "Monitoramento de KPIs, ajustes finais e sustentação." },
+              ].map((s, i) => (
+                <div key={s.step} className="relative flex lg:flex-col gap-5 lg:gap-0 lg:text-center pl-0 lg:pl-0">
+                  <div className="shrink-0 relative z-10 w-14 h-14 rounded-full bg-[#0B2A5B] text-[#2EC4FF] flex items-center justify-center shadow-[0_8px_24px_-8px_rgba(11,42,91,0.4)] ring-4 ring-[#f5f8fc] lg:mx-auto">
+                    <Icon icon={s.icon} width="26" />
+                  </div>
+                  <div className="lg:mt-5 flex-1">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-[#1F6FDB] font-semibold">
+                      Etapa 0{i + 1} · {s.when}
+                    </div>
+                    <h3 className="mt-1 font-serif text-lg md:text-xl text-[#0B2A5B]">
+                      {s.step}
+                    </h3>
+                    <p className="mt-2 text-sm text-[#4a5b73] leading-relaxed">
+                      {s.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Cadência cards */}
+          <div className="reveal mt-16 grid md:grid-cols-2 gap-6">
+            {[
+              { icon: "solar:calendar-outline", title: "Cadência semanal/quinzenal", text: "Reuniões de orientação com o ponto focal." },
+              { icon: "solar:chart-square-outline", title: "Reunião mensal", text: "Apresentação formal de resultados, indicadores e próximos passos." },
+            ].map((c) => (
+              <div
+                key={c.title}
+                className="flex gap-5 p-7 rounded-2xl bg-white border border-[#d9e3ef] hover:border-[#1F6FDB] transition-colors"
+              >
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-[#0B2A5B] text-[#2EC4FF] flex items-center justify-center">
+                  <Icon icon={c.icon} width="26" />
+                </div>
+                <div>
+                  <h4 className="font-serif text-lg text-[#0B2A5B]">{c.title}</h4>
+                  <p className="mt-1 text-sm text-[#4a5b73] leading-relaxed">{c.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ───────── SOBRE ───────── */}
       <section
         id="sobre"
