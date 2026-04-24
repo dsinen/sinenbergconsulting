@@ -677,6 +677,132 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── LEAD MAGNET — CHECKLIST GRATUITO ───────── */}
+      <section className="py-[120px] bg-[#F5F8FC]">
+        <div className="mx-auto max-w-[1100px] px-6">
+          <div
+            className="reveal relative overflow-hidden rounded-3xl px-8 md:px-14 py-12 md:py-16"
+            style={{ backgroundColor: "#0B2A5B" }}
+          >
+            {/* glow decoração */}
+            <div
+              className="pointer-events-none absolute -top-20 -right-20 w-[320px] h-[320px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(46,196,255,0.25) 0%, transparent 65%)",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute -bottom-24 -left-16 w-[260px] h-[260px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(31,111,219,0.25) 0%, transparent 65%)",
+              }}
+            />
+
+            <div className="relative grid md:grid-cols-[1.1fr_1fr] gap-10 md:gap-14 items-center">
+              {/* Coluna esquerda — texto */}
+              <div>
+                <span
+                  className="inline-block text-[11px] uppercase tracking-[0.22em] font-semibold px-3 py-1 rounded-full border"
+                  style={{
+                    color: "#2EC4FF",
+                    borderColor: "rgba(46,196,255,0.45)",
+                    backgroundColor: "rgba(46,196,255,0.08)",
+                  }}
+                >
+                  Material Gratuito
+                </span>
+
+                <h2 className="mt-5 font-serif text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.1] text-white">
+                  Diagnóstico Rápido:{" "}
+                  <span style={{ color: "#2EC4FF" }}>
+                    7 sinais
+                  </span>{" "}
+                  de que sua empresa tech está pronta para escalar com previsibilidade
+                </h2>
+
+                <p className="mt-5 text-base md:text-lg text-white/75 leading-relaxed max-w-xl">
+                  Um checklist objetivo para você avaliar sozinho onde sua operação
+                  está hoje — e o que precisa antes de crescer mais.
+                </p>
+              </div>
+
+              {/* Coluna direita — formulário */}
+              <div className="md:pl-4">
+                {leadStatus === "success" ? (
+                  <div
+                    className="rounded-2xl p-6 border text-center"
+                    style={{
+                      borderColor: "rgba(46,196,255,0.4)",
+                      backgroundColor: "rgba(46,196,255,0.08)",
+                    }}
+                  >
+                    <Icon
+                      icon="solar:check-circle-bold"
+                      className="mx-auto"
+                      style={{ color: "#2EC4FF", fontSize: 40 }}
+                    />
+                    <p className="mt-3 text-white font-semibold text-lg">
+                      Pronto! Em instantes você recebe o checklist no seu e-mail.
+                    </p>
+                    <p className="mt-2 text-sm text-white/65">
+                      Caso não chegue, verifique a caixa de spam ou promoções.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleLeadSubmit} className="space-y-3">
+                    <label htmlFor="lead-email" className="sr-only">
+                      Seu melhor e-mail
+                    </label>
+                    <input
+                      id="lead-email"
+                      type="email"
+                      required
+                      maxLength={255}
+                      autoComplete="email"
+                      placeholder="seu melhor e-mail"
+                      value={leadEmail}
+                      onChange={(e) => {
+                        setLeadEmail(e.target.value);
+                        if (leadStatus === "error") setLeadStatus("idle");
+                      }}
+                      className="w-full h-12 rounded-xl px-4 text-[15px] text-white placeholder:text-white/45 bg-white/[0.06] border border-white/15 focus:outline-none focus:border-[#2EC4FF] focus:bg-white/[0.09] transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      disabled={leadStatus === "loading"}
+                      className="w-full h-12 rounded-xl font-semibold text-[15px] text-[#0B2A5B] transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                      style={{ backgroundColor: "#2EC4FF" }}
+                    >
+                      {leadStatus === "loading" ? (
+                        <>
+                          <Icon icon="solar:refresh-outline" className="animate-spin" />
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          Receber checklist gratuito
+                          <Icon icon="solar:arrow-right-outline" />
+                        </>
+                      )}
+                    </button>
+                    {leadStatus === "error" && (
+                      <p className="text-sm text-[#FFB4B4]">
+                        Não conseguimos enviar agora. Verifique o e-mail e tente novamente.
+                      </p>
+                    )}
+                    <p className="text-xs text-white/50 pt-1">
+                      Sem spam. Você pode descadastrar a qualquer momento.
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ───────── CTA FINAL ───────── */}
       <section
         className="relative py-[140px] overflow-hidden"
