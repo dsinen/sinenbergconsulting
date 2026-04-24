@@ -887,7 +887,7 @@ function HomePage() {
 
       {/* ───────── CTA FINAL ───────── */}
       <section
-        className="relative py-[140px] overflow-hidden"
+        className="relative py-20 md:py-28 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B" }}
       >
         <div className="absolute inset-0 dot-grid" />
