@@ -34,6 +34,41 @@ const companies = [
 ];
 
 const CTA = "https://w.app/sinenbergconsulting";
+
+const faqs = [
+  {
+    q: "Para que tipo de empresa essa consultoria faz sentido?",
+    a: "Empresas de tecnologia B2B entre R$1M e R$50M de faturamento, pós-product market fit, que cresceram bem mas começam a sentir que o modelo atual não escala. Se a empresa ainda está validando produto ou se o fundador não está disposto a mudar processos, este não é o trabalho certo.",
+  },
+  {
+    q: "Atende empresas que não são de tecnologia?",
+    a: "Meu foco é tech B2B porque é onde tenho mais de 20 anos de experiência aplicada — Stone, Linx, Telefônica e Fast Shop. Empresas de outros setores podem entrar em contato, mas o método foi desenhado para a dinâmica de receita recorrente, ciclos consultivos e produto digital.",
+  },
+  {
+    q: "Atende remotamente ou só presencial?",
+    a: "Trabalho em modelo híbrido. A maior parte das interações é remota (reuniões com ponto focal, sessões executivas mensais), com visitas presenciais pontuais quando o projeto pede — sobretudo no diagnóstico e em momentos críticos da implementação. Atendo Brasil inteiro.",
+  },
+  {
+    q: "Qual a diferença entre o Diagnóstico e a Consultoria Completa?",
+    a: "O Diagnóstico é uma sprint curta para fundadores que precisam de um raio-X claro antes de tomar decisões — entrega gargalos mapeados, oportunidades de receita identificadas e um roadmap priorizado. A Consultoria Completa é o programa de transformação: pega o diagnóstico e leva à execução, com acompanhamento executivo recorrente até a operação rodar sem o fundador no meio.",
+  },
+  {
+    q: "Quanto tempo dura o projeto?",
+    a: "A Consultoria Completa segue um ciclo padrão de 6 meses: Mês 1 dedicado a diagnóstico, imersão e plano; Meses 2 a 5 em execução; Mês 6 em acompanhamento e sustentação. Esse prazo, no entanto, é flexível — projetos com maior complexidade, mais frentes simultâneas ou desafios específicos podem exigir ciclos mais longos. O escopo final é definido após a sessão estratégica inicial. O Diagnóstico é executado em poucas semanas.",
+  },
+  {
+    q: "Como é o envolvimento do fundador no processo?",
+    a: "Alta no início (diagnóstico, definição de prioridades, alinhamento estratégico) e progressivamente menor à medida que a estrutura assume. Para isso, é essencial a indicação de um ponto focal pelo fundador — uma pessoa interna que acompanha o projeto de perto, viabiliza a execução do plano de ação e funciona como multiplicador, disseminando o conhecimento e os novos processos dentro da empresa. O objetivo é justamente sair de um modelo onde tudo passa pelo fundador para um modelo onde a operação funciona sem ele no meio de cada decisão.",
+  },
+  {
+    q: "Que tipo de resultado posso esperar?",
+    a: "Os padrões observados em projetos similares apontam para 25% menos dispersão (CAC e LTV), 20% mais conversão (taxa e ciclo de vendas) e 15% mais margem (operacional e churn). Mas cada empresa recebe metas personalizadas a partir do diagnóstico inicial — não trabalho com promessas genéricas.",
+  },
+  {
+    q: "Você assume o comercial da empresa ou orienta o time?",
+    a: "Atuo como consultor, não como interino. Isso significa orientar, estruturar processos, capacitar o time e acompanhar resultados — sempre transferindo conhecimento para que a operação se sustente quando o projeto encerrar. Você não cria dependência de mim.",
+  },
+];
 const INSTAGRAM = "https://www.instagram.com/dsinen";
 const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg";
 
