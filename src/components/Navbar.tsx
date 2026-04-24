@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 
 const CTA = "https://w.app/sinenbergconsulting";
+const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 
 const links = [
   { href: "#metodo", label: "Método" },
