@@ -70,7 +70,7 @@ const faqs = [
   },
 ];
 const INSTAGRAM = "https://www.instagram.com/dsinen";
-const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg";
+const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
