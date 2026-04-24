@@ -152,6 +152,35 @@ const testimonials = [
 function HomePage() {
   useReveal();
 
+  // Lead capture (checklist gratuito) — TROCAR `LEAD_FORM_ENDPOINT` pelo endpoint do Formspree/Lovable Forms
+  const LEAD_FORM_ENDPOINT = ""; // ex: "https://formspree.io/f/xxxxx"
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadStatus, setLeadStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  async function handleLeadSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const email = leadEmail.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) {
+      setLeadStatus("error");
+      return;
+    }
+    setLeadStatus("loading");
+    try {
+      if (LEAD_FORM_ENDPOINT) {
+        const res = await fetch(LEAD_FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ email, source: "checklist-7-sinais" }),
+        });
+        if (!res.ok) throw new Error("send failed");
+      }
+      setLeadStatus("success");
+      setLeadEmail("");
+    } catch {
+      setLeadStatus("error");
+    }
+  }
+
   return (
     <div id="top" className="bg-background text-foreground">
       <Navbar />
