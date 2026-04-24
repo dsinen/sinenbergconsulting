@@ -228,7 +228,7 @@ function HomePage() {
 
       {/* ───────── HERO ───────── */}
       <section
-        className="relative pt-[120px] md:pt-[160px] pb-[120px] overflow-hidden"
+        className="relative pt-[124px] md:pt-[160px] pb-16 md:pb-[120px] overflow-hidden"
         style={{ backgroundColor: "#0B2A5B", color: "#fff" }}
       >
         <div className="absolute inset-0 dot-grid opacity-100" />
@@ -239,53 +239,69 @@ function HomePage() {
               "radial-gradient(circle, rgba(46,196,255,0.25) 0%, transparent 65%)",
           }}
         />
-        <div className="relative mx-auto max-w-[1100px] px-6 grid md:grid-cols-[55fr_45fr] gap-12 items-center">
-          <div className="reveal order-2 md:order-1">
+        <div className="relative mx-auto max-w-[1100px] px-6 grid md:grid-cols-[55fr_45fr] gap-8 md:gap-12 items-center">
+          {/* Mobile-only: name + role above photo for clear identity connection */}
+          <div className="reveal order-1 md:hidden text-center">
             <h1
-              className="font-serif font-medium leading-[1.05]"
-              style={{ fontSize: "clamp(24px, 2.8vw, 44px)", color: "#fff" }}
+              className="font-serif font-medium leading-[1.05] text-white"
+              style={{ fontSize: "clamp(26px, 7vw, 36px)" }}
             >
               Daniel Sinenberg
             </h1>
-            <h2 className="mt-2 font-sans font-light text-[#2EC4FF] text-base md:text-lg tracking-wide">
-              Consultor Estratégico para Empresas de Tecnologia B2B
+            <h2 className="mt-2 font-sans font-light text-[#2EC4FF] text-sm tracking-wide">
+              Consultor Estratégico · Tech B2B
             </h2>
+          </div>
 
-            <p className="mt-8 font-serif text-3xl md:text-5xl leading-[1.1] text-white">
+          {/* Photo */}
+          <div className="reveal order-2 md:order-2">
+            <div className="hero-photo-wrap aspect-[4/5] max-w-[280px] md:max-w-none mx-auto rounded-2xl overflow-hidden">
+              <img src={heroPhoto} alt="Daniel Sinenberg" />
+            </div>
+          </div>
+
+          {/* Text block */}
+          <div className="reveal order-3 md:order-1">
+            {/* Desktop-only header (mobile version is above the photo) */}
+            <div className="hidden md:block">
+              <h1
+                className="font-serif font-medium leading-[1.05]"
+                style={{ fontSize: "clamp(24px, 2.8vw, 44px)", color: "#fff" }}
+              >
+                Daniel Sinenberg
+              </h1>
+              <h2 className="mt-2 font-sans font-light text-[#2EC4FF] text-base md:text-lg tracking-wide">
+                Consultor Estratégico para Empresas de Tecnologia B2B
+              </h2>
+            </div>
+
+            <p className="mt-6 md:mt-8 font-serif text-[28px] md:text-5xl leading-[1.1] text-white text-center md:text-left">
               Crescimento estruturado. Receita previsível.
             </p>
-            <p className="mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl">
+            <p className="mt-4 md:mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0">
               Ajudo empresas tech que cresceram bem, mas ainda dependem do fundador em vendas,
               a escalar com previsibilidade — sem quebrar na operação.
             </p>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-8 items-center">
-              <div>
+            <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
+              <div className="text-center sm:text-left">
                 <div className="font-serif text-5xl md:text-6xl text-[#2EC4FF] leading-none">
                   <CountUp end={22} suffix="+" />
                 </div>
-                <div className="mt-2 text-sm text-white/75 max-w-[180px]">
+                <div className="mt-2 text-sm text-white/75 max-w-[180px] mx-auto sm:mx-0">
                   anos atuando em crescimento de empresas
                 </div>
               </div>
 
-              <div className="sm:justify-self-end">
-                <a
-                  href={CTA}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold px-7 py-4 hover:-translate-y-0.5 hover:brightness-110 transition shadow-[0_10px_40px_-10px_rgba(46,196,255,0.6)]"
-                >
-                  Agendar Sessão Estratégica
-                  <Icon icon="solar:arrow-right-outline" width="20" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="reveal order-1 md:order-2">
-            <div className="hero-photo-wrap aspect-[4/5] rounded-2xl overflow-hidden">
-              <img src={heroPhoto} alt="Daniel Sinenberg" />
+              <a
+                href={CTA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold px-6 md:px-7 py-4 hover:-translate-y-0.5 hover:brightness-110 transition shadow-[0_10px_40px_-10px_rgba(46,196,255,0.6)] text-sm md:text-base"
+              >
+                Agendar Sessão Estratégica
+                <Icon icon="solar:arrow-right-outline" width="20" />
+              </a>
             </div>
           </div>
         </div>
