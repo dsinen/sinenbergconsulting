@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Navbar } from "@/components/Navbar";
 import { CountUp } from "@/components/CountUp";
 import { useReveal } from "@/hooks/useReveal";
