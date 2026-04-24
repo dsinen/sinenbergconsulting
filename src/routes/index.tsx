@@ -844,6 +844,47 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── FAQ ───────── */}
+      <section className="py-[120px] bg-white">
+        <div className="mx-auto max-w-[860px] px-6">
+          <div className="reveal text-center mb-14">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#1F6FDB]">
+              FAQ
+            </span>
+            <h2 className="mt-4 font-serif text-4xl md:text-5xl text-[#0B2A5B] leading-[1.1]">
+              Perguntas frequentes
+            </h2>
+            <p className="mt-5 text-[#4a5a6e] text-lg leading-relaxed max-w-xl mx-auto">
+              Reuni as dúvidas mais comuns de fundadores antes de iniciar uma conversa.
+            </p>
+          </div>
+
+          <div className="reveal">
+            <Accordion
+              type="single"
+              collapsible
+              defaultValue="faq-0"
+              className="w-full"
+            >
+              {faqs.map((item, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="border-b border-[#e3e8f0] last:border-b-0"
+                >
+                  <AccordionTrigger className="text-left text-[#0B2A5B] font-semibold text-base md:text-lg py-6 hover:no-underline hover:text-[#1F6FDB] transition-colors">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[#4a5a6e] text-base leading-relaxed pb-6 pr-2">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
       {/* ───────── CTA FINAL ───────── */}
       <section
         className="relative py-[140px] overflow-hidden"
