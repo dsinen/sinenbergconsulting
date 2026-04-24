@@ -100,6 +100,15 @@ export function Navbar() {
             >
               Fale comigo
             </a>
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de Daniel Sinenberg"
+              className="mt-2 text-white/80 hover:text-[#2EC4FF] transition-colors"
+            >
+              <Icon icon="ph:linkedin-logo-fill" width="32" height="32" />
+            </a>
           </nav>
         </div>
       )}
