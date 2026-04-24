@@ -316,7 +316,7 @@ function HomePage() {
       </section>
 
       {/* ───────── DOR ───────── */}
-      <section className="py-[120px] bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -357,7 +357,7 @@ function HomePage() {
       {/* ───────── MÉTODO ───────── */}
       <section
         id="metodo"
-        className="relative py-[120px] overflow-hidden"
+        className="relative py-16 md:py-24 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B", color: "#fff" }}
       >
         <div className="absolute inset-0 dot-grid" />
@@ -406,7 +406,7 @@ function HomePage() {
       </section>
 
       {/* ───────── SERVIÇOS ───────── */}
-      <section id="servicos" className="py-[120px] bg-white">
+      <section id="servicos" className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -467,7 +467,7 @@ function HomePage() {
       </section>
 
       {/* ───────── FIT / NO-FIT ───────── */}
-      <section className="py-[120px] bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -543,7 +543,7 @@ function HomePage() {
       </section>
 
       {/* ───────── COMO O PROJETO ACONTECE ───────── */}
-      <section className="py-[120px] bg-[#f5f8fc]">
+      <section className="py-16 md:py-24 bg-[#f5f8fc]">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -618,7 +618,7 @@ function HomePage() {
       {/* ───────── SOBRE ───────── */}
       <section
         id="sobre"
-        className="relative py-[120px] overflow-hidden"
+        className="relative py-16 md:py-24 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B", color: "#fff" }}
       >
         <div className="absolute inset-0 dot-grid" />
@@ -678,7 +678,7 @@ function HomePage() {
       </section>
 
       {/* ───────── DEPOIMENTOS ───────── */}
-      <section id="depoimentos" className="py-[120px] bg-white">
+      <section id="depoimentos" className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -719,7 +719,7 @@ function HomePage() {
       </section>
 
       {/* ───────── LEAD MAGNET — CHECKLIST GRATUITO ───────── */}
-      <section className="py-[120px] bg-[#F5F8FC]">
+      <section className="py-16 md:py-24 bg-[#F5F8FC]">
         <div className="mx-auto max-w-[1100px] px-6">
           <div
             className="reveal relative overflow-hidden rounded-3xl px-8 md:px-14 py-12 md:py-16"
@@ -845,7 +845,7 @@ function HomePage() {
       </section>
 
       {/* ───────── FAQ ───────── */}
-      <section className="py-[120px] bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-[860px] px-6">
           <div className="reveal text-center mb-14">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#1F6FDB]">
@@ -887,7 +887,7 @@ function HomePage() {
 
       {/* ───────── CTA FINAL ───────── */}
       <section
-        className="relative py-[140px] overflow-hidden"
+        className="relative py-20 md:py-28 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B" }}
       >
         <div className="absolute inset-0 dot-grid" />

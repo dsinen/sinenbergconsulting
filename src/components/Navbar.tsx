@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 
 const CTA = "https://w.app/sinenbergconsulting";
-const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 
 const links = [
   { href: "#metodo", label: "Método" },
@@ -53,15 +52,6 @@ export function Navbar() {
           >
             Fale comigo
           </a>
-          <a
-            href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn de Daniel Sinenberg"
-            className="text-white/80 hover:text-[#2EC4FF] transition-colors"
-          >
-            <Icon icon="ph:linkedin-logo-fill" width="22" height="22" />
-          </a>
         </nav>
 
         <button
@@ -99,15 +89,6 @@ export function Navbar() {
               className="mt-4 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold text-base px-8 py-3"
             >
               Fale comigo
-            </a>
-            <a
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn de Daniel Sinenberg"
-              className="mt-2 text-white/80 hover:text-[#2EC4FF] transition-colors"
-            >
-              <Icon icon="ph:linkedin-logo-fill" width="32" height="32" />
             </a>
           </nav>
         </div>
