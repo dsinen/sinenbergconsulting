@@ -845,7 +845,7 @@ function HomePage() {
       </section>
 
       {/* ───────── FAQ ───────── */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="faq" className="py-16 md:py-24 bg-white">
         <div className="mx-auto max-w-[860px] px-6">
           <div className="reveal text-center mb-14">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#1F6FDB]">
