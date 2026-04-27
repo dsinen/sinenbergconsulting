@@ -7,8 +7,10 @@ const CTA = "https://w.app/sinenbergconsulting";
 const links = [
   { href: "#metodo", label: "Método" },
   { href: "#servicos", label: "Serviços" },
+  { href: "#como-funciona", label: "Como funciona" },
   { href: "#sobre", label: "Sobre" },
   { href: "#depoimentos", label: "Depoimentos" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
