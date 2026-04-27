@@ -829,12 +829,13 @@ function HomePage() {
                         </>
                       )}
                     </button>
+                    </div>
                     {leadStatus === "error" && (
-                      <p className="text-sm text-[#FFB4B4]">
+                      <p className="mt-3 text-sm text-[#FFB4B4]">
                         Não conseguimos enviar agora. Verifique o e-mail e tente novamente.
                       </p>
                     )}
-                    <p className="text-xs text-white/50 pt-1">
+                    <p className="mt-3 text-xs text-white/50">
                       Sem spam. Você pode descadastrar a qualquer momento.
                     </p>
                   </form>
