@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Navbar } from "@/components/Navbar";
-import { CountUp } from "@/components/CountUp";
+
 import { useReveal } from "@/hooks/useReveal";
 import heroPhoto from "@/assets/daniel-hero.jpg";
 import aboutPhoto from "@/assets/daniel-about.jpg";
