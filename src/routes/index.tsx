@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Navbar } from "@/components/Navbar";
-import { CountUp } from "@/components/CountUp";
+
 import { useReveal } from "@/hooks/useReveal";
 import heroPhoto from "@/assets/daniel-hero.jpg";
 import aboutPhoto from "@/assets/daniel-about.jpg";
@@ -270,7 +270,7 @@ function HomePage() {
             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
               <div className="text-center sm:text-left">
                 <div className="font-serif text-5xl md:text-6xl text-[#2EC4FF] leading-none">
-                  <CountUp end={22} suffix="+" />
+                  22+
                 </div>
                 <div className="mt-2 text-sm text-white/75 max-w-[180px] mx-auto sm:mx-0">
                   anos atuando em crescimento de empresas
