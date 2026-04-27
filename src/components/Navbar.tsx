@@ -36,7 +36,7 @@ export function Navbar() {
           <img src={logoDark} alt="Sinenberg Consulting" className="h-14 md:h-32 w-auto" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <a
               key={l.href}
