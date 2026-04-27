@@ -792,31 +792,30 @@ function HomePage() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleLeadSubmit}>
+                  <form onSubmit={handleLeadSubmit} className="space-y-3">
                     <label htmlFor="lead-email" className="sr-only">
                       Seu melhor e-mail
                     </label>
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                      <input
-                        id="lead-email"
-                        type="email"
-                        required
-                        maxLength={255}
-                        autoComplete="email"
-                        placeholder="Seu melhor e-mail"
-                        value={leadEmail}
-                        onChange={(e) => {
-                          setLeadEmail(e.target.value);
-                          if (leadStatus === "error") setLeadStatus("idle");
-                        }}
-                        className="w-full sm:flex-1 h-12 rounded-xl px-4 text-[15px] text-white placeholder:text-white/45 bg-white/[0.06] border border-white/15 focus:outline-none focus:border-[#2EC4FF] focus:bg-white/[0.09] transition-colors"
-                      />
-                      <button
-                        type="submit"
-                        disabled={leadStatus === "loading"}
-                        className="w-full sm:w-auto h-12 rounded-xl px-5 font-semibold text-[15px] text-[#0B2A5B] transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                        style={{ backgroundColor: "#2EC4FF" }}
-                      >
+                    <input
+                      id="lead-email"
+                      type="email"
+                      required
+                      maxLength={255}
+                      autoComplete="email"
+                      placeholder="seu melhor e-mail"
+                      value={leadEmail}
+                      onChange={(e) => {
+                        setLeadEmail(e.target.value);
+                        if (leadStatus === "error") setLeadStatus("idle");
+                      }}
+                      className="w-full h-12 rounded-xl px-4 text-[15px] text-white placeholder:text-white/45 bg-white/[0.06] border border-white/15 focus:outline-none focus:border-[#2EC4FF] focus:bg-white/[0.09] transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      disabled={leadStatus === "loading"}
+                      className="w-full h-12 rounded-xl font-semibold text-[15px] text-[#0B2A5B] transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                      style={{ backgroundColor: "#2EC4FF" }}
+                    >
                       {leadStatus === "loading" ? (
                         <>
                           <Icon icon="solar:refresh-outline" className="animate-spin" />
@@ -829,13 +828,12 @@ function HomePage() {
                         </>
                       )}
                     </button>
-                    </div>
                     {leadStatus === "error" && (
-                      <p className="mt-3 text-sm text-[#FFB4B4]">
+                      <p className="text-sm text-[#FFB4B4]">
                         Não conseguimos enviar agora. Verifique o e-mail e tente novamente.
                       </p>
                     )}
-                    <p className="mt-3 text-xs text-white/50">
+                    <p className="text-xs text-white/50 pt-1">
                       Sem spam. Você pode descadastrar a qualquer momento.
                     </p>
                   </form>
@@ -971,5 +969,3 @@ function HomePage() {
     </div>
   );
 }
-// touch Mon Apr 27 20:50:48 UTC 2026
-
