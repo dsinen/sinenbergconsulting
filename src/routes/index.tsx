@@ -240,19 +240,6 @@ function HomePage() {
           }}
         />
         <div className="relative mx-auto max-w-[1100px] px-6 grid md:grid-cols-[55fr_45fr] gap-8 md:gap-12 items-center">
-          {/* Mobile-only: name + role above photo for clear identity connection */}
-          <div className="reveal order-1 md:hidden text-center">
-            <h1
-              className="font-serif font-medium leading-[1.05] text-white"
-              style={{ fontSize: "clamp(26px, 7vw, 36px)" }}
-            >
-              Daniel Sinenberg
-            </h1>
-            <h2 className="mt-2 font-sans font-light text-[#2EC4FF] text-sm tracking-wide">
-              Consultor Estratégico · Tech B2B
-            </h2>
-          </div>
-
           {/* Photo */}
           <div className="reveal order-2 md:order-2">
             <div className="hero-photo-wrap aspect-[4/5] max-w-[280px] md:max-w-none mx-auto rounded-2xl overflow-hidden">
@@ -260,25 +247,22 @@ function HomePage() {
             </div>
           </div>
 
-          {/* Text block */}
-          <div className="reveal order-3 md:order-1">
-            {/* Desktop-only header (mobile version is above the photo) */}
-            <div className="hidden md:block">
-              <h1
-                className="font-serif font-medium leading-[1.05]"
-                style={{ fontSize: "clamp(24px, 2.8vw, 44px)", color: "#fff" }}
-              >
-                Daniel Sinenberg
-              </h1>
-              <h2 className="mt-2 font-sans font-light text-[#2EC4FF] text-base md:text-lg tracking-wide">
-                Consultor Estratégico para Empresas de Tecnologia B2B
-              </h2>
-            </div>
+          {/* Text block — single responsive version */}
+          <div className="reveal order-1 md:order-1 text-center md:text-left">
+            <h1
+              className="font-serif font-medium leading-[1.05] text-white"
+              style={{ fontSize: "clamp(26px, 4.2vw, 44px)" }}
+            >
+              Daniel Sinenberg
+            </h1>
+            <h2 className="mt-2 font-sans font-light text-[#2EC4FF] text-sm md:text-lg tracking-wide">
+              Consultor Estratégico para Empresas de Tecnologia B2B
+            </h2>
 
-            <p className="mt-6 md:mt-8 font-serif text-[28px] md:text-5xl leading-[1.1] text-white text-center md:text-left">
+            <p className="mt-6 md:mt-8 font-serif text-[28px] md:text-5xl leading-[1.1] text-white">
               Crescimento estruturado. Receita previsível.
             </p>
-            <p className="mt-4 md:mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0">
+            <p className="mt-4 md:mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
               Ajudo empresas tech que cresceram bem, mas ainda dependem do fundador em vendas,
               a escalar com previsibilidade — sem quebrar na operação.
             </p>
