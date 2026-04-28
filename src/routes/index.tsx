@@ -23,7 +23,7 @@ import logoShell from "@/assets/logos/shell.png";
 import logoFast from "@/assets/logos/fast.png";
 
 const companies = [
-  { name: "Linx", src: logoLinx, scale: 1.0 },
+  { name: "Linx", src: logoLinx, scale: 1.0, darken: true },
   { name: "Stone", src: logoStone, scale: 0.85 },
   { name: "Vivo", src: logoVivo, scale: 0.95 },
   { name: "Ipiranga", src: logoIpiranga, scale: 1.0 },
@@ -307,8 +307,18 @@ function HomePage() {
                   src={c.src}
                   alt={c.name}
                   loading="lazy"
-                  style={{ maxHeight: `${c.scale * 3}rem`, maxWidth: `min(${c.scale * 8}rem, 100%)` }}
-                  className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
+                  style={{
+                    maxHeight: `${c.scale * 3}rem`,
+                    maxWidth: `min(${c.scale * 8}rem, 100%)`,
+                    filter: c.darken
+                      ? "grayscale(1) brightness(0.45) contrast(1.4) opacity(0.85)"
+                      : undefined,
+                  }}
+                  className={`w-auto object-contain transition duration-300 ${
+                    c.darken
+                      ? "hover:[filter:none]"
+                      : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"
+                  }`}
                 />
               </div>
             ))}
