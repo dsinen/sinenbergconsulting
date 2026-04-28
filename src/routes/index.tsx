@@ -281,7 +281,7 @@ function HomePage() {
                 href={CTA}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold px-6 md:px-7 py-4 hover:-translate-y-0.5 hover:brightness-110 transition shadow-[0_10px_40px_-10px_rgba(46,196,255,0.6)] text-sm md:text-base"
+                className="w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold px-6 md:px-7 py-4 hover:-translate-y-0.5 hover:brightness-110 transition shadow-[0_10px_40px_-10px_rgba(46,196,255,0.6)] text-base"
               >
                 Agendar Sessão Estratégica
                 <Icon icon="solar:arrow-right-outline" width="20" />
@@ -297,7 +297,7 @@ function HomePage() {
           <p className="reveal text-center text-sm md:text-base text-[#4a5b73] tracking-wide">
             Mais de 20 anos construindo crescimento em empresas como
           </p>
-          <div className="reveal mt-10 md:mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-x-6 gap-y-10 items-center">
+          <div className="reveal mt-10 md:mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10 items-center">
             {companies.map((c) => (
               <div
                 key={c.name}
@@ -307,7 +307,7 @@ function HomePage() {
                   src={c.src}
                   alt={c.name}
                   loading="lazy"
-                  style={{ maxHeight: `${c.scale * 3}rem`, maxWidth: `${c.scale * 8}rem` }}
+                  style={{ maxHeight: `${c.scale * 3}rem`, maxWidth: `min(${c.scale * 8}rem, 100%)` }}
                   className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
                 />
               </div>
@@ -456,7 +456,7 @@ function HomePage() {
                   href={s.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#0B2A5B] text-white font-semibold px-6 py-3 hover:-translate-y-0.5 hover:brightness-110 transition"
+                  className="mt-8 w-full min-h-12 inline-flex items-center justify-center gap-2 rounded-full bg-[#0B2A5B] text-white font-semibold px-6 py-3 text-sm md:text-base hover:-translate-y-0.5 hover:brightness-110 transition"
                 >
                   {s.ctaLabel}
                   <Icon icon="solar:arrow-right-outline" width="18" />
@@ -542,12 +542,12 @@ function HomePage() {
           </div>
 
           {/* CTA intermediário */}
-          <div className="reveal mt-12 flex justify-center">
+          <div className="reveal mt-12 flex justify-center px-2">
             <a
               href={CTA}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 hover:-translate-y-0.5 hover:border-[#1F6FDB] hover:bg-[#f5f8fc] transition"
+              className="w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 text-center hover:-translate-y-0.5 hover:border-[#1F6FDB] hover:bg-[#f5f8fc] transition"
             >
               Acho que faz sentido — quero conversar
               <Icon icon="solar:arrow-right-outline" width="18" />
@@ -894,7 +894,7 @@ function HomePage() {
             </Accordion>
 
             {/* CTA intermediário pós-FAQ */}
-            <div className="reveal mt-12 text-center rounded-2xl border border-[#d9e3ef] bg-[#f5f8fc] p-8 md:p-10">
+            <div className="reveal mt-12 text-center rounded-2xl border border-[#d9e3ef] bg-[#f5f8fc] p-6 sm:p-8 md:p-10">
               <p className="font-serif text-xl md:text-2xl text-[#0B2A5B]">
                 Ainda tem dúvidas? Vamos conversar.
               </p>
@@ -902,7 +902,7 @@ function HomePage() {
                 href={CTA}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 hover:-translate-y-0.5 hover:border-[#1F6FDB] transition"
+                className="mt-6 w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 hover:-translate-y-0.5 hover:border-[#1F6FDB] transition"
               >
                 Agendar uma conversa de 20 minutos
                 <Icon icon="solar:arrow-right-outline" width="18" />
@@ -946,7 +946,7 @@ function HomePage() {
               href={CTA}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-12 inline-flex items-center gap-3 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold text-lg px-9 py-5 hover:-translate-y-0.5 hover:brightness-110 transition shadow-[0_20px_60px_-15px_rgba(46,196,255,0.6)]"
+              className="mt-12 w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-3 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold text-base md:text-lg px-8 md:px-9 py-4 md:py-5 hover:-translate-y-0.5 hover:brightness-110 transition shadow-[0_20px_60px_-15px_rgba(46,196,255,0.6)]"
             >
               Agendar Sessão Estratégica
               <Icon icon="solar:arrow-right-outline" width="22" />
