@@ -655,7 +655,7 @@ function HomePage() {
 
           <div className="reveal">
             <span className="text-xs uppercase tracking-[0.2em] text-[#2EC4FF] font-semibold">
-              Quem sou eu
+              Sobre
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl text-white leading-[1.05]">
               22+ anos transformando crescimento em estrutura
