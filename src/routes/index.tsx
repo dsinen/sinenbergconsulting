@@ -674,16 +674,13 @@ function HomePage() {
         {/* Missão card */}
         <div className="relative mx-auto max-w-[860px] px-6 mt-20">
           <div
-            className="reveal rounded-3xl p-10 md:p-14 text-center border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]"
-            style={{
-              background: "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(46,196,255,0.06) 100%)",
-              backgroundColor: "#082248",
-            }}
+            className="reveal rounded-3xl p-10 md:p-14 lg:p-16 text-center shadow-[0_20px_60px_-20px_rgba(11,42,91,0.35)]"
+            style={{ backgroundColor: "#0B2A5B" }}
           >
-            <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#2EC4FF] font-semibold px-3 py-1 rounded-full border border-[#2EC4FF]/40">
+            <span className="inline-block text-xs uppercase tracking-[0.28em] text-[#2EC4FF] font-semibold">
               Missão
             </span>
-            <p className="mt-6 font-serif font-semibold text-white text-xl md:text-2xl lg:text-3xl leading-snug">
+            <p className="mt-5 font-sans font-semibold text-white text-xl md:text-2xl leading-snug max-w-[680px] mx-auto">
               Ajudar empresas de tecnologia a transformar crescimento desorganizado em crescimento estruturado e previsível.
             </p>
           </div>
