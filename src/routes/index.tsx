@@ -539,6 +539,19 @@ function HomePage() {
               </ul>
             </div>
           </div>
+
+          {/* CTA intermediário */}
+          <div className="reveal mt-12 flex justify-center">
+            <a
+              href={CTA}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 hover:-translate-y-0.5 hover:border-[#1F6FDB] hover:bg-[#f5f8fc] transition"
+            >
+              Acho que faz sentido — quero conversar
+              <Icon icon="solar:arrow-right-outline" width="18" />
+            </a>
+          </div>
         </div>
       </section>
 
