@@ -894,6 +894,22 @@ function HomePage() {
                 </AccordionItem>
               ))}
             </Accordion>
+
+            {/* CTA intermediário pós-FAQ */}
+            <div className="reveal mt-12 text-center rounded-2xl border border-[#d9e3ef] bg-[#f5f8fc] p-8 md:p-10">
+              <p className="font-serif text-xl md:text-2xl text-[#0B2A5B]">
+                Ainda tem dúvidas? Vamos conversar.
+              </p>
+              <a
+                href={CTA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 hover:-translate-y-0.5 hover:border-[#1F6FDB] transition"
+              >
+                Agendar uma conversa de 20 minutos
+                <Icon icon="solar:arrow-right-outline" width="18" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
