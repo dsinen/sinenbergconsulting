@@ -638,7 +638,7 @@ function HomePage() {
         <div className="absolute inset-0 dot-grid" />
         <div className="relative mx-auto max-w-[1100px] px-6 grid md:grid-cols-[40fr_60fr] gap-12 items-center">
           <div className="reveal">
-            <div className="about-photo-wrap aspect-[4/5]">
+            <div className="about-photo-wrap aspect-[4/5] max-w-[280px] md:max-w-none mx-auto">
               <img src={aboutPhoto} alt="Daniel Sinenberg" />
             </div>
           </div>
