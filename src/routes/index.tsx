@@ -33,7 +33,12 @@ const companies = [
   { name: "Fast Shop", src: logoFast, scale: 0.75 },
 ];
 
-const CTA = "https://w.app/sinenbergconsulting";
+const CTA =
+  "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20gostaria%20de%20conhecer%20mais%20sobre%20a%20consultoria.%20Aguardo%20seu%20contato%2C%20por%20favor.";
+const CTA_INTERMEDIARIO =
+  "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20vi%20que%20me%20encaixo%20no%20perfil%20da%20sua%20consultoria.%20Gostaria%20de%20agendar%20uma%20conversa.";
+const CTA_FAQ =
+  "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20conversa%20de%2020%20minutos%20sobre%20a%20consultoria.";
 
 const faqs = [
   {
@@ -149,7 +154,7 @@ const services = [
     ],
     ctaLabel: "Falar sobre a Consultoria Completa",
     ctaLink:
-      "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20tenho%20interesse%20na%20Consultoria%20Completa%20da%20Sinenberg%20Consulting.",
+      "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20tenho%20interesse%20na%20Consultoria%20Completa%20da%20Sinenberg%20Consulting.%20Podemos%20conversar%3F",
   },
   {
     name: "Diagnóstico Estratégico",
@@ -163,7 +168,7 @@ const services = [
     ],
     ctaLabel: "Quero o Diagnóstico Estratégico",
     ctaLink:
-      "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20tenho%20interesse%20no%20Diagn%C3%B3stico%20Estrat%C3%A9gico.",
+      "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20tenho%20interesse%20no%20Diagn%C3%B3stico%20Estrat%C3%A9gico.%20Podemos%20conversar%3F",
   },
 ];
 
@@ -525,7 +530,7 @@ function HomePage() {
           {/* CTA intermediário */}
           <div className="reveal mt-12 flex justify-center px-2">
             <a
-              href={CTA}
+              href={CTA_INTERMEDIARIO}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 text-center hover:-translate-y-0.5 hover:border-[#1F6FDB] hover:bg-[#f5f8fc] transition"
@@ -848,7 +853,7 @@ function HomePage() {
                 Ainda tem dúvidas? Vamos conversar.
               </p>
               <a
-                href={CTA}
+                href={CTA_FAQ}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 hover:-translate-y-0.5 hover:border-[#1F6FDB] transition"
