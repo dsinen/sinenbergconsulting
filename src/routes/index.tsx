@@ -277,20 +277,21 @@ function HomePage() {
             {companies.map((c) => (
               <div
                 key={c.name}
-                className="flex items-center justify-center h-12"
+                className="flex items-center justify-center h-10"
               >
                 <img
                   src={c.src}
                   alt={c.name}
                   loading="lazy"
                   style={{
-                    maxHeight: `${c.scale * 3}rem`,
-                    maxWidth: `min(${c.scale * 8}rem, 100%)`,
+                    height: "40px",
+                    width: "auto",
+                    maxWidth: "100%",
                     filter: c.darken
                       ? "grayscale(1) brightness(0.45) contrast(1.4) opacity(0.85)"
                       : undefined,
                   }}
-                  className={`w-auto object-contain transition duration-300 ${
+                  className={`object-contain transition duration-300 ${
                     c.darken
                       ? "hover:[filter:none]"
                       : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"
