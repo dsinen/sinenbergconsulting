@@ -17,20 +17,20 @@ import logoLinx from "@/assets/logos/linx.png";
 import logoStone from "@/assets/logos/stone.png";
 import logoVivo from "@/assets/logos/vivo.png";
 import logoIpiranga from "@/assets/logos/ipiranga.png";
-import logoBR from "@/assets/logos/br.gif";
+import logoBR from "@/assets/logos/br.png";
 import logoOxxo from "@/assets/logos/oxxo.png";
 import logoShell from "@/assets/logos/shell.png";
 import logoFast from "@/assets/logos/fast.png";
 
 const companies = [
-  { name: "Linx", src: logoLinx, scale: 1.0, darken: true },
-  { name: "Stone", src: logoStone, scale: 0.85 },
-  { name: "Vivo", src: logoVivo, scale: 0.95 },
-  { name: "Ipiranga", src: logoIpiranga, scale: 1.0 },
-  { name: "BR Petrobras", src: logoBR, scale: 0.9 },
-  { name: "OXXO", src: logoOxxo, scale: 0.95 },
-  { name: "Shell", src: logoShell, scale: 0.8 },
-  { name: "Fast Shop", src: logoFast, scale: 0.75 },
+  { name: "Linx", src: logoLinx, darken: true },
+  { name: "Stone", src: logoStone },
+  { name: "Vivo", src: logoVivo },
+  { name: "Ipiranga", src: logoIpiranga },
+  { name: "BR Petrobras", src: logoBR },
+  { name: "OXXO", src: logoOxxo },
+  { name: "Shell", src: logoShell },
+  { name: "Fast Shop", src: logoFast },
 ];
 
 const CTA =
@@ -277,20 +277,21 @@ function HomePage() {
             {companies.map((c) => (
               <div
                 key={c.name}
-                className="flex items-center justify-center h-12"
+                className="flex items-center justify-center h-10"
               >
                 <img
                   src={c.src}
                   alt={c.name}
                   loading="lazy"
                   style={{
-                    maxHeight: `${c.scale * 3}rem`,
-                    maxWidth: `min(${c.scale * 8}rem, 100%)`,
+                    height: "40px",
+                    width: "auto",
+                    maxWidth: "100%",
                     filter: c.darken
                       ? "grayscale(1) brightness(0.45) contrast(1.4) opacity(0.85)"
                       : undefined,
                   }}
-                  className={`w-auto object-contain transition duration-300 ${
+                  className={`object-contain transition duration-300 ${
                     c.darken
                       ? "hover:[filter:none]"
                       : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"
