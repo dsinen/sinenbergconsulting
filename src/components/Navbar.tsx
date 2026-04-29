@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 
-const CTA = "https://w.app/sinenbergconsulting";
+const CTA =
+  "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20gostaria%20de%20conhecer%20mais%20sobre%20a%20consultoria.%20Aguardo%20seu%20contato%2C%20por%20favor.";
 
 const links = [
   { href: "#metodo", label: "Método" },

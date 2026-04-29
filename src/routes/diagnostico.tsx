@@ -26,7 +26,8 @@ export const Route = createFileRoute("/diagnostico")({
 // ─────────────────────────── Constantes ───────────────────────────
 
 const WEBHOOK_URL = "https://exemplo.com/webhook"; // TODO: substituir endpoint real
-const WHATSAPP_URL = "https://w.app/sinenbergconsulting";
+const WHATSAPP_URL =
+  "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20fiz%20o%20Diagn%C3%B3stico%20R%C3%A1pido%20no%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20estrat%C3%A9gica.";
 
 const FATURAMENTO_OPTIONS = [
   "Abaixo de R$1M",
