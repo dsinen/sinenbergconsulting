@@ -17,7 +17,7 @@ import logoLinx from "@/assets/logos/linx.png";
 import logoStone from "@/assets/logos/stone.png";
 import logoVivo from "@/assets/logos/vivo.png";
 import logoIpiranga from "@/assets/logos/ipiranga.png";
-import logoBR from "@/assets/logos/br.gif";
+import logoBR from "@/assets/logos/br.png";
 import logoOxxo from "@/assets/logos/oxxo.png";
 import logoShell from "@/assets/logos/shell.png";
 import logoFast from "@/assets/logos/fast.png";
