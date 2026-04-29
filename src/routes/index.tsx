@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import {
   Accordion,
@@ -192,35 +192,6 @@ const testimonials = [
 
 function HomePage() {
   useReveal();
-
-  // Lead capture (checklist gratuito) — TROCAR `LEAD_FORM_ENDPOINT` pelo endpoint do Formspree/Lovable Forms
-  const LEAD_FORM_ENDPOINT = ""; // ex: "https://formspree.io/f/xxxxx"
-  const [leadEmail, setLeadEmail] = useState("");
-  const [leadStatus, setLeadStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  async function handleLeadSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const email = leadEmail.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) {
-      setLeadStatus("error");
-      return;
-    }
-    setLeadStatus("loading");
-    try {
-      if (LEAD_FORM_ENDPOINT) {
-        const res = await fetch(LEAD_FORM_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ email, source: "checklist-7-sinais" }),
-        });
-        if (!res.ok) throw new Error("send failed");
-      }
-      setLeadStatus("success");
-      setLeadEmail("");
-    } catch {
-      setLeadStatus("error");
-    }
-  }
 
   return (
     <div id="top" className="bg-background text-foreground">
@@ -739,8 +710,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ───────── LEAD MAGNET — CHECKLIST GRATUITO ───────── */}
-      <section className="py-16 md:py-24 bg-[#F5F8FC]">
+      {/* ───────── DIAGNÓSTICO GRATUITO — ENTRADA PARA O QUIZ ───────── */}
+      <section id="diagnostico-cta" className="py-16 md:py-24 bg-[#F5F8FC]">
         <div className="mx-auto max-w-[1100px] px-6">
           <div
             className="reveal relative overflow-hidden rounded-3xl px-8 md:px-14 py-12 md:py-16"
@@ -773,92 +744,60 @@ function HomePage() {
                     backgroundColor: "rgba(46,196,255,0.08)",
                   }}
                 >
-                  Material Gratuito
+                  Diagnóstico Gratuito
                 </span>
 
                 <h2 className="mt-5 font-serif text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.1] text-white">
-                  Diagnóstico Rápido:{" "}
-                  <span style={{ color: "#2EC4FF" }}>
-                    7 sinais
-                  </span>{" "}
-                  de que sua empresa tech está pronta para escalar com previsibilidade
+                  Sua empresa tech está pronta para{" "}
+                  <span style={{ color: "#2EC4FF" }}>escalar com previsibilidade</span>?
                 </h2>
 
                 <p className="mt-5 text-base md:text-lg text-white/75 leading-relaxed max-w-xl">
-                  Um checklist objetivo para você avaliar sozinho onde sua operação
-                  está hoje — e o que precisa antes de crescer mais.
+                  Responda 7 perguntas em 3 minutos e receba um diagnóstico personalizado do
+                  estágio atual da sua operação — e o que precisa antes de crescer mais.
                 </p>
+
+                <ul className="mt-6 space-y-2 text-sm text-white/70">
+                  <li className="flex items-center gap-2">
+                    <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                    7 perguntas, 3 minutos
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                    Resultado personalizado em 4 estágios de maturidade
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                    100% confidencial
+                  </li>
+                </ul>
               </div>
 
-              {/* Coluna direita — formulário */}
+              {/* Coluna direita — CTA */}
               <div className="md:pl-4">
-                {leadStatus === "success" ? (
-                  <div
-                    className="rounded-2xl p-6 border text-center"
-                    style={{
-                      borderColor: "rgba(46,196,255,0.4)",
-                      backgroundColor: "rgba(46,196,255,0.08)",
-                    }}
+                <div
+                  className="rounded-2xl p-6 md:p-8 border"
+                  style={{
+                    borderColor: "rgba(46,196,255,0.35)",
+                    backgroundColor: "rgba(46,196,255,0.06)",
+                  }}
+                >
+                  <p className="text-white/80 text-sm md:text-base leading-relaxed">
+                    Em 3 minutos você descobre se sua operação está pronta para escalar — ou
+                    quais lacunas precisam ser fechadas antes.
+                  </p>
+                  <Link
+                    to="/diagnostico"
+                    className="mt-5 w-full min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2"
+                    style={{ backgroundColor: "#2EC4FF" }}
                   >
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="mx-auto"
-                      style={{ color: "#2EC4FF", fontSize: 40 }}
-                    />
-                    <p className="mt-3 text-white font-semibold text-lg">
-                      Pronto! Em instantes você recebe o checklist no seu e-mail.
-                    </p>
-                    <p className="mt-2 text-sm text-white/65">
-                      Caso não chegue, verifique a caixa de spam ou promoções.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleLeadSubmit} className="space-y-3">
-                    <label htmlFor="lead-email" className="sr-only">
-                      Seu melhor e-mail
-                    </label>
-                    <input
-                      id="lead-email"
-                      type="email"
-                      required
-                      maxLength={255}
-                      autoComplete="email"
-                      placeholder="seu melhor e-mail"
-                      value={leadEmail}
-                      onChange={(e) => {
-                        setLeadEmail(e.target.value);
-                        if (leadStatus === "error") setLeadStatus("idle");
-                      }}
-                      className="w-full h-12 rounded-xl px-4 text-[15px] text-white placeholder:text-white/45 bg-white/[0.06] border border-white/15 focus:outline-none focus:border-[#2EC4FF] focus:bg-white/[0.09] transition-colors"
-                    />
-                    <button
-                      type="submit"
-                      disabled={leadStatus === "loading"}
-                      className="w-full h-12 rounded-xl font-semibold text-[15px] text-[#0B2A5B] transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
-                      style={{ backgroundColor: "#2EC4FF" }}
-                    >
-                      {leadStatus === "loading" ? (
-                        <>
-                          <Icon icon="solar:refresh-outline" className="animate-spin" />
-                          Enviando...
-                        </>
-                      ) : (
-                        <>
-                          Receber checklist gratuito
-                          <Icon icon="solar:arrow-right-outline" />
-                        </>
-                      )}
-                    </button>
-                    {leadStatus === "error" && (
-                      <p className="text-sm text-[#FFB4B4]">
-                        Não conseguimos enviar agora. Verifique o e-mail e tente novamente.
-                      </p>
-                    )}
-                    <p className="text-xs text-white/50 pt-1">
-                      Sem spam. Você pode descadastrar a qualquer momento.
-                    </p>
-                  </form>
-                )}
+                    Fazer meu diagnóstico
+                    <Icon icon="solar:arrow-right-outline" />
+                  </Link>
+                  <p className="mt-3 text-xs text-white/55 text-center">
+                    Suas respostas são confidenciais. Não compartilhamos com terceiros.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
