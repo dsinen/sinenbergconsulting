@@ -23,14 +23,14 @@ import logoShell from "@/assets/logos/shell.png";
 import logoFast from "@/assets/logos/fast.png";
 
 const companies = [
-  { name: "Linx", src: logoLinx, scale: 1.0, darken: true },
-  { name: "Stone", src: logoStone, scale: 0.85 },
-  { name: "Vivo", src: logoVivo, scale: 0.95 },
-  { name: "Ipiranga", src: logoIpiranga, scale: 1.0 },
-  { name: "BR Petrobras", src: logoBR, scale: 0.9 },
-  { name: "OXXO", src: logoOxxo, scale: 0.95 },
-  { name: "Shell", src: logoShell, scale: 0.8 },
-  { name: "Fast Shop", src: logoFast, scale: 0.75 },
+  { name: "Linx", src: logoLinx, darken: true },
+  { name: "Stone", src: logoStone },
+  { name: "Vivo", src: logoVivo },
+  { name: "Ipiranga", src: logoIpiranga },
+  { name: "BR Petrobras", src: logoBR },
+  { name: "OXXO", src: logoOxxo },
+  { name: "Shell", src: logoShell },
+  { name: "Fast Shop", src: logoFast },
 ];
 
 const CTA =
