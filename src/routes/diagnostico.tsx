@@ -600,7 +600,6 @@ interface ResultMeta {
   selo: string;
   seloBg: string;
   seloColor: string;
-  seloPdfHex: string;
   categoriaShort: string;
   titulo: string;
   mensagem: string[];
@@ -615,7 +614,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🚫 AINDA NÃO É O MOMENTO",
         seloBg: "rgba(80,80,90,0.12)",
         seloColor: "#3a3a45",
-        seloPdfHex: "#6b6b75",
         categoriaShort: "Ainda não é o momento",
         titulo: "O momento ainda não é esse — e tudo bem.",
         mensagem: [
@@ -630,7 +628,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🔴 CRESCIMENTO FRÁGIL",
         seloBg: "rgba(239,68,68,0.12)",
         seloColor: "#c83232",
-        seloPdfHex: "#c83232",
         categoriaShort: "Crescimento Frágil",
         titulo: "Você está crescendo no improviso — e o limite chega rápido.",
         mensagem: [
@@ -645,7 +642,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🟡 CRESCIMENTO EM RISCO",
         seloBg: "rgba(245,158,11,0.14)",
         seloColor: "#a86b09",
-        seloPdfHex: "#a86b09",
         categoriaShort: "Crescimento em Risco",
         titulo: "Você está no ponto de virada — onde muitas tech travam.",
         mensagem: [
@@ -660,7 +656,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🟢 PRONTO PARA ESCALAR",
         seloBg: "rgba(34,197,94,0.14)",
         seloColor: "#1e7a3a",
-        seloPdfHex: "#1e7a3a",
         categoriaShort: "Pronto para Escalar",
         titulo: "Sua base é sólida — agora o jogo é aceleração.",
         mensagem: [
@@ -709,151 +704,6 @@ Gostaria de agendar uma sessão estratégica.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
-async function downloadResultPdf(
-  resultKey: ResultKey,
-  meta: ResultMeta,
-  score: number,
-  pontosCriticos: string[],
-  form: FormData,
-) {
-  const { jsPDF } = await import("jspdf");
-  const logoModule = await import("@/assets/logo-dark.png");
-  const logoSrc: string = (logoModule as { default: string }).default;
-
-  // Carrega logo como dataURL
-  const logoDataUrl = await new Promise<string>((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.naturalWidth;
-      canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return reject(new Error("canvas context"));
-      ctx.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL("image/png"));
-    };
-    img.onerror = reject;
-    img.src = logoSrc;
-  }).catch(() => "");
-
-  const doc = new jsPDF({ unit: "pt", format: "a4" });
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
-  const margin = 48;
-  let y = margin;
-
-  // Logo
-  if (logoDataUrl) {
-    const logoH = 36;
-    const ratio = 4; // aproximação largura/altura do logo horizontal
-    const logoW = logoH * ratio;
-    doc.addImage(logoDataUrl, "PNG", margin, y, logoW, logoH, undefined, "FAST");
-  }
-  y += 56;
-
-  // Título
-  doc.setTextColor("#0B2A5B");
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(22);
-  doc.text("Seu Diagnóstico Rápido", margin, y);
-  y += 26;
-
-  // Nome / empresa
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
-  doc.setTextColor("#1f2a3d");
-  const nomeLinha = `${form.nome}${form.empresa ? " — " + form.empresa : ""}`;
-  doc.text(nomeLinha, margin, y);
-  y += 24;
-
-  // Selo da categoria
-  const seloTxt = meta.categoriaShort.toUpperCase();
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  const seloPadX = 10;
-  const seloPadY = 7;
-  const seloW = doc.getTextWidth(seloTxt) + seloPadX * 2;
-  const seloH = 22;
-  doc.setFillColor(meta.seloPdfHex);
-  doc.roundedRect(margin, y, seloW, seloH, 11, 11, "F");
-  doc.setTextColor("#ffffff");
-  doc.text(seloTxt, margin + seloPadX, y + seloH - seloPadY);
-  y += seloH + 18;
-
-  // Pontuação
-  if (resultKey !== "A") {
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(20);
-    doc.setTextColor("#0B2A5B");
-    doc.text(`${score} de 21 pontos`, margin, y);
-    y += 24;
-  }
-
-  // Mensagem
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10.5);
-  doc.setTextColor("#1f2a3d");
-  for (const p of meta.mensagem) {
-    const lines = doc.splitTextToSize(p, pageW - margin * 2) as string[];
-    doc.text(lines, margin, y);
-    y += lines.length * 14 + 8;
-  }
-  y += 6;
-
-  // Bloco pontos críticos
-  if (resultKey !== "A" && pontosCriticos.length > 0) {
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(11);
-    doc.setTextColor("#0B2A5B");
-    doc.text(meta.blocoLabel ?? "Pontos críticos da sua operação", margin, y);
-    y += 16;
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(10.5);
-    doc.setTextColor("#1f2a3d");
-    for (const ponto of pontosCriticos) {
-      const lines = doc.splitTextToSize(`• ${ponto}`, pageW - margin * 2 - 12) as string[];
-      doc.text(lines, margin + 4, y);
-      y += lines.length * 14 + 4;
-    }
-    y += 8;
-  }
-
-  // CTA + rodapé
-  const footerY = pageH - margin - 56;
-  doc.setDrawColor("#0B2A5B");
-  doc.setLineWidth(0.5);
-  doc.line(margin, footerY, pageW - margin, footerY);
-
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(11);
-  doc.setTextColor("#0B2A5B");
-  doc.text("Pronto para conversar?", margin, footerY + 18);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor("#2EC4FF");
-  doc.textWithLink(
-    `wa.me/${WHATSAPP_NUMBER}`,
-    margin + doc.getTextWidth("Pronto para conversar? ") + 4,
-    footerY + 18,
-    { url: WHATSAPP_GENERIC },
-  );
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.5);
-  doc.setTextColor("#0B2A5B");
-  const dataStr = new Date().toLocaleDateString("pt-BR");
-  doc.text(`Diagnóstico gerado em ${dataStr}`, margin, footerY + 36);
-  doc.setTextColor("#5b6675");
-  doc.text(
-    "dsinen@gmail.com  |  LinkedIn /danielsinenberg",
-    margin,
-    footerY + 50,
-  );
-
-  const safeName = (form.nome || "lead").trim().replace(/\s+/g, "-").replace(/[^\w\-]/g, "");
-  doc.save(`Diagnostico-Sinenberg-${safeName}.pdf`);
-}
-
 function ResultScreen({
   resultKey,
   score,
@@ -886,19 +736,6 @@ function ResultScreen({
   );
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
   const whatsappShare = `https://wa.me/?text=${shareText}%20${shareUrl}`;
-
-  const [downloading, setDownloading] = useState(false);
-  async function handleDownload() {
-    if (downloading) return;
-    setDownloading(true);
-    try {
-      await downloadResultPdf(resultKey, meta, score, pontosCriticos, form);
-    } catch (e) {
-      console.error("Falha ao gerar PDF", e);
-    } finally {
-      setDownloading(false);
-    }
-  }
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -947,27 +784,18 @@ function ResultScreen({
         </div>
       )}
 
-      {/* CTAs */}
-      <div className="mt-8 flex flex-col sm:flex-row gap-3">
+      {/* CTA principal */}
+      <div className="mt-10 flex justify-center">
         <a
           href={whatsappCtaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 px-5"
+          className="w-full sm:w-auto min-h-14 rounded-xl font-semibold text-base md:text-lg text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 px-8 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           style={{ backgroundColor: "#2EC4FF" }}
         >
           Quero conversar com o Daniel
           <Icon icon="solar:arrow-right-outline" />
         </a>
-        <button
-          type="button"
-          onClick={handleDownload}
-          disabled={downloading}
-          className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] border-2 border-[#0B2A5B]/20 hover:border-[#0B2A5B]/40 transition-colors inline-flex items-center justify-center gap-2 px-5 disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          <Icon icon="solar:download-outline" />
-          {downloading ? "Gerando PDF..." : "Baixar meu resultado em PDF"}
-        </button>
       </div>
 
       {/* Compartilhar + refazer */}
