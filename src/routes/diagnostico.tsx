@@ -784,27 +784,18 @@ function ResultScreen({
         </div>
       )}
 
-      {/* CTAs */}
-      <div className="mt-8 flex flex-col sm:flex-row gap-3">
+      {/* CTA principal */}
+      <div className="mt-10 flex justify-center">
         <a
           href={whatsappCtaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 px-5"
+          className="w-full sm:w-auto min-h-14 rounded-xl font-semibold text-base md:text-lg text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 px-8 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           style={{ backgroundColor: "#2EC4FF" }}
         >
           Quero conversar com o Daniel
           <Icon icon="solar:arrow-right-outline" />
         </a>
-        <button
-          type="button"
-          onClick={handleDownload}
-          disabled={downloading}
-          className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] border-2 border-[#0B2A5B]/20 hover:border-[#0B2A5B]/40 transition-colors inline-flex items-center justify-center gap-2 px-5 disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          <Icon icon="solar:download-outline" />
-          {downloading ? "Gerando PDF..." : "Baixar meu resultado em PDF"}
-        </button>
       </div>
 
       {/* Compartilhar + refazer */}
