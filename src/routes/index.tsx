@@ -23,7 +23,7 @@ import logoShell from "@/assets/logos/shell.png";
 import logoFast from "@/assets/logos/fast.png";
 
 const companies = [
-  { name: "Linx", src: logoLinx, darken: true },
+  { name: "Linx", src: logoLinx },
   { name: "Stone", src: logoStone },
   { name: "Vivo", src: logoVivo },
   { name: "Ipiranga", src: logoIpiranga },
@@ -271,31 +271,25 @@ function HomePage() {
       <section className="py-20 md:py-24 bg-[#f5f8fc] border-y border-[#e3ebf4]">
         <div className="mx-auto max-w-[1200px] px-6">
           <p className="reveal text-center text-sm md:text-base text-[#4a5b73] tracking-wide">
-            Mais de 20 anos construindo crescimento em empresas como
+            Mais de 20 anos construindo crescimento de empresas como
           </p>
-          <div className="reveal mt-10 md:mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10 items-center">
+          <div className="reveal mt-10 md:mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-10 items-center justify-items-center">
             {companies.map((c) => (
               <div
                 key={c.name}
-                className="flex items-center justify-center h-10"
+                className="flex items-center justify-center h-10 w-full px-2"
               >
                 <img
                   src={c.src}
                   alt={c.name}
                   loading="lazy"
                   style={{
-                    height: "40px",
-                    width: "auto",
+                    maxHeight: "40px",
                     maxWidth: "100%",
-                    filter: c.darken
-                      ? "grayscale(1) brightness(0.45) contrast(1.4) opacity(0.85)"
-                      : undefined,
+                    width: "auto",
+                    height: "auto",
                   }}
-                  className={`object-contain transition duration-300 ${
-                    c.darken
-                      ? "hover:[filter:none]"
-                      : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"
-                  }`}
+                  className="object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
                 />
               </div>
             ))}
