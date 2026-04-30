@@ -261,7 +261,7 @@ function DiagnosticoPage() {
     setStep("intro");
     setQuestionIdx(0);
     setAnswers(Array(QUESTIONS.length).fill(null));
-    setSubmitted(false);
+    
   }
 
   return (
