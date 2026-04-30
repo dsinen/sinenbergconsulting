@@ -737,19 +737,6 @@ function ResultScreen({
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
   const whatsappShare = `https://wa.me/?text=${shareText}%20${shareUrl}`;
 
-  const [downloading, setDownloading] = useState(false);
-  async function handleDownload() {
-    if (downloading) return;
-    setDownloading(true);
-    try {
-      await downloadResultPdf(resultKey, meta, score, pontosCriticos, form);
-    } catch (e) {
-      console.error("Falha ao gerar PDF", e);
-    } finally {
-      setDownloading(false);
-    }
-  }
-
   return (
     <div className="animate-in fade-in duration-300">
       <div
