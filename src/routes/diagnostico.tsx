@@ -170,7 +170,6 @@ function DiagnosticoPage() {
   const [answers, setAnswers] = useState<(Choice | null)[]>(
     Array(QUESTIONS.length).fill(null),
   );
-  const [submitted, setSubmitted] = useState(false);
 
   const formValid =
     form.nome.trim().length > 1 &&
@@ -209,7 +208,7 @@ function DiagnosticoPage() {
     return arr.slice(0, 3).map((x) => x.titulo);
   }, [answers]);
 
-  // Loading -> result transition + webhook send (uma única vez)
+  // Loading -> result transition (cosmético)
   useEffect(() => {
     if (step !== "loading") return;
     const t = setTimeout(() => {
@@ -217,49 +216,6 @@ function DiagnosticoPage() {
     }, 2000);
     return () => clearTimeout(t);
   }, [step]);
-
-  useEffect(() => {
-    if (step !== "result" || submitted) return;
-    setSubmitted(true);
-    const respostasDetalhadas = QUESTIONS.map((q, i) => {
-      const a = answers[i];
-      const opt = a ? q.opcoes.find((o) => o.letra === a) : null;
-      return {
-        pergunta: q.n,
-        categoria: q.categoria,
-        resposta: a,
-        pontos: opt?.pontos ?? 0,
-      };
-    });
-    const categoriaResultado =
-      resultKey === "A"
-        ? "Fora de momento"
-        : resultKey === "B"
-        ? "Crescimento Frágil"
-        : resultKey === "C"
-        ? "Crescimento em Risco"
-        : "Pronto para Escalar";
-
-    const payload = {
-      nome: form.nome,
-      email: form.email,
-      empresa: form.empresa,
-      faturamento: form.faturamento,
-      papel: form.papel,
-      pontuacao_total: totalScore,
-      categoria_resultado: categoriaResultado,
-      respostas_detalhadas: respostasDetalhadas,
-      pontos_criticos: resultKey === "A" ? [] : pontosCriticos,
-      data_hora: new Date().toISOString(),
-    };
-    fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).catch(() => {
-      /* silencioso */
-    });
-  }, [step, submitted, answers, form, totalScore, resultKey, pontosCriticos]);
 
   const progress =
     step === "intro"
