@@ -605,7 +605,6 @@ interface ResultMeta {
   titulo: string;
   mensagem: string[];
   blocoLabel?: string;
-  ctaUnico?: boolean;
   scoreVisivel?: boolean;
 }
 
