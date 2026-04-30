@@ -600,7 +600,6 @@ interface ResultMeta {
   selo: string;
   seloBg: string;
   seloColor: string;
-  seloPdfHex: string;
   categoriaShort: string;
   titulo: string;
   mensagem: string[];
