@@ -614,7 +614,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🚫 AINDA NÃO É O MOMENTO",
         seloBg: "rgba(80,80,90,0.12)",
         seloColor: "#3a3a45",
-        seloPdfHex: "#6b6b75",
         categoriaShort: "Ainda não é o momento",
         titulo: "O momento ainda não é esse — e tudo bem.",
         mensagem: [
@@ -629,7 +628,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🔴 CRESCIMENTO FRÁGIL",
         seloBg: "rgba(239,68,68,0.12)",
         seloColor: "#c83232",
-        seloPdfHex: "#c83232",
         categoriaShort: "Crescimento Frágil",
         titulo: "Você está crescendo no improviso — e o limite chega rápido.",
         mensagem: [
@@ -644,7 +642,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🟡 CRESCIMENTO EM RISCO",
         seloBg: "rgba(245,158,11,0.14)",
         seloColor: "#a86b09",
-        seloPdfHex: "#a86b09",
         categoriaShort: "Crescimento em Risco",
         titulo: "Você está no ponto de virada — onde muitas tech travam.",
         mensagem: [
@@ -659,7 +656,6 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🟢 PRONTO PARA ESCALAR",
         seloBg: "rgba(34,197,94,0.14)",
         seloColor: "#1e7a3a",
-        seloPdfHex: "#1e7a3a",
         categoriaShort: "Pronto para Escalar",
         titulo: "Sua base é sólida — agora o jogo é aceleração.",
         mensagem: [
