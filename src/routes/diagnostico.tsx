@@ -25,9 +25,10 @@ export const Route = createFileRoute("/diagnostico")({
 
 // ─────────────────────────── Constantes ───────────────────────────
 
-const WEBHOOK_URL = "https://exemplo.com/webhook"; // TODO: substituir endpoint real
-const WHATSAPP_URL =
-  "https://wa.me/5511984083610?text=Ol%C3%A1%20Daniel%2C%20fiz%20o%20Diagn%C3%B3stico%20R%C3%A1pido%20no%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20estrat%C3%A9gica.";
+const WHATSAPP_NUMBER = "5511984083610";
+const WHATSAPP_GENERIC = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Olá Daniel, fiz o Diagnóstico Rápido no site e gostaria de conversar.",
+)}`;
 
 const FATURAMENTO_OPTIONS = [
   "Abaixo de R$1M",
@@ -169,7 +170,6 @@ function DiagnosticoPage() {
   const [answers, setAnswers] = useState<(Choice | null)[]>(
     Array(QUESTIONS.length).fill(null),
   );
-  const [submitted, setSubmitted] = useState(false);
 
   const formValid =
     form.nome.trim().length > 1 &&
@@ -208,7 +208,7 @@ function DiagnosticoPage() {
     return arr.slice(0, 3).map((x) => x.titulo);
   }, [answers]);
 
-  // Loading -> result transition + webhook send (uma única vez)
+  // Loading -> result transition (cosmético)
   useEffect(() => {
     if (step !== "loading") return;
     const t = setTimeout(() => {
@@ -216,49 +216,6 @@ function DiagnosticoPage() {
     }, 2000);
     return () => clearTimeout(t);
   }, [step]);
-
-  useEffect(() => {
-    if (step !== "result" || submitted) return;
-    setSubmitted(true);
-    const respostasDetalhadas = QUESTIONS.map((q, i) => {
-      const a = answers[i];
-      const opt = a ? q.opcoes.find((o) => o.letra === a) : null;
-      return {
-        pergunta: q.n,
-        categoria: q.categoria,
-        resposta: a,
-        pontos: opt?.pontos ?? 0,
-      };
-    });
-    const categoriaResultado =
-      resultKey === "A"
-        ? "Fora de momento"
-        : resultKey === "B"
-        ? "Crescimento Frágil"
-        : resultKey === "C"
-        ? "Crescimento em Risco"
-        : "Pronto para Escalar";
-
-    const payload = {
-      nome: form.nome,
-      email: form.email,
-      empresa: form.empresa,
-      faturamento: form.faturamento,
-      papel: form.papel,
-      pontuacao_total: totalScore,
-      categoria_resultado: categoriaResultado,
-      respostas_detalhadas: respostasDetalhadas,
-      pontos_criticos: resultKey === "A" ? [] : pontosCriticos,
-      data_hora: new Date().toISOString(),
-    };
-    fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).catch(() => {
-      /* silencioso */
-    });
-  }, [step, submitted, answers, form, totalScore, resultKey, pontosCriticos]);
 
   const progress =
     step === "intro"
@@ -304,7 +261,7 @@ function DiagnosticoPage() {
     setStep("intro");
     setQuestionIdx(0);
     setAnswers(Array(QUESTIONS.length).fill(null));
-    setSubmitted(false);
+    
   }
 
   return (
@@ -369,7 +326,7 @@ function DiagnosticoPage() {
               resultKey={resultKey}
               score={totalScore}
               pontosCriticos={pontosCriticos}
-              nome={form.nome}
+              form={form}
               onRestart={handleRestart}
             />
           )}
@@ -643,13 +600,11 @@ interface ResultMeta {
   selo: string;
   seloBg: string;
   seloColor: string;
+  seloPdfHex: string;
+  categoriaShort: string;
   titulo: string;
   mensagem: string[];
   blocoLabel?: string;
-  ctaPrincipalLabel: string;
-  ctaPrincipalHref: string;
-  ctaSecundario?: { label: string; action: "email" | "back" };
-  ctaUnico?: boolean;
   scoreVisivel?: boolean;
 }
 
@@ -660,15 +615,14 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🚫 AINDA NÃO É O MOMENTO",
         seloBg: "rgba(80,80,90,0.12)",
         seloColor: "#3a3a45",
+        seloPdfHex: "#6b6b75",
+        categoriaShort: "Ainda não é o momento",
         titulo: "O momento ainda não é esse — e tudo bem.",
         mensagem: [
           "Sua empresa ainda está em uma fase onde o foco precisa ser provar o modelo de negócio e validar o produto no mercado. Estruturar uma operação para escalar antes de ter tração consistente costuma ser caro e prematuro.",
           "Minha recomendação para esse momento: foque em vendas diretas, ouça intensamente os clientes, ajuste o produto. Quando o faturamento começar a se aproximar dos R$1M de forma recorrente, a conversa sobre estrutura faz muito mais sentido.",
           "Salvei seu contato. Daqui a alguns meses, posso te procurar para entender se chegou o momento.",
         ],
-        ctaPrincipalLabel: "Quero acompanhar conteúdos sobre crescimento estruturado",
-        ctaPrincipalHref: WHATSAPP_URL,
-        ctaUnico: true,
         scoreVisivel: false,
       };
     case "B":
@@ -676,6 +630,8 @@ function metaFor(key: ResultKey): ResultMeta {
         selo: "🔴 CRESCIMENTO FRÁGIL",
         seloBg: "rgba(239,68,68,0.12)",
         seloColor: "#c83232",
+        seloPdfHex: "#c83232",
+        categoriaShort: "Crescimento Frágil",
         titulo: "Você está crescendo no improviso — e o limite chega rápido.",
         mensagem: [
           "Sua pontuação indica que a operação ainda funciona muito por esforço pessoal e heroísmo, não por método. Isso não é um julgamento — é o estágio natural de toda empresa que cresceu pela qualidade do produto, não pela máquina comercial.",
@@ -683,15 +639,14 @@ function metaFor(key: ResultKey): ResultMeta {
           "A boa notícia: você ainda tem tempo. Estruturar agora é muito mais barato do que estruturar em crise.",
         ],
         blocoLabel: "Pontos críticos da sua operação",
-        ctaPrincipalLabel: "Agendar uma sessão estratégica de 20 minutos",
-        ctaPrincipalHref: WHATSAPP_URL,
-        ctaSecundario: { label: "Receber o relatório completo por e-mail", action: "email" },
       };
     case "C":
       return {
         selo: "🟡 CRESCIMENTO EM RISCO",
         seloBg: "rgba(245,158,11,0.14)",
         seloColor: "#a86b09",
+        seloPdfHex: "#a86b09",
+        categoriaShort: "Crescimento em Risco",
         titulo: "Você está no ponto de virada — onde muitas tech travam.",
         mensagem: [
           "Sua empresa já tem algumas peças no lugar, mas a próxima fase de crescimento exige mudanças que não acontecem sozinhas. É justamente nessa faixa de maturidade que vejo as empresas mais ricas em potencial e mais frágeis em execução.",
@@ -699,53 +654,251 @@ function metaFor(key: ResultKey): ResultMeta {
           "Esse é o momento mais estratégico para profissionalizar a estrutura — antes que o crescimento te empurre para uma decisão sob pressão.",
         ],
         blocoLabel: "Onde sua operação ainda precisa amadurecer",
-        ctaPrincipalLabel: "Agendar uma sessão estratégica de 20 minutos",
-        ctaPrincipalHref: WHATSAPP_URL,
-        ctaSecundario: { label: "Receber o relatório completo por e-mail", action: "email" },
       };
     case "D":
       return {
         selo: "🟢 PRONTO PARA ESCALAR",
         seloBg: "rgba(34,197,94,0.14)",
         seloColor: "#1e7a3a",
+        seloPdfHex: "#1e7a3a",
+        categoriaShort: "Pronto para Escalar",
         titulo: "Sua base é sólida — agora o jogo é aceleração.",
         mensagem: [
           "Sua pontuação coloca sua empresa acima da média do mercado tech B2B brasileiro em maturidade comercial. Você tem ICP definido, o fundador já saiu do meio das vendas, há previsibilidade e gestão por dados.",
           "O ganho aqui não é estrutural — é otimização e aceleração. Empresas nesse estágio costumam buscar consultoria por 3 motivos: entrar em novos mercados, aumentar margem em mercados maduros, ou preparar a operação para um movimento de M&A ou captação.",
         ],
         blocoLabel: "Pontos com maior potencial de melhoria",
-        ctaPrincipalLabel: "Conversar sobre o próximo nível",
-        ctaPrincipalHref: WHATSAPP_URL,
-        ctaSecundario: { label: "Receber o relatório completo por e-mail", action: "email" },
       };
   }
+}
+
+function buildWhatsAppUrl(
+  resultKey: ResultKey,
+  meta: ResultMeta,
+  score: number,
+  pontosCriticos: string[],
+  form: FormData,
+): string {
+  let msg: string;
+  if (resultKey === "A") {
+    msg = `Olá Daniel, fiz o Diagnóstico Rápido no site.
+
+📊 Meu resultado: Ainda não é o momento (faturamento abaixo de R$1M)
+
+🏢 Empresa: ${form.empresa}
+👤 Papel: ${form.papel}
+📧 E-mail: ${form.email}
+
+Mesmo assim, gostaria de conversar.`;
+  } else {
+    const pontosFmt = pontosCriticos.map((p) => `- ${p}`).join("\n");
+    msg = `Olá Daniel, fiz o Diagnóstico Rápido no site.
+
+📊 Meu resultado: ${meta.categoriaShort} (${score}/21 pts)
+
+🏢 Empresa: ${form.empresa}
+💰 Faturamento: ${form.faturamento}
+👤 Papel: ${form.papel}
+📧 E-mail: ${form.email}
+
+Pontos críticos da minha operação:
+${pontosFmt}
+
+Gostaria de agendar uma sessão estratégica.`;
+  }
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+async function downloadResultPdf(
+  resultKey: ResultKey,
+  meta: ResultMeta,
+  score: number,
+  pontosCriticos: string[],
+  form: FormData,
+) {
+  const { jsPDF } = await import("jspdf");
+  const logoModule = await import("@/assets/logo-dark.png");
+  const logoSrc: string = (logoModule as { default: string }).default;
+
+  // Carrega logo como dataURL
+  const logoDataUrl = await new Promise<string>((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject(new Error("canvas context"));
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = reject;
+    img.src = logoSrc;
+  }).catch(() => "");
+
+  const doc = new jsPDF({ unit: "pt", format: "a4" });
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const margin = 48;
+  let y = margin;
+
+  // Logo
+  if (logoDataUrl) {
+    const logoH = 36;
+    const ratio = 4; // aproximação largura/altura do logo horizontal
+    const logoW = logoH * ratio;
+    doc.addImage(logoDataUrl, "PNG", margin, y, logoW, logoH, undefined, "FAST");
+  }
+  y += 56;
+
+  // Título
+  doc.setTextColor("#0B2A5B");
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(22);
+  doc.text("Seu Diagnóstico Rápido", margin, y);
+  y += 26;
+
+  // Nome / empresa
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.setTextColor("#1f2a3d");
+  const nomeLinha = `${form.nome}${form.empresa ? " — " + form.empresa : ""}`;
+  doc.text(nomeLinha, margin, y);
+  y += 24;
+
+  // Selo da categoria
+  const seloTxt = meta.categoriaShort.toUpperCase();
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(10);
+  const seloPadX = 10;
+  const seloPadY = 7;
+  const seloW = doc.getTextWidth(seloTxt) + seloPadX * 2;
+  const seloH = 22;
+  doc.setFillColor(meta.seloPdfHex);
+  doc.roundedRect(margin, y, seloW, seloH, 11, 11, "F");
+  doc.setTextColor("#ffffff");
+  doc.text(seloTxt, margin + seloPadX, y + seloH - seloPadY);
+  y += seloH + 18;
+
+  // Pontuação
+  if (resultKey !== "A") {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.setTextColor("#0B2A5B");
+    doc.text(`${score} de 21 pontos`, margin, y);
+    y += 24;
+  }
+
+  // Mensagem
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10.5);
+  doc.setTextColor("#1f2a3d");
+  for (const p of meta.mensagem) {
+    const lines = doc.splitTextToSize(p, pageW - margin * 2) as string[];
+    doc.text(lines, margin, y);
+    y += lines.length * 14 + 8;
+  }
+  y += 6;
+
+  // Bloco pontos críticos
+  if (resultKey !== "A" && pontosCriticos.length > 0) {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.setTextColor("#0B2A5B");
+    doc.text(meta.blocoLabel ?? "Pontos críticos da sua operação", margin, y);
+    y += 16;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10.5);
+    doc.setTextColor("#1f2a3d");
+    for (const ponto of pontosCriticos) {
+      const lines = doc.splitTextToSize(`• ${ponto}`, pageW - margin * 2 - 12) as string[];
+      doc.text(lines, margin + 4, y);
+      y += lines.length * 14 + 4;
+    }
+    y += 8;
+  }
+
+  // CTA + rodapé
+  const footerY = pageH - margin - 56;
+  doc.setDrawColor("#0B2A5B");
+  doc.setLineWidth(0.5);
+  doc.line(margin, footerY, pageW - margin, footerY);
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(11);
+  doc.setTextColor("#0B2A5B");
+  doc.text("Pronto para conversar?", margin, footerY + 18);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor("#2EC4FF");
+  doc.textWithLink(
+    `wa.me/${WHATSAPP_NUMBER}`,
+    margin + doc.getTextWidth("Pronto para conversar? ") + 4,
+    footerY + 18,
+    { url: WHATSAPP_GENERIC },
+  );
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor("#0B2A5B");
+  const dataStr = new Date().toLocaleDateString("pt-BR");
+  doc.text(`Diagnóstico gerado em ${dataStr}`, margin, footerY + 36);
+  doc.setTextColor("#5b6675");
+  doc.text(
+    "dsinen@gmail.com  |  LinkedIn /danielsinenberg",
+    margin,
+    footerY + 50,
+  );
+
+  const safeName = (form.nome || "lead").trim().replace(/\s+/g, "-").replace(/[^\w\-]/g, "");
+  doc.save(`Diagnostico-Sinenberg-${safeName}.pdf`);
 }
 
 function ResultScreen({
   resultKey,
   score,
   pontosCriticos,
-  nome,
+  form,
   onRestart,
 }: {
   resultKey: ResultKey;
   score: number;
   pontosCriticos: string[];
-  nome: string;
+  form: FormData;
   onRestart: () => void;
 }) {
   const meta = metaFor(resultKey);
   const showScore = meta.scoreVisivel !== false;
-  const firstName = nome.trim().split(/\s+/)[0] || "";
+  const firstName = form.nome.trim().split(/\s+/)[0] || "";
+
+  const whatsappCtaUrl = useMemo(
+    () => buildWhatsAppUrl(resultKey, meta, score, pontosCriticos, form),
+    [resultKey, meta, score, pontosCriticos, form],
+  );
 
   const shareText = encodeURIComponent(
     `Acabei de fazer o Diagnóstico Rápido da Sinenberg Consulting e descobri o estágio de maturidade da minha operação. Vale o teste!`,
   );
   const shareUrl = encodeURIComponent(
-    typeof window !== "undefined" ? window.location.origin + "/diagnostico" : "https://sinenbergconsulting.lovable.app/diagnostico",
+    typeof window !== "undefined"
+      ? window.location.origin + "/diagnostico"
+      : "https://sinenbergconsulting.lovable.app/diagnostico",
   );
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
   const whatsappShare = `https://wa.me/?text=${shareText}%20${shareUrl}`;
+
+  const [downloading, setDownloading] = useState(false);
+  async function handleDownload() {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      await downloadResultPdf(resultKey, meta, score, pontosCriticos, form);
+    } catch (e) {
+      console.error("Falha ao gerar PDF", e);
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -797,23 +950,24 @@ function ResultScreen({
       {/* CTAs */}
       <div className="mt-8 flex flex-col sm:flex-row gap-3">
         <a
-          href={meta.ctaPrincipalHref}
+          href={whatsappCtaUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 px-5"
           style={{ backgroundColor: "#2EC4FF" }}
         >
-          {meta.ctaPrincipalLabel}
+          Quero conversar com o Daniel
           <Icon icon="solar:arrow-right-outline" />
         </a>
-        {!meta.ctaUnico && (
-          <Link
-            to="/"
-            className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] border-2 border-[#0B2A5B]/20 hover:border-[#0B2A5B]/40 transition-colors inline-flex items-center justify-center gap-2 px-5"
-          >
-            Voltar para o site
-          </Link>
-        )}
+        <button
+          type="button"
+          onClick={handleDownload}
+          disabled={downloading}
+          className="flex-1 min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] border-2 border-[#0B2A5B]/20 hover:border-[#0B2A5B]/40 transition-colors inline-flex items-center justify-center gap-2 px-5 disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          <Icon icon="solar:download-outline" />
+          {downloading ? "Gerando PDF..." : "Baixar meu resultado em PDF"}
+        </button>
       </div>
 
       {/* Compartilhar + refazer */}
@@ -837,6 +991,13 @@ function ResultScreen({
           <Icon icon="mdi:whatsapp" />
           WhatsApp
         </a>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 hover:text-[#0B2A5B] transition-colors"
+        >
+          <Icon icon="solar:home-2-outline" />
+          Voltar para o site
+        </Link>
         <button
           type="button"
           onClick={onRestart}
