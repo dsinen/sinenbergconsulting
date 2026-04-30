@@ -326,7 +326,7 @@ function DiagnosticoPage() {
               resultKey={resultKey}
               score={totalScore}
               pontosCriticos={pontosCriticos}
-              nome={form.nome}
+              form={form}
               onRestart={handleRestart}
             />
           )}
