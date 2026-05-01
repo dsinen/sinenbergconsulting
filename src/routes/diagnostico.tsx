@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
+import iconMark from "@/assets/icon.png";
 
 export const Route = createFileRoute("/diagnostico")({
   head: () => ({
@@ -277,8 +278,8 @@ function DiagnosticoPage() {
             <span className="hidden sm:inline">Voltar para o site</span>
             <span className="sm:hidden">Voltar</span>
           </Link>
-          <Link to="/" aria-label="Sinenberg Consulting — Início">
-            <img src={logoDark} alt="Sinenberg Consulting" className="h-10 md:h-12 w-auto" />
+          <Link to="/" aria-label="Sinenberg Consulting — Início" className="inline-flex items-center">
+            <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
           </Link>
         </div>
 
@@ -335,8 +336,9 @@ function DiagnosticoPage() {
 
       {/* Footer minimalista */}
       <footer className="border-t border-[#0B2A5B]/10 bg-white">
-        <div className="mx-auto max-w-[1100px] px-4 md:px-6 h-12 flex items-center justify-center">
-          <p className="text-[11px] md:text-xs text-[#0B2A5B]/55">
+        <div className="mx-auto max-w-[1100px] px-4 md:px-6 py-8 flex flex-col items-center justify-center gap-4">
+          <img src={logoDark} alt="Sinenberg Consulting" className="h-[60px] w-auto" />
+          <p className="text-[11px] md:text-xs text-[#0B2A5B]/55 text-center">
             © {new Date().getFullYear()} Sinenberg Consulting. Todos os direitos reservados.
           </p>
         </div>
