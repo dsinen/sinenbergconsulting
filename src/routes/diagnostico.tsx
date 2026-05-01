@@ -742,42 +742,42 @@ function ResultScreen({
   return (
     <div className="animate-in fade-in duration-300">
       <div
-        className="inline-block text-[12px] md:text-sm uppercase tracking-[0.18em] font-bold px-4 py-2 rounded-full"
+        className="inline-block text-[12px] md:text-[13px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 rounded-full"
         style={{ backgroundColor: meta.seloBg, color: meta.seloColor }}
       >
         {meta.selo}
       </div>
 
       {showScore && (
-        <p className="mt-5 text-sm md:text-base text-[#0B2A5B]/65">
+        <p className="mt-3 text-[13px] md:text-sm text-[#0B2A5B]/65">
           {firstName ? `${firstName}, sua pontuação: ` : "Sua pontuação: "}
-          <span className="font-bold text-[#0B2A5B] text-base md:text-lg">{score} de 21</span>
+          <span className="font-bold text-[#0B2A5B] text-[15px] md:text-base">{score} de 21</span>
         </p>
       )}
 
-      <h1 className="mt-4 font-serif text-3xl md:text-[2.4rem] leading-[1.1] text-[#0B2A5B]">
+      <h1 className="mt-3 font-serif font-semibold text-[24px] md:text-[32px] leading-[1.15] text-[#0B2A5B]">
         {meta.titulo}
       </h1>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-5 space-y-4">
         {meta.mensagem.map((p, i) => (
-          <p key={i} className="text-base md:text-lg text-[#1f2a3d]/80 leading-relaxed">
+          <p key={i} className="text-[16px] md:text-[17px] text-[#1f2a3d]/85 leading-[1.55]">
             {p}
           </p>
         ))}
       </div>
 
       {meta.blocoLabel && pontosCriticos.length > 0 && (
-        <div className="mt-8 rounded-2xl bg-white border border-[#0B2A5B]/10 p-5 md:p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-[#0B2A5B]/70 uppercase tracking-wide">
+        <div className="mt-6 rounded-2xl bg-white border border-[#0B2A5B]/10 p-4 md:p-5 shadow-sm">
+          <h3 className="text-[12px] md:text-[13px] font-semibold text-[#0B2A5B]/70 uppercase tracking-wide">
             {meta.blocoLabel}
           </h3>
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-2.5 space-y-1.5">
             {pontosCriticos.map((p) => (
-              <li key={p} className="flex items-start gap-2.5 text-[15px] text-[#1f2a3d]">
+              <li key={p} className="flex items-start gap-2 text-[15px] text-[#1f2a3d] leading-snug">
                 <Icon
                   icon="solar:alert-circle-bold"
-                  style={{ color: "#2EC4FF", flexShrink: 0, marginTop: 2 }}
+                  style={{ color: "#2EC4FF", flexShrink: 0, marginTop: 3 }}
                 />
                 <span>{p}</span>
               </li>
