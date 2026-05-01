@@ -299,7 +299,7 @@ function DiagnosticoPage() {
 
       {/* Conteúdo */}
       <main className="flex-1 w-full">
-        <div className="mx-auto max-w-[760px] px-4 sm:px-6 py-10 md:py-16">
+        <div className="mx-auto max-w-[760px] px-4 sm:px-6 py-6 md:py-10">
           {step === "intro" && (
             <IntroScreen
               form={form}
