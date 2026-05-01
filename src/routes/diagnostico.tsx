@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
+import iconMark from "@/assets/icon.png";
 
 export const Route = createFileRoute("/diagnostico")({
   head: () => ({
