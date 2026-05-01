@@ -278,8 +278,8 @@ function DiagnosticoPage() {
             <span className="hidden sm:inline">Voltar para o site</span>
             <span className="sm:hidden">Voltar</span>
           </Link>
-          <Link to="/" aria-label="Sinenberg Consulting — Início">
-            <img src={logoDark} alt="Sinenberg Consulting" className="h-10 md:h-12 w-auto" />
+          <Link to="/" aria-label="Sinenberg Consulting — Início" className="inline-flex items-center">
+            <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
           </Link>
         </div>
 
