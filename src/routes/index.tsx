@@ -268,7 +268,7 @@ function HomePage() {
       </section>
 
       {/* ───────── EMPRESAS ───────── */}
-      <section className="py-20 md:py-24 bg-[#f5f8fc] border-y border-[#e3ebf4]">
+      <section className="py-10 md:py-16 bg-[#f5f8fc] border-y border-[#e3ebf4]">
         <div className="mx-auto max-w-[1200px] px-6">
           <p className="reveal text-center text-sm md:text-base text-[#4a5b73] tracking-wide">
             Mais de 20 anos construindo crescimento de empresas como
@@ -298,7 +298,7 @@ function HomePage() {
       </section>
 
       {/* ───────── DOR ───────── */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -339,7 +339,7 @@ function HomePage() {
       {/* ───────── MÉTODO ───────── */}
       <section
         id="metodo"
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative py-10 md:py-16 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B", color: "#fff" }}
       >
         <div className="absolute inset-0 dot-grid" />
@@ -388,7 +388,7 @@ function HomePage() {
       </section>
 
       {/* ───────── SERVIÇOS ───────── */}
-      <section id="servicos" className="py-16 md:py-24 bg-white">
+      <section id="servicos" className="py-10 md:py-16 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -449,7 +449,7 @@ function HomePage() {
       </section>
 
       {/* ───────── FIT / NO-FIT ───────── */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -538,7 +538,7 @@ function HomePage() {
       </section>
 
       {/* ───────── COMO O PROJETO ACONTECE ───────── */}
-      <section id="como-funciona" className="py-16 md:py-24 bg-[#f5f8fc]">
+      <section id="como-funciona" className="py-10 md:py-16 bg-[#f5f8fc]">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -613,7 +613,7 @@ function HomePage() {
       {/* ───────── SOBRE ───────── */}
       <section
         id="sobre"
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative py-10 md:py-16 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B", color: "#fff" }}
       >
         <div className="absolute inset-0 dot-grid" />
@@ -670,7 +670,7 @@ function HomePage() {
       </section>
 
       {/* ───────── DEPOIMENTOS ───────── */}
-      <section id="depoimentos" className="py-16 md:py-24 bg-white">
+      <section id="depoimentos" className="py-10 md:py-16 bg-white">
         <div className="mx-auto max-w-[1100px] px-6">
           <div className="reveal text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.2em] text-[#1F6FDB] font-semibold">
@@ -711,7 +711,7 @@ function HomePage() {
       </section>
 
       {/* ───────── DIAGNÓSTICO GRATUITO — ENTRADA PARA O QUIZ ───────── */}
-      <section id="diagnostico-cta" className="py-16 md:py-24 bg-[#F5F8FC]">
+      <section id="diagnostico-cta" className="py-10 md:py-16 bg-[#F5F8FC]">
         <div className="mx-auto max-w-[1100px] px-6">
           <div
             className="reveal relative overflow-hidden rounded-3xl px-8 md:px-14 py-12 md:py-16"
@@ -805,7 +805,7 @@ function HomePage() {
       </section>
 
       {/* ───────── FAQ ───────── */}
-      <section id="faq" className="py-16 md:py-24 bg-white">
+      <section id="faq" className="py-10 md:py-16 bg-white">
         <div className="mx-auto max-w-[860px] px-6">
           <div className="reveal text-center mb-14">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#1F6FDB]">
@@ -863,7 +863,7 @@ function HomePage() {
 
       {/* ───────── CTA FINAL ───────── */}
       <section
-        className="relative py-20 md:py-28 overflow-hidden"
+        className="relative py-10 md:py-16 overflow-hidden"
         style={{ backgroundColor: "#0B2A5B" }}
       >
         <div className="absolute inset-0 dot-grid" />
