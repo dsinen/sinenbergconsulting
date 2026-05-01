@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 
@@ -24,6 +25,16 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
 
   return (
     <header
@@ -66,36 +77,52 @@ export function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <div className="fixed inset-0 z-50 bg-[#0B2A5B] flex flex-col p-6 md:hidden">
-          <div className="flex items-center justify-between">
-            <img src={logoDark} alt="Sinenberg" className="h-12" />
-            <button aria-label="Fechar" onClick={() => setOpen(false)} className="text-white p-2">
-              <Icon icon="solar:close-circle-outline" width="32" height="32" />
-            </button>
-          </div>
-          <nav className="flex flex-col items-center justify-center flex-1 gap-8">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+      {open && typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="fixed inset-0 flex flex-col p-6 md:hidden"
+            style={{
+              backgroundColor: "#0B2A5B",
+              opacity: 1,
+              zIndex: 9999,
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <img src={logoDark} alt="Sinenberg" className="h-12" />
+              <button
+                aria-label="Fechar"
                 onClick={() => setOpen(false)}
-                className="text-2xl text-white font-serif"
+                className="text-white p-2 min-w-12 min-h-12 flex items-center justify-center"
               >
-                {l.label}
+                <Icon icon="solar:close-circle-outline" width="32" height="32" />
+              </button>
+            </div>
+            <nav className="flex flex-col items-center justify-center flex-1 gap-6">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="font-serif py-2 px-4"
+                  style={{ color: "#FFFFFF", fontSize: "20px", lineHeight: 1.4 }}
+                >
+                  {l.label}
+                </a>
+              ))}
+              <a
+                href={CTA}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="mt-4 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold px-8 py-3"
+                style={{ fontSize: "18px" }}
+              >
+                Fale comigo
               </a>
-            ))}
-            <a
-              href={CTA}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 rounded-full bg-[#2EC4FF] text-[#0B2A5B] font-semibold text-base px-8 py-3"
-            >
-              Fale comigo
-            </a>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </div>,
+          document.body,
+        )}
     </header>
   );
 }
