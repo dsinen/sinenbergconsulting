@@ -299,7 +299,7 @@ function DiagnosticoPage() {
 
       {/* Conteúdo */}
       <main className="flex-1 w-full">
-        <div className="mx-auto max-w-[760px] px-4 sm:px-6 py-10 md:py-16">
+        <div className="mx-auto max-w-[760px] px-4 sm:px-6 py-6 md:py-10">
           {step === "intro" && (
             <IntroScreen
               form={form}
@@ -498,12 +498,12 @@ function QuestionScreen({
 }) {
   return (
     <div key={question.n} className="animate-in fade-in slide-in-from-right-4 duration-300">
-      <div className="text-xs font-medium text-[#0B2A5B]/55 uppercase tracking-[0.18em]">
+      <div className="text-[13px] font-medium text-[#0B2A5B]/55 uppercase tracking-[0.18em]">
         Pergunta {question.n} de {QUESTIONS.length}
       </div>
 
       <span
-        className="inline-block mt-4 text-[11px] uppercase tracking-[0.22em] font-semibold px-3 py-1 rounded-full"
+        className="inline-block mt-2 text-[11px] uppercase tracking-[0.22em] font-semibold px-3 py-1 rounded-full"
         style={{
           color: "#2EC4FF",
           backgroundColor: "rgba(46,196,255,0.1)",
@@ -512,11 +512,11 @@ function QuestionScreen({
         {question.categoria}
       </span>
 
-      <h2 className="mt-4 font-serif text-2xl md:text-[2rem] leading-[1.2] text-[#0B2A5B]">
+      <h2 className="mt-3 mb-6 font-serif font-semibold text-[22px] md:text-[28px] leading-[1.25] text-[#0B2A5B]">
         {question.pergunta}
       </h2>
 
-      <div className="mt-7 space-y-3">
+      <div className="space-y-3">
         {question.opcoes.map((opt) => {
           const active = selected === opt.letra;
           return (
@@ -524,7 +524,7 @@ function QuestionScreen({
               key={opt.letra}
               type="button"
               onClick={() => onSelect(opt.letra)}
-              className={`w-full text-left min-h-12 rounded-2xl px-5 py-4 border-2 transition-all bg-white ${
+              className={`w-full text-left rounded-2xl px-4 py-3 border-2 transition-all bg-white ${
                 active
                   ? "border-[#2EC4FF] shadow-[0_0_0_4px_rgba(46,196,255,0.15)]"
                   : "border-[#0B2A5B]/10 hover:border-[#0B2A5B]/30"
@@ -532,7 +532,7 @@ function QuestionScreen({
             >
               <div className="flex items-start gap-3">
                 <span
-                  className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center text-[11px] font-semibold transition-colors ${
+                  className={`flex-shrink-0 w-7 h-7 rounded-full border-2 flex items-center justify-center text-[12px] font-semibold transition-colors ${
                     active
                       ? "border-[#2EC4FF] bg-[#2EC4FF] text-[#0B2A5B]"
                       : "border-[#0B2A5B]/25 text-[#0B2A5B]/55"
@@ -540,7 +540,7 @@ function QuestionScreen({
                 >
                   {opt.letra}
                 </span>
-                <span className="text-[15px] md:text-base text-[#1f2a3d] leading-relaxed">
+                <span className="text-[16px] md:text-[17px] text-[#1f2a3d] leading-snug">
                   {opt.texto}
                 </span>
               </div>
@@ -549,11 +549,11 @@ function QuestionScreen({
         })}
       </div>
 
-      <div className="mt-8 flex items-center justify-between gap-3">
+      <div className="mt-6 flex items-center justify-between gap-3">
         <button
           type="button"
           onClick={onBack}
-          className="min-h-12 px-4 md:px-5 rounded-xl text-[#0B2A5B]/70 hover:text-[#0B2A5B] hover:bg-[#0B2A5B]/5 inline-flex items-center gap-1.5 transition-colors text-sm font-medium"
+          className="h-11 px-3 md:px-4 rounded-xl text-[#0B2A5B]/70 hover:text-[#0B2A5B] hover:bg-[#0B2A5B]/5 inline-flex items-center gap-1.5 transition-colors text-sm font-medium"
         >
           <Icon icon="solar:arrow-left-outline" />
           Voltar
@@ -562,7 +562,7 @@ function QuestionScreen({
           type="button"
           onClick={onAdvance}
           disabled={!selected}
-          className="min-h-12 px-6 md:px-7 rounded-xl font-semibold text-[#0B2A5B] transition-all hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-2"
+          className="h-11 px-5 md:px-6 rounded-xl font-semibold text-[#0B2A5B] transition-all hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-2 text-sm md:text-base"
           style={{ backgroundColor: "#2EC4FF" }}
         >
           {isLast ? "Ver meu resultado" : "Avançar"}
@@ -742,42 +742,42 @@ function ResultScreen({
   return (
     <div className="animate-in fade-in duration-300">
       <div
-        className="inline-block text-[12px] md:text-sm uppercase tracking-[0.18em] font-bold px-4 py-2 rounded-full"
+        className="inline-block text-[12px] md:text-[13px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 rounded-full"
         style={{ backgroundColor: meta.seloBg, color: meta.seloColor }}
       >
         {meta.selo}
       </div>
 
       {showScore && (
-        <p className="mt-5 text-sm md:text-base text-[#0B2A5B]/65">
+        <p className="mt-3 text-[13px] md:text-sm text-[#0B2A5B]/65">
           {firstName ? `${firstName}, sua pontuação: ` : "Sua pontuação: "}
-          <span className="font-bold text-[#0B2A5B] text-base md:text-lg">{score} de 21</span>
+          <span className="font-bold text-[#0B2A5B] text-[15px] md:text-base">{score} de 21</span>
         </p>
       )}
 
-      <h1 className="mt-4 font-serif text-3xl md:text-[2.4rem] leading-[1.1] text-[#0B2A5B]">
+      <h1 className="mt-3 font-serif font-semibold text-[24px] md:text-[32px] leading-[1.15] text-[#0B2A5B]">
         {meta.titulo}
       </h1>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-5 space-y-4">
         {meta.mensagem.map((p, i) => (
-          <p key={i} className="text-base md:text-lg text-[#1f2a3d]/80 leading-relaxed">
+          <p key={i} className="text-[16px] md:text-[17px] text-[#1f2a3d]/85 leading-[1.55]">
             {p}
           </p>
         ))}
       </div>
 
       {meta.blocoLabel && pontosCriticos.length > 0 && (
-        <div className="mt-8 rounded-2xl bg-white border border-[#0B2A5B]/10 p-5 md:p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-[#0B2A5B]/70 uppercase tracking-wide">
+        <div className="mt-6 rounded-2xl bg-white border border-[#0B2A5B]/10 p-4 md:p-5 shadow-sm">
+          <h3 className="text-[12px] md:text-[13px] font-semibold text-[#0B2A5B]/70 uppercase tracking-wide">
             {meta.blocoLabel}
           </h3>
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-2.5 space-y-1.5">
             {pontosCriticos.map((p) => (
-              <li key={p} className="flex items-start gap-2.5 text-[15px] text-[#1f2a3d]">
+              <li key={p} className="flex items-start gap-2 text-[15px] text-[#1f2a3d] leading-snug">
                 <Icon
                   icon="solar:alert-circle-bold"
-                  style={{ color: "#2EC4FF", flexShrink: 0, marginTop: 2 }}
+                  style={{ color: "#2EC4FF", flexShrink: 0, marginTop: 3 }}
                 />
                 <span>{p}</span>
               </li>
