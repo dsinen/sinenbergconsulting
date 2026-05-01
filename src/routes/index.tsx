@@ -733,72 +733,55 @@ function HomePage() {
               }}
             />
 
-            <div className="relative grid md:grid-cols-[1.1fr_1fr] gap-10 md:gap-14 items-center">
-              {/* Coluna esquerda — texto */}
-              <div>
-                <span
-                  className="inline-block text-[11px] uppercase tracking-[0.22em] font-semibold px-3 py-1 rounded-full border"
-                  style={{
-                    color: "#2EC4FF",
-                    borderColor: "rgba(46,196,255,0.45)",
-                    backgroundColor: "rgba(46,196,255,0.08)",
-                  }}
-                >
-                  Diagnóstico Gratuito
-                </span>
+            <div className="relative mx-auto max-w-[720px] text-center flex flex-col items-center">
+              <span
+                className="inline-block text-[11px] uppercase tracking-[0.22em] font-semibold px-3 py-1 rounded-full border"
+                style={{
+                  color: "#2EC4FF",
+                  borderColor: "rgba(46,196,255,0.45)",
+                  backgroundColor: "rgba(46,196,255,0.08)",
+                }}
+              >
+                Diagnóstico Gratuito
+              </span>
 
-                <h2 className="mt-5 font-serif text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.1] text-white">
-                  Sua empresa tech está pronta para{" "}
-                  <span style={{ color: "#2EC4FF" }}>escalar com previsibilidade</span>?
-                </h2>
+              <h2 className="mt-6 font-serif text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.1] text-white">
+                Sua empresa tech está pronta para{" "}
+                <span style={{ color: "#2EC4FF" }}>escalar com previsibilidade</span>?
+              </h2>
 
-                <p className="mt-5 text-base md:text-lg text-white/75 leading-relaxed max-w-xl">
-                  Responda 7 perguntas em 3 minutos e receba um diagnóstico personalizado do
-                  estágio atual da sua operação — e o que precisa antes de crescer mais.
-                </p>
+              <p className="mt-6 text-base md:text-lg text-white/80 leading-relaxed">
+                Em 3 minutos, descubra em que estágio sua operação está hoje — e o que precisa
+                antes de crescer mais.
+              </p>
 
-                <ul className="mt-6 space-y-2 text-sm text-white/70">
-                  <li className="flex items-center gap-2">
-                    <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
-                    7 perguntas, 3 minutos
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
-                    Resultado personalizado em 4 estágios de maturidade
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
-                    100% confidencial
-                  </li>
-                </ul>
-              </div>
+              <ul className="mt-8 space-y-3 text-sm md:text-base text-white/80 text-left inline-block">
+                <li className="flex items-center gap-3">
+                  <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                  7 perguntas objetivas
+                </li>
+                <li className="flex items-center gap-3">
+                  <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                  Resultado em 4 estágios de maturidade
+                </li>
+                <li className="flex items-center gap-3">
+                  <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                  Diagnóstico baseado em mais de 20 anos de experiência
+                </li>
+              </ul>
 
-              {/* Coluna direita — CTA */}
-              <div className="md:pl-4">
-                <div
-                  className="rounded-2xl p-6 md:p-8 border"
-                  style={{
-                    borderColor: "rgba(46,196,255,0.35)",
-                    backgroundColor: "rgba(46,196,255,0.06)",
-                  }}
-                >
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                    Em 3 minutos você descobre se sua operação está pronta para escalar — ou
-                    quais lacunas precisam ser fechadas antes.
-                  </p>
-                  <Link
-                    to="/diagnostico"
-                    className="mt-5 w-full min-h-12 rounded-xl font-semibold text-base text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2"
-                    style={{ backgroundColor: "#2EC4FF" }}
-                  >
-                    Fazer meu diagnóstico
-                    <Icon icon="solar:arrow-right-outline" />
-                  </Link>
-                  <p className="mt-3 text-xs text-white/55 text-center">
-                    Suas respostas são confidenciais. Não compartilhamos com terceiros.
-                  </p>
-                </div>
-              </div>
+              <Link
+                to="/diagnostico"
+                className="mt-10 min-h-14 px-8 md:px-10 rounded-xl font-semibold text-base md:text-lg text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 shadow-lg"
+                style={{ backgroundColor: "#2EC4FF" }}
+              >
+                Fazer meu diagnóstico
+                <Icon icon="solar:arrow-right-outline" />
+              </Link>
+
+              <p className="mt-4 text-xs md:text-sm text-white/55">
+                Suas respostas são confidenciais.
+              </p>
             </div>
           </div>
         </div>
