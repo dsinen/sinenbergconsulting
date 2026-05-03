@@ -363,33 +363,42 @@ function HomePage() {
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {[
               {
-                stat: "20-40%",
-                title: "Receita não capturada",
-                text: "Oportunidades reais escapam todo trimestre porque não existe um motor comercial previsível — só esforço pontual.",
+                stat: "80%",
+                label: "Das vendas",
+                line: "passam pelo fundador",
+                text: "Enquanto o founder estiver no centro de cada negócio, o teto de crescimento é o limite da sua agenda. O custo de oportunidade cresce a cada mês.",
               },
               {
-                stat: "60%",
-                title: "Energia do fundador queimada",
-                text: "Da agenda do fundador consumida apagando incêndios operacionais em vez de decisões de crescimento.",
+                stat: "0",
+                label: "Previsibilidade",
+                line: "no planejamento financeiro",
+                text: "Sem funil estruturado, projeção vira chute. Investimentos em time, produto e mercado ficam paralisados por falta de clareza sobre o que vem adiante.",
               },
               {
-                stat: "Silêncio",
-                title: "Margem corroída",
-                text: "Custos crescem mais rápido que a receita, time perde referência e ninguém percebe — até o resultado bater.",
+                stat: "−15%",
+                label: "Margem/ano",
+                line: "consumida pelo caos",
+                text: "Crescimento desordenado gera retrabalho, acelera churn e corrói margem. O que deveria ser expansão vira crise operacional em meses.",
               },
             ].map((c, i) => (
               <div
-                key={c.title}
+                key={c.label}
                 className="reveal p-7 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div
-                  className="font-serif font-semibold leading-none"
-                  style={{ color: "#2EC4FF", fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
+                  className="font-serif font-bold leading-none"
+                  style={{ color: "#2EC4FF", fontSize: "clamp(3.75rem, 6vw, 5rem)" }}
                 >
                   {c.stat}
                 </div>
-                <h3 className="mt-4 font-serif text-xl text-white">{c.title}</h3>
+                <div
+                  className="mt-4 font-semibold uppercase text-white"
+                  style={{ fontSize: "13px", letterSpacing: "0.12em" }}
+                >
+                  {c.label}
+                </div>
+                <h3 className="mt-1 font-serif text-xl text-white">{c.line}</h3>
                 <p className="mt-3 text-white/75 leading-relaxed text-[15px]">{c.text}</p>
               </div>
             ))}
