@@ -602,6 +602,97 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── ROI E IMPACTO ───────── */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="reveal text-center max-w-3xl mx-auto">
+            <span className="inline-block text-xs uppercase tracking-[0.25em] text-[#2563EB] font-semibold">
+              Resultados Esperados
+            </span>
+            <h2 className="mt-4 font-serif text-3xl md:text-5xl text-[#0B2A5B] leading-[1.1]">
+              ROI e Impacto no Negócio
+            </h2>
+            <p
+              className="mt-5 font-semibold"
+              style={{ color: "#2EC4FF", fontSize: "clamp(1.05rem, 1.4vw, 1.25rem)" }}
+            >
+              Onde o ponteiro do negócio realmente se move.
+            </p>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                stat: "−25%",
+                label: "Menos dispersão",
+                bullets: [
+                  { k: "CAC", t: "Redução do custo de aquisição ao focar no ICP real." },
+                  { k: "LTV", t: "Aumento do valor do cliente ao vender para o perfil certo." },
+                ],
+              },
+              {
+                stat: "+20%",
+                label: "Mais conversão",
+                bullets: [
+                  { k: "Tx. de conversão", t: "Melhora na taxa de fechamento entre etapas do funil." },
+                  { k: "Ciclo de vendas", t: "Redução do tempo médio de fechamento." },
+                ],
+              },
+              {
+                stat: "+15%",
+                label: "Mais margem",
+                bullets: [
+                  { k: "Margem Operacional", t: "Menos retrabalho e desalinhamento operacional." },
+                  { k: "Tx. Churn", t: "Maior retenção ao entregar o que foi prometido." },
+                ],
+              },
+            ].map((c, i) => (
+              <div
+                key={c.label}
+                className="reveal bg-white rounded-xl p-7 md:p-10 shadow-[0_4px_24px_rgba(11,42,91,0.08)] border-t-4 flex flex-col"
+                style={{ borderTopColor: "#2563EB", transitionDelay: `${i * 100}ms` }}
+              >
+                <div
+                  className="text-center font-serif font-bold leading-none"
+                  style={{ color: "#2563EB", fontSize: "clamp(3.5rem, 6vw, 5.6rem)" }}
+                >
+                  {c.stat}
+                </div>
+                <div
+                  className="mt-3 text-center font-semibold text-[#0B2A5B] uppercase"
+                  style={{ fontSize: "14px", letterSpacing: "0.08em" }}
+                >
+                  {c.label}
+                </div>
+                <hr className="my-6 border-[#0B2A5B]/10" />
+                <div
+                  className="text-[#0B2A5B]/60 uppercase font-semibold mb-3"
+                  style={{ fontSize: "11px", letterSpacing: "0.08em" }}
+                >
+                  KPIs Impactados:
+                </div>
+                <ul className="space-y-3">
+                  {c.bullets.map((b) => (
+                    <li key={b.k} className="flex gap-2 text-[14.5px] text-[#0B2A5B]/85 leading-[1.55]">
+                      <Icon icon="solar:chart-2-bold" className="shrink-0 mt-0.5 text-[#2563EB]" width="16" />
+                      <span>
+                        <strong className="text-[#0B2A5B]">{b.k}</strong> — {b.t}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-12 text-center text-[12.5px] text-[#0B2A5B]/70 leading-relaxed max-w-3xl mx-auto">
+            Fontes: Bain · McKinsey · Gallup · Harvard Business Review
+            <br />
+            Resultados baseados em padrões observados em projetos similares. Cada empresa recebe metas personalizadas no diagnóstico.
+          </p>
+        </div>
+      </section>
+
       {/* ───────── COMO O PROJETO ACONTECE ───────── */}
       <section id="como-funciona" className="py-10 md:py-16 bg-[#f5f8fc]">
         <div className="mx-auto max-w-[1200px] px-6">
