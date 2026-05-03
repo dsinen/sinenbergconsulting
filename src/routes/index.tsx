@@ -336,6 +336,71 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── CUSTO INVISÍVEL DA INAÇÃO ───────── */}
+      <section
+        className="relative py-10 md:py-16 overflow-hidden"
+        style={{ backgroundColor: "#0B2A5B", color: "#fff" }}
+      >
+        <div className="absolute inset-0 dot-grid opacity-40" />
+        <div className="relative mx-auto max-w-[1100px] px-6">
+          <div className="reveal text-center max-w-3xl mx-auto">
+            <span className="inline-block text-xs uppercase tracking-[0.25em] text-[#2EC4FF] font-semibold border border-[#2EC4FF]/40 rounded-full px-3 py-1">
+              Alerta Estratégico
+            </span>
+            <h2 className="mt-6 font-serif text-3xl md:text-5xl text-white leading-[1.1]">
+              O Custo Invisível da Inação
+            </h2>
+            <p
+              className="mt-6 font-serif italic"
+              style={{ color: "#2EC4FF", fontSize: "clamp(1.05rem, 1.5vw, 1.35rem)", lineHeight: 1.5 }}
+            >
+              Cada trimestre sem direção clara não é só receita deixada na mesa.
+              <br className="hidden md:block" />
+              É fundador queimando energia em operação, time perdendo referência e margem corroída em silêncio.
+            </p>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                stat: "20-40%",
+                title: "Receita não capturada",
+                text: "Oportunidades reais escapam todo trimestre porque não existe um motor comercial previsível — só esforço pontual.",
+              },
+              {
+                stat: "60%",
+                title: "Energia do fundador queimada",
+                text: "Da agenda do fundador consumida apagando incêndios operacionais em vez de decisões de crescimento.",
+              },
+              {
+                stat: "Silêncio",
+                title: "Margem corroída",
+                text: "Custos crescem mais rápido que a receita, time perde referência e ninguém percebe — até o resultado bater.",
+              },
+            ].map((c, i) => (
+              <div
+                key={c.title}
+                className="reveal p-7 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <div
+                  className="font-serif font-semibold leading-none"
+                  style={{ color: "#2EC4FF", fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}
+                >
+                  {c.stat}
+                </div>
+                <h3 className="mt-4 font-serif text-xl text-white">{c.title}</h3>
+                <p className="mt-3 text-white/75 leading-relaxed text-[15px]">{c.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="reveal mt-12 text-center text-white/80 max-w-2xl mx-auto">
+            Quanto mais tempo a estrutura espera, mais caro fica reconstruí-la.
+          </p>
+        </div>
+      </section>
+
       {/* ───────── MÉTODO ───────── */}
       <section
         id="metodo"
