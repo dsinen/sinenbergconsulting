@@ -336,6 +336,83 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ───────── DIAGNÓSTICO GRATUITO — ENTRADA PARA O QUIZ ───────── */}
+      <section id="diagnostico-cta" className="py-10 md:py-16 bg-[#F5F8FC]">
+        <div className="mx-auto max-w-[1100px] px-6">
+          <div
+            className="reveal relative overflow-hidden rounded-3xl px-8 md:px-14 py-12 md:py-16"
+            style={{ backgroundColor: "#0B2A5B" }}
+          >
+            {/* glow decoração */}
+            <div
+              className="pointer-events-none absolute -top-20 -right-20 w-[320px] h-[320px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(46,196,255,0.25) 0%, transparent 65%)",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute -bottom-24 -left-16 w-[260px] h-[260px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(31,111,219,0.25) 0%, transparent 65%)",
+              }}
+            />
+
+            <div className="relative mx-auto max-w-[720px] text-center flex flex-col items-center">
+              <span
+                className="inline-block text-[11px] uppercase tracking-[0.22em] font-semibold px-3 py-1 rounded-full border"
+                style={{
+                  color: "#2EC4FF",
+                  borderColor: "rgba(46,196,255,0.45)",
+                  backgroundColor: "rgba(46,196,255,0.08)",
+                }}
+              >
+                Diagnóstico Gratuito
+              </span>
+
+              <h2 className="mt-6 font-serif text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.1] text-white">
+                Sua empresa tech está pronta para{" "}
+                <span style={{ color: "#2EC4FF" }}>escalar com previsibilidade</span>?
+              </h2>
+
+              <p className="mt-6 text-base md:text-lg text-white/80 leading-relaxed">
+                Em 3 minutos, descubra em que estágio sua operação está hoje — e o que precisa
+                antes de crescer mais.
+              </p>
+
+              <ul className="mt-8 space-y-3 text-sm md:text-base text-white/80 text-left inline-block">
+                <li className="flex items-center gap-3">
+                  <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                  7 perguntas objetivas
+                </li>
+                <li className="flex items-center gap-3">
+                  <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                  Resultado em 4 estágios de maturidade
+                </li>
+                <li className="flex items-center gap-3">
+                  <Icon icon="solar:check-circle-bold" style={{ color: "#2EC4FF" }} />
+                  Diagnóstico baseado em mais de 20 anos de experiência
+                </li>
+              </ul>
+
+              <Link
+                to="/diagnostico"
+                className="mt-10 min-h-14 px-8 md:px-10 rounded-xl font-semibold text-base md:text-lg text-[#0B2A5B] transition-all hover:brightness-110 inline-flex items-center justify-center gap-2 shadow-lg"
+                style={{ backgroundColor: "#2EC4FF" }}
+              >
+                Fazer meu diagnóstico
+                <Icon icon="solar:arrow-right-outline" />
+              </Link>
+
+              <p className="mt-4 text-xs md:text-sm text-white/55">
+                Suas respostas são confidenciais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ───────── CUSTO INVISÍVEL DA INAÇÃO ───────── */}
       <section
         className="relative py-10 md:py-16 overflow-hidden"
