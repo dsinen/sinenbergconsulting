@@ -372,7 +372,7 @@ function IntroScreen({
         Diagnóstico Rápido
       </span>
       <h1 className="mt-4 font-serif text-3xl md:text-[2.6rem] leading-[1.1] text-[#0B2A5B]">
-        Sua empresa tech está pronta para escalar com previsibilidade?
+        Sua empresa está pronta para escalar com previsibilidade?
       </h1>
       <p className="mt-4 text-base md:text-lg text-[#1f2a3d]/75 leading-relaxed">
         7 perguntas, 3 minutos. No final, você recebe um diagnóstico personalizado do estágio
