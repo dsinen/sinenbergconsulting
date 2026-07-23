@@ -11,7 +11,7 @@ export const Route = createFileRoute("/diagnostico")({
       {
         name: "description",
         content:
-          "7 perguntas, 3 minutos. Descubra o estágio de maturidade da sua operação tech e o que precisa antes de escalar.",
+          "7 perguntas, 3 minutos. Descubra o estágio de maturidade da sua operação e o que precisa antes de escalar.",
       },
       { property: "og:title", content: "Diagnóstico Rápido — Sinenberg Consulting" },
       {
