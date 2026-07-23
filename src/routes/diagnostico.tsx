@@ -661,7 +661,7 @@ function metaFor(key: ResultKey): ResultMeta {
         categoriaShort: "Pronto para Escalar",
         titulo: "Sua base é sólida — agora o jogo é aceleração.",
         mensagem: [
-          "Sua pontuação coloca sua empresa acima da média do mercado tech B2B brasileiro em maturidade comercial. Você tem ICP definido, o fundador já saiu do meio das vendas, há previsibilidade e gestão por dados.",
+          "Sua pontuação coloca sua empresa acima da média do mercado B2B brasileiro em maturidade comercial. Você tem ICP definido, o fundador já saiu do meio das vendas, há previsibilidade e gestão por dados.",
           "O ganho aqui não é estrutural — é otimização e aceleração. Empresas nesse estágio costumam buscar consultoria por 3 motivos: entrar em novos mercados, aumentar margem em mercados maduros, ou preparar a operação para um movimento de M&A ou captação.",
         ],
         blocoLabel: "Pontos com maior potencial de melhoria",
