@@ -645,7 +645,7 @@ function metaFor(key: ResultKey): ResultMeta {
         seloBg: "rgba(245,158,11,0.14)",
         seloColor: "#a86b09",
         categoriaShort: "Crescimento em Risco",
-        titulo: "Você está no ponto de virada — onde muitas tech travam.",
+        titulo: "Você está no ponto de virada — onde muitas empresas travam.",
         mensagem: [
           "Sua empresa já tem algumas peças no lugar, mas a próxima fase de crescimento exige mudanças que não acontecem sozinhas. É justamente nessa faixa de maturidade que vejo as empresas mais ricas em potencial e mais frágeis em execução.",
           "O que costuma travar aqui: o fundador percebe que precisa sair do meio, mas o time ainda não está preparado. O pipeline existe, mas o forecast falha. Tem indicadores, mas as decisões importantes ainda passam pelo 'feeling'.",
