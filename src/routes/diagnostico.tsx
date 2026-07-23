@@ -11,7 +11,7 @@ export const Route = createFileRoute("/diagnostico")({
       {
         name: "description",
         content:
-          "7 perguntas, 3 minutos. Descubra o estágio de maturidade da sua operação tech e o que precisa antes de escalar.",
+          "7 perguntas, 3 minutos. Descubra o estágio de maturidade da sua operação e o que precisa antes de escalar.",
       },
       { property: "og:title", content: "Diagnóstico Rápido — Sinenberg Consulting" },
       {
@@ -372,7 +372,7 @@ function IntroScreen({
         Diagnóstico Rápido
       </span>
       <h1 className="mt-4 font-serif text-3xl md:text-[2.6rem] leading-[1.1] text-[#0B2A5B]">
-        Sua empresa tech está pronta para escalar com previsibilidade?
+        Sua empresa está pronta para escalar com previsibilidade?
       </h1>
       <p className="mt-4 text-base md:text-lg text-[#1f2a3d]/75 leading-relaxed">
         7 perguntas, 3 minutos. No final, você recebe um diagnóstico personalizado do estágio
@@ -645,7 +645,7 @@ function metaFor(key: ResultKey): ResultMeta {
         seloBg: "rgba(245,158,11,0.14)",
         seloColor: "#a86b09",
         categoriaShort: "Crescimento em Risco",
-        titulo: "Você está no ponto de virada — onde muitas tech travam.",
+        titulo: "Você está no ponto de virada — onde muitas empresas travam.",
         mensagem: [
           "Sua empresa já tem algumas peças no lugar, mas a próxima fase de crescimento exige mudanças que não acontecem sozinhas. É justamente nessa faixa de maturidade que vejo as empresas mais ricas em potencial e mais frágeis em execução.",
           "O que costuma travar aqui: o fundador percebe que precisa sair do meio, mas o time ainda não está preparado. O pipeline existe, mas o forecast falha. Tem indicadores, mas as decisões importantes ainda passam pelo 'feeling'.",
@@ -661,7 +661,7 @@ function metaFor(key: ResultKey): ResultMeta {
         categoriaShort: "Pronto para Escalar",
         titulo: "Sua base é sólida — agora o jogo é aceleração.",
         mensagem: [
-          "Sua pontuação coloca sua empresa acima da média do mercado tech B2B brasileiro em maturidade comercial. Você tem ICP definido, o fundador já saiu do meio das vendas, há previsibilidade e gestão por dados.",
+          "Sua pontuação coloca sua empresa acima da média do mercado B2B brasileiro em maturidade comercial. Você tem ICP definido, o fundador já saiu do meio das vendas, há previsibilidade e gestão por dados.",
           "O ganho aqui não é estrutural — é otimização e aceleração. Empresas nesse estágio costumam buscar consultoria por 3 motivos: entrar em novos mercados, aumentar margem em mercados maduros, ou preparar a operação para um movimento de M&A ou captação.",
         ],
         blocoLabel: "Pontos com maior potencial de melhoria",
