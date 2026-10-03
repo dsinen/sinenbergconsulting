@@ -209,13 +209,44 @@ function DiagnosticoPage() {
     return arr.slice(0, 3).map((x) => x.titulo);
   }, [answers]);
 
-  // Loading -> result transition (cosmético)
+  // Loading: salva o lead no Notion (sem nunca travar) e então mostra o resultado
   useEffect(() => {
     if (step !== "loading") return;
-    const t = setTimeout(() => {
-      setStep("result");
-    }, 2000);
-    return () => clearTimeout(t);
+    let cancelled = false;
+    const minDelay = new Promise((r) => setTimeout(r, 2000));
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    const resultado =
+      resultKey === "A"
+        ? "Ainda não é o momento"
+        : `${metaFor(resultKey).categoriaShort}, ${totalScore}/21`;
+    const save = fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller.signal,
+      body: JSON.stringify({
+        nome: form.nome.trim().slice(0, 120),
+        email: form.email.trim().slice(0, 200),
+        empresa: form.empresa.trim().slice(0, 150),
+        faturamento: form.faturamento,
+        papel: form.papel,
+        score: totalScore,
+        resultado,
+        pontosCriticos,
+      }),
+    })
+      .then((r) => {
+        if (!r.ok) console.error("Falha ao salvar lead:", r.status);
+      })
+      .catch((e) => console.error("Falha ao salvar lead:", e))
+      .finally(() => clearTimeout(timeout));
+    Promise.all([minDelay, save]).then(() => {
+      if (!cancelled) setStep("result");
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
   const progress =
@@ -680,23 +711,23 @@ function buildWhatsAppUrl(
   if (resultKey === "A") {
     msg = `Olá Daniel, fiz o Diagnóstico Rápido no site.
 
-📊 Meu resultado: Ainda não é o momento (faturamento abaixo de R$1M)
+*Meu resultado:* Ainda não é o momento (faturamento abaixo de R$1M)
 
-🏢 Empresa: ${form.empresa}
-👤 Papel: ${form.papel}
-📧 E-mail: ${form.email}
+*Empresa:* ${form.empresa}
+*Papel:* ${form.papel}
+*E-mail:* ${form.email}
 
 Mesmo assim, gostaria de conversar.`;
   } else {
     const pontosFmt = pontosCriticos.map((p) => `- ${p}`).join("\n");
     msg = `Olá Daniel, fiz o Diagnóstico Rápido no site.
 
-📊 Meu resultado: ${meta.categoriaShort} (${score}/21 pts)
+*Meu resultado:* ${meta.categoriaShort} (${score}/21 pts)
 
-🏢 Empresa: ${form.empresa}
-💰 Faturamento: ${form.faturamento}
-👤 Papel: ${form.papel}
-📧 E-mail: ${form.email}
+*Empresa:* ${form.empresa}
+*Faturamento:* ${form.faturamento}
+*Papel:* ${form.papel}
+*E-mail:* ${form.email}
 
 Pontos críticos da minha operação:
 ${pontosFmt}
