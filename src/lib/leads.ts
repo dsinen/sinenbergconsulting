@@ -48,6 +48,7 @@ const CARGO_NO_CRM: Record<string, string> = {
 
 const NOTION_DATA_SOURCE_DEFAULT = "2be33411-76f0-8103-8c7e-000bad402db2";
 const TAG_ORIGEM = "Diagnóstico Site";
+const STATUS_INICIAL = "Novo lead (site)";
 
 // ─────────────────────────── Montagem dos textos ───────────────────────────
 
@@ -106,6 +107,8 @@ export function paginaNotion(lead: LeadInput, dataSourceId: string) {
       Empresa: { rich_text: texto(lead.empresa) },
       "Qual seu e-mail?": { email: lead.email },
       Origem: { multi_select: [{ name: TAG_ORIGEM }] },
+      // Se a opção ainda não existir no CRM, o Notion a cria no primeiro lead.
+      Status: { select: { name: STATUS_INICIAL } },
       // O nome desta propriedade tem um espaço no final no CRM.
       "Qual seu cargo na empresa? ": {
         multi_select: [{ name: CARGO_NO_CRM[lead.papel] ?? "Outro" }],
