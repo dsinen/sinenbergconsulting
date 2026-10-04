@@ -47,31 +47,31 @@ const faqs = [
   },
   {
     q: "Atende empresas que não são de tecnologia?",
-    a: "Meu foco é tech B2B porque é onde tenho mais de 20 anos de experiência aplicada — Stone, Linx, Telefônica e Fast Shop. Empresas de outros setores podem entrar em contato, mas o método foi desenhado para a dinâmica de receita recorrente, ciclos consultivos e produto digital.",
+    a: "Meu foco é tech B2B porque é onde tenho mais de 20 anos de experiência aplicada: Stone, Linx, Telefônica e Fast Shop. Empresas de outros setores podem entrar em contato, mas o método foi desenhado para a dinâmica de receita recorrente, ciclos consultivos e produto digital.",
   },
   {
     q: "Atende remotamente ou só presencial?",
-    a: "Trabalho em modelo híbrido. A maior parte das interações é remota (reuniões com ponto focal, sessões executivas mensais), com visitas presenciais pontuais quando o projeto pede — sobretudo no diagnóstico e em momentos críticos da implementação. Atendo Brasil inteiro.",
+    a: "Trabalho em modelo híbrido. A maior parte das interações é remota (reuniões com ponto focal, sessões executivas mensais), com visitas presenciais pontuais quando o projeto pede, sobretudo no diagnóstico e em momentos críticos da implementação. Atendo Brasil inteiro.",
   },
   {
     q: "Qual a diferença entre o Diagnóstico e a Consultoria Completa?",
-    a: "O Diagnóstico é uma sprint curta para fundadores que precisam de um raio-X claro antes de tomar decisões — entrega gargalos mapeados, oportunidades de receita identificadas e um roadmap priorizado. A Consultoria Completa é o programa de transformação: pega o diagnóstico e leva à execução, com acompanhamento executivo recorrente até a operação rodar sem o fundador no meio.",
+    a: "O Diagnóstico é uma sprint curta para fundadores que precisam de um raio-X claro antes de tomar decisões. Entrega gargalos mapeados, oportunidades de receita identificadas e um roadmap priorizado. A Consultoria Completa é o programa de transformação: pega o diagnóstico e leva à execução, com acompanhamento executivo recorrente até a operação rodar sem o fundador no meio.",
   },
   {
     q: "Quanto tempo dura o projeto?",
-    a: "A Consultoria Completa segue um ciclo padrão de 6 meses: Mês 1 dedicado a diagnóstico, imersão e plano; Meses 2 a 5 em execução; Mês 6 em acompanhamento e sustentação. Esse prazo, no entanto, é flexível — projetos com maior complexidade, mais frentes simultâneas ou desafios específicos podem exigir ciclos mais longos. O escopo final é definido após a sessão estratégica inicial. O Diagnóstico é executado em poucas semanas.",
+    a: "A Consultoria Completa segue um ciclo padrão de 6 meses: Mês 1 dedicado a diagnóstico, imersão e plano; Meses 2 a 5 em execução; Mês 6 em acompanhamento e sustentação. Esse prazo, no entanto, é flexível: projetos com maior complexidade, mais frentes simultâneas ou desafios específicos podem exigir ciclos mais longos. O escopo final é definido após a sessão estratégica inicial. O Diagnóstico é executado em poucas semanas.",
   },
   {
     q: "Como é o envolvimento do fundador no processo?",
-    a: "Alta no início (diagnóstico, definição de prioridades, alinhamento estratégico) e progressivamente menor à medida que a estrutura assume. Para isso, é essencial a indicação de um ponto focal pelo fundador — uma pessoa interna que acompanha o projeto de perto, viabiliza a execução do plano de ação e funciona como multiplicador, disseminando o conhecimento e os novos processos dentro da empresa. O objetivo é justamente sair de um modelo onde tudo passa pelo fundador para um modelo onde a operação funciona sem ele no meio de cada decisão.",
+    a: "Alta no início (diagnóstico, definição de prioridades, alinhamento estratégico) e progressivamente menor à medida que a estrutura assume. Para isso, é essencial a indicação de um ponto focal pelo fundador, uma pessoa interna que acompanha o projeto de perto, viabiliza a execução do plano de ação e funciona como multiplicador, disseminando o conhecimento e os novos processos dentro da empresa. O objetivo é justamente sair de um modelo onde tudo passa pelo fundador para um modelo onde a operação funciona sem ele no meio de cada decisão.",
   },
   {
     q: "Que tipo de resultado posso esperar?",
-    a: "Os padrões observados em projetos similares apontam para 25% menos dispersão (CAC e LTV), 20% mais conversão (taxa e ciclo de vendas) e 15% mais margem (operacional e churn). Mas cada empresa recebe metas personalizadas a partir do diagnóstico inicial — não trabalho com promessas genéricas.",
+    a: "Os padrões observados em projetos similares apontam para 25% menos dispersão (CAC e LTV), 20% mais conversão (taxa e ciclo de vendas) e 15% mais margem (operacional e churn). Mas cada empresa recebe metas personalizadas a partir do diagnóstico inicial, não trabalho com promessas genéricas.",
   },
   {
     q: "Você assume o comercial da empresa ou orienta o time?",
-    a: "Atuo como consultor, não como interino. Isso significa orientar, estruturar processos, capacitar o time e acompanhar resultados — sempre transferindo conhecimento para que a operação se sustente quando o projeto encerrar. Você não cria dependência de mim.",
+    a: "Atuo como consultor, não como interino. Isso significa orientar, estruturar processos, capacitar o time e acompanhar resultados, sempre transferindo conhecimento para que a operação se sustente quando o projeto encerrar. Você não cria dependência de mim.",
   },
 ];
 const INSTAGRAM = "https://www.instagram.com/dsinen";
@@ -80,13 +80,13 @@ const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sinenberg Consulting — Consultoria Estratégica para Empresas Tech" },
+      { title: "Sinenberg Consulting | Consultoria Estratégica para Empresas Tech" },
       {
         name: "description",
         content:
           "Ajudo empresas de tecnologia que cresceram, mas ainda dependem do fundador em vendas, a estruturar o crescimento e ganhar previsibilidade sem quebrar na escala.",
       },
-      { property: "og:title", content: "Sinenberg Consulting — Consultoria Estratégica para Empresas Tech" },
+      { property: "og:title", content: "Sinenberg Consulting | Consultoria Estratégica para Empresas Tech" },
       {
         property: "og:description",
         content: "Transforme crescimento desorganizado em crescimento estruturado e previsível.",
@@ -101,7 +101,7 @@ const pains = [
   {
     icon: "solar:routing-2-outline",
     title: "Crescimento sem direção clara?",
-    text: "A empresa cresce, mas faltam prioridades e alinhamento entre as áreas — cada time puxa para um lado.",
+    text: "A empresa cresce, mas faltam prioridades e alinhamento entre as áreas: cada time puxa para um lado.",
   },
   {
     icon: "solar:user-id-outline",
@@ -143,8 +143,8 @@ const pillars = [
 
 const services = [
   {
-    name: "Consultoria — Modelo Completo",
-    audience: "Para empresas tech B2B (R$1M–R$50M) prontas para profissionalizar a operação de ponta a ponta.",
+    name: "Consultoria: Modelo Completo",
+    audience: "Para empresas tech B2B (R$1M a R$50M) prontas para profissionalizar a operação de ponta a ponta.",
     duration: "Programa robusto de transformação",
     deliverables: [
       "Diagnóstico estratégico completo",
@@ -186,7 +186,7 @@ const testimonials = [
   {
     name: "Rodrigo Oliveira",
     role: "Product Marketing Manager · Linx",
-    text: "Daniel participou ativamente de grandes projetos na Linx, como a chegada da OXXO ao Brasil. Seu olhar atento aos movimentos do mercado fez com que se antecipasse em diversas frentes. Atuou muito além das especificações do seu cargo — extremamente competente e comprometido.",
+    text: "Daniel participou ativamente de grandes projetos na Linx, como a chegada da OXXO ao Brasil. Seu olhar atento aos movimentos do mercado fez com que se antecipasse em diversas frentes. Atuou muito além das especificações do seu cargo, extremamente competente e comprometido.",
   },
   {
     name: "Fabiana Guiachetto",
@@ -240,7 +240,7 @@ function HomePage() {
             </p>
             <p className="mt-4 md:mt-6 text-white/85 text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
               Ajudo empresas tech que cresceram bem, mas ainda dependem do fundador em vendas,
-              a escalar com previsibilidade — sem quebrar na operação.
+              a escalar com previsibilidade, sem quebrar na operação.
             </p>
 
             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
@@ -331,7 +331,7 @@ function HomePage() {
             className="reveal mt-16 text-center font-serif italic text-[#0B2A5B] max-w-3xl mx-auto"
             style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}
           >
-            Crescer não é o problema. O problema é crescer sem estrutura — e existe um caminho para mudar isso.
+            Crescer não é o problema. O problema é crescer sem estrutura, e existe um caminho para mudar isso.
           </p>
         </div>
       </section>
@@ -377,7 +377,7 @@ function HomePage() {
               </h2>
 
               <p className="mt-6 text-base md:text-lg text-white/80 leading-relaxed">
-                Em 3 minutos, descubra em que estágio sua operação está hoje — e o que precisa
+                Em 3 minutos, descubra em que estágio sua operação está hoje, e o que precisa
                 antes de crescer mais.
               </p>
 
@@ -503,7 +503,7 @@ function HomePage() {
               Três pilares para escalar com previsibilidade
             </h2>
             <p className="mt-6 text-white/80 text-lg">
-              Um caminho estruturado que conecta estratégia, receita e operação — para que o
+              Um caminho estruturado que conecta estratégia, receita e operação, para que o
               crescimento deixe de depender do esforço heroico do fundador.
             </p>
           </div>
@@ -532,7 +532,7 @@ function HomePage() {
           </div>
 
           <p className="reveal mt-14 text-center text-white/75 max-w-2xl mx-auto">
-            Clareza estratégica, compromisso com resultados e parceria executiva — sem fórmulas
+            Clareza estratégica, compromisso com resultados e parceria executiva, sem fórmulas
             mágicas, com simplicidade estruturada.
           </p>
         </div>
@@ -681,7 +681,7 @@ function HomePage() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-full border border-[#1F6FDB]/30 bg-white text-[#0B2A5B] font-medium px-6 py-3 text-center hover:-translate-y-0.5 hover:border-[#1F6FDB] hover:bg-[#f5f8fc] transition"
             >
-              Acho que faz sentido — quero conversar
+              Acho que faz sentido, quero conversar
               <Icon icon="solar:arrow-right-outline" width="18" />
             </a>
           </div>
@@ -762,7 +762,7 @@ function HomePage() {
                     <li key={b.k} className="flex gap-2 text-[14.5px] text-[#0B2A5B]/85 leading-[1.55]">
                       <Icon icon="solar:chart-2-bold" className="shrink-0 mt-0.5 text-[#2563EB]" width="16" />
                       <span>
-                        <strong className="text-[#0B2A5B]">{b.k}</strong> — {b.t}
+                        <strong className="text-[#0B2A5B]">{b.k}</strong>: {b.t}
                       </span>
                     </li>
                   ))}
@@ -877,7 +877,7 @@ function HomePage() {
             <div className="mt-8 space-y-5 text-white/85 leading-relaxed">
               <p>
                 Sou Daniel Sinenberg, consultor estratégico focado em empresas de tecnologia B2B em fase
-                de crescimento. Trabalho com fundadores que precisam organizar o que cresceu rápido — e
+                de crescimento. Trabalho com fundadores que precisam organizar o que cresceu rápido, e
                 ainda depende deles para girar.
               </p>
               <p>
@@ -1037,7 +1037,7 @@ function HomePage() {
             </h2>
             <p className="mt-8 text-white/85 text-lg max-w-2xl mx-auto leading-relaxed">
               Uma conversa de 20 minutos é suficiente para entender se faz sentido trabalharmos
-              juntos. Você sai com pré diagnóstico claro, recomendações práticas — e sem compromisso.
+              juntos. Você sai com pré diagnóstico claro, recomendações práticas e sem compromisso.
             </p>
             <a
               href={CTA}

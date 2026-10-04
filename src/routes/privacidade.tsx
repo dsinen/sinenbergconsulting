@@ -6,7 +6,7 @@ import iconMark from "@/assets/icon.png";
 export const Route = createFileRoute("/privacidade")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidade — Sinenberg Consulting" },
+      { title: "Política de Privacidade | Sinenberg Consulting" },
       {
         name: "description",
         content:

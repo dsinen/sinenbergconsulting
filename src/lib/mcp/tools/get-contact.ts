@@ -9,9 +9,9 @@ export default defineTool({
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const contact = {
-      site: "https://sinenbergconsulting.lovable.app",
-      diagnostic_quiz: "https://sinenbergconsulting.lovable.app/diagnostico",
-      whatsapp: "https://wa.me/5511999999999",
+      site: "https://www.sinenbergconsulting.com.br",
+      diagnostic_quiz: "https://www.sinenbergconsulting.com.br/diagnostico",
+      whatsapp: "https://wa.me/5511984083610",
       consultant: "Daniel Sinenberg",
     };
     return {
