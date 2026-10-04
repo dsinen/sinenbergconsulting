@@ -215,7 +215,7 @@ function DiagnosticoPage() {
     return arr.slice(0, 3).map((x) => x.titulo);
   }, [answers]);
 
-  // Loading -> result transition (cosmético)
+  // Loading -> result transition (cosmético). O lead é enviado em enviarContato().
   useEffect(() => {
     if (step !== "loading") return;
     const t = setTimeout(() => {
@@ -745,23 +745,23 @@ function buildWhatsAppUrl(
   if (resultKey === "A") {
     msg = `Olá Daniel, fiz o Diagnóstico Rápido no site.
 
-📊 Meu resultado: Ainda não é o momento (faturamento abaixo de R$1M)
+*Meu resultado:* Ainda não é o momento (faturamento abaixo de R$1M)
 
-🏢 Empresa: ${form.empresa}
-👤 Papel: ${form.papel}
-📧 E-mail: ${form.email}
+*Empresa:* ${form.empresa}
+*Papel:* ${form.papel}
+*E-mail:* ${form.email}
 
 Mesmo assim, gostaria de conversar.`;
   } else {
     const pontosFmt = pontosCriticos.map((p) => `- ${p}`).join("\n");
     msg = `Olá Daniel, fiz o Diagnóstico Rápido no site.
 
-📊 Meu resultado: ${meta.categoriaShort} (${score}/21 pts)
+*Meu resultado:* ${meta.categoriaShort} (${score}/21 pts)
 
-🏢 Empresa: ${form.empresa}
-💰 Faturamento: ${form.faturamento}
-👤 Papel: ${form.papel}
-📧 E-mail: ${form.email}
+*Empresa:* ${form.empresa}
+*Faturamento:* ${form.faturamento}
+*Papel:* ${form.papel}
+*E-mail:* ${form.email}
 
 Pontos críticos da minha operação:
 ${pontosFmt}
