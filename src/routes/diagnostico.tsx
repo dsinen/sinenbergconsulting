@@ -8,13 +8,13 @@ import { registrarDiagnostico } from "@/lib/leads";
 export const Route = createFileRoute("/diagnostico")({
   head: () => ({
     meta: [
-      { title: "Diagnóstico Rápido — Sinenberg Consulting" },
+      { title: "Diagnóstico Rápido | Sinenberg Consulting" },
       {
         name: "description",
         content:
           "7 perguntas, 3 minutos. Descubra o estágio de maturidade da sua operação e o que precisa antes de escalar.",
       },
-      { property: "og:title", content: "Diagnóstico Rápido — Sinenberg Consulting" },
+      { property: "og:title", content: "Diagnóstico Rápido | Sinenberg Consulting" },
       {
         property: "og:description",
         content:
@@ -64,9 +64,9 @@ const QUESTIONS: QuestionDef[] = [
     categoria: "Direção de Crescimento",
     categoriaTitulo: "Definição de cliente ideal",
     pergunta:
-      "Sua empresa tem clareza sobre qual é o cliente ideal — aquele que compra mais rápido, paga melhor e dá menos trabalho?",
+      "Sua empresa tem clareza sobre qual é o cliente ideal, aquele que compra mais rápido, paga melhor e dá menos trabalho?",
     opcoes: [
-      { letra: "A", texto: "Vendemos para qualquer cliente que aparece — não temos esse filtro definido.", pontos: 0 },
+      { letra: "A", texto: "Vendemos para qualquer cliente que aparece. Não temos esse filtro definido.", pontos: 0 },
       { letra: "B", texto: "Temos uma ideia, mas o time comercial nem sempre segue.", pontos: 1 },
       { letra: "C", texto: "ICP claro, documentado, e o time prioriza com base nele.", pontos: 3 },
     ],
@@ -76,11 +76,11 @@ const QUESTIONS: QuestionDef[] = [
     categoria: "Direção de Crescimento",
     categoriaTitulo: "Hierarquia de portfólio",
     pergunta:
-      "Sua oferta tem uma frente principal que puxa o crescimento — ou o time vende um pouco de cada coisa?",
+      "Sua oferta tem uma frente principal que puxa o crescimento, ou o time vende um pouco de cada coisa?",
     opcoes: [
       { letra: "A", texto: "Vendemos várias soluções e cada vendedor tem sua preferência.", pontos: 0 },
       { letra: "B", texto: "Existe uma oferta principal, mas a régua de prioridade não é seguida.", pontos: 1 },
-      { letra: "C", texto: "Portfólio com hierarquia clara — todo mundo sabe qual oferta puxa o resultado.", pontos: 3 },
+      { letra: "C", texto: "Portfólio com hierarquia clara: todo mundo sabe qual oferta puxa o resultado.", pontos: 3 },
     ],
   },
   {
@@ -92,7 +92,7 @@ const QUESTIONS: QuestionDef[] = [
     opcoes: [
       { letra: "A", texto: "Mais de 70%. Sou eu quem fecha quase tudo.", pontos: 0 },
       { letra: "B", texto: "Entre 30% e 70%. Participo dos negócios maiores ou estratégicos.", pontos: 2 },
-      { letra: "C", texto: "Menos de 30%. O time fecha sozinho — eu entro só em decisões muito específicas.", pontos: 3 },
+      { letra: "C", texto: "Menos de 30%. O time fecha sozinho. Eu entro só em decisões muito específicas.", pontos: 3 },
     ],
   },
   {
@@ -112,7 +112,7 @@ const QUESTIONS: QuestionDef[] = [
     categoria: "Estrutura de Receita",
     categoriaTitulo: "Método e documentação comercial",
     pergunta:
-      "Se um vendedor importante sair amanhã, o conhecimento e os processos ficam — ou saem com ele?",
+      "Se um vendedor importante sair amanhã, o conhecimento e os processos ficam, ou saem com ele?",
     opcoes: [
       { letra: "A", texto: "Sairia junto. Cada um tem o seu jeito de vender.", pontos: 0 },
       { letra: "B", texto: "Parte fica documentada, parte está na cabeça das pessoas.", pontos: 2 },
@@ -124,7 +124,7 @@ const QUESTIONS: QuestionDef[] = [
     categoria: "Escala com Previsibilidade",
     categoriaTitulo: "Saúde operacional do crescimento",
     pergunta:
-      "Nos últimos 12 meses, mais clientes significaram mais margem — ou mais retrabalho e fricção?",
+      "Nos últimos 12 meses, mais clientes significaram mais margem, ou mais retrabalho e fricção?",
     opcoes: [
       { letra: "A", texto: "Mais retrabalho. A operação está rangendo com o crescimento.", pontos: 0 },
       { letra: "B", texto: "Margem estável, mas a complexidade aumentou bastante.", pontos: 1 },
@@ -310,7 +310,7 @@ function DiagnosticoPage() {
             <span className="hidden sm:inline">Voltar para o site</span>
             <span className="sm:hidden">Voltar</span>
           </Link>
-          <Link to="/" aria-label="Sinenberg Consulting — Início" className="inline-flex items-center">
+          <Link to="/" aria-label="Sinenberg Consulting, início" className="inline-flex items-center">
             <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
           </Link>
         </div>
@@ -408,7 +408,7 @@ function IntroScreen({
       </h1>
       <p className="mt-4 text-base md:text-lg text-[#1f2a3d]/75 leading-relaxed">
         7 perguntas, 3 minutos. No final, você recebe um diagnóstico personalizado do estágio
-        atual da sua operação — e o que precisa antes de crescer mais.
+        atual da sua operação, e o que precisa antes de crescer mais.
       </p>
 
       <form
@@ -682,7 +682,7 @@ function metaFor(key: ResultKey): ResultMeta {
         seloBg: "rgba(80,80,90,0.12)",
         seloColor: "#3a3a45",
         categoriaShort: "Ainda não é o momento",
-        titulo: "O momento ainda não é esse — e tudo bem.",
+        titulo: "O momento ainda não é esse, e tudo bem.",
         mensagem: [
           "Sua empresa ainda está em uma fase onde o foco precisa ser provar o modelo de negócio e validar o produto no mercado. Estruturar uma operação para escalar antes de ter tração consistente costuma ser caro e prematuro.",
           "Minha recomendação para esse momento: foque em vendas diretas, ouça intensamente os clientes, ajuste o produto. Quando o faturamento começar a se aproximar dos R$1M de forma recorrente, a conversa sobre estrutura faz muito mais sentido.",
@@ -696,10 +696,10 @@ function metaFor(key: ResultKey): ResultMeta {
         seloBg: "rgba(239,68,68,0.12)",
         seloColor: "#c83232",
         categoriaShort: "Crescimento Frágil",
-        titulo: "Você está crescendo no improviso — e o limite chega rápido.",
+        titulo: "Você está crescendo no improviso, e o limite chega rápido.",
         mensagem: [
-          "Sua pontuação indica que a operação ainda funciona muito por esforço pessoal e heroísmo, não por método. Isso não é um julgamento — é o estágio natural de toda empresa que cresceu pela qualidade do produto, não pela máquina comercial.",
-          "O risco: o teto desse modelo é a sua agenda. E quanto mais a empresa cresce, mais essa conta aperta — em margem, em time, em previsibilidade.",
+          "Sua pontuação indica que a operação ainda funciona muito por esforço pessoal e heroísmo, não por método. Isso não é um julgamento. É o estágio natural de toda empresa que cresceu pela qualidade do produto, não pela máquina comercial.",
+          "O risco: o teto desse modelo é a sua agenda. E quanto mais a empresa cresce, mais essa conta aperta, em margem, em time, em previsibilidade.",
           "A boa notícia: você ainda tem tempo. Estruturar agora é muito mais barato do que estruturar em crise.",
         ],
         blocoLabel: "Pontos críticos da sua operação",
@@ -710,11 +710,11 @@ function metaFor(key: ResultKey): ResultMeta {
         seloBg: "rgba(245,158,11,0.14)",
         seloColor: "#a86b09",
         categoriaShort: "Crescimento em Risco",
-        titulo: "Você está no ponto de virada — onde muitas empresas travam.",
+        titulo: "Você está no ponto de virada, onde muitas empresas travam.",
         mensagem: [
           "Sua empresa já tem algumas peças no lugar, mas a próxima fase de crescimento exige mudanças que não acontecem sozinhas. É justamente nessa faixa de maturidade que vejo as empresas mais ricas em potencial e mais frágeis em execução.",
           "O que costuma travar aqui: o fundador percebe que precisa sair do meio, mas o time ainda não está preparado. O pipeline existe, mas o forecast falha. Tem indicadores, mas as decisões importantes ainda passam pelo 'feeling'.",
-          "Esse é o momento mais estratégico para profissionalizar a estrutura — antes que o crescimento te empurre para uma decisão sob pressão.",
+          "Esse é o momento mais estratégico para profissionalizar a estrutura, antes que o crescimento te empurre para uma decisão sob pressão.",
         ],
         blocoLabel: "Onde sua operação ainda precisa amadurecer",
       };
@@ -724,10 +724,10 @@ function metaFor(key: ResultKey): ResultMeta {
         seloBg: "rgba(34,197,94,0.14)",
         seloColor: "#1e7a3a",
         categoriaShort: "Pronto para Escalar",
-        titulo: "Sua base é sólida — agora o jogo é aceleração.",
+        titulo: "Sua base é sólida. Agora o jogo é aceleração.",
         mensagem: [
           "Sua pontuação coloca sua empresa acima da média do mercado B2B brasileiro em maturidade comercial. Você tem ICP definido, o fundador já saiu do meio das vendas, há previsibilidade e gestão por dados.",
-          "O ganho aqui não é estrutural — é otimização e aceleração. Empresas nesse estágio costumam buscar consultoria por 3 motivos: entrar em novos mercados, aumentar margem em mercados maduros, ou preparar a operação para um movimento de M&A ou captação.",
+          "O ganho aqui não é estrutural, é otimização e aceleração. Empresas nesse estágio costumam buscar consultoria por 3 motivos: entrar em novos mercados, aumentar margem em mercados maduros, ou preparar a operação para um movimento de M&A ou captação.",
         ],
         blocoLabel: "Pontos com maior potencial de melhoria",
       };
@@ -799,7 +799,7 @@ function ResultScreen({
   const shareUrl = encodeURIComponent(
     typeof window !== "undefined"
       ? window.location.origin + "/diagnostico"
-      : "https://sinenbergconsulting.lovable.app/diagnostico",
+      : "https://www.sinenbergconsulting.com.br/diagnostico",
   );
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
   const whatsappShare = `https://wa.me/?text=${shareText}%20${shareUrl}`;
