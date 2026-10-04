@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClinicasRouteImport } from './routes/clinicas'
 import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
+import { Route as LinksRouteImport } from './routes/links'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -22,9 +24,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClinicasRoute = ClinicasRouteImport.update({
+  id: '/clinicas',
+  path: '/clinicas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DiagnosticoRoute = DiagnosticoRouteImport.update({
   id: '/diagnostico',
   path: '/diagnostico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinksRoute = LinksRouteImport.update({
+  id: '/links',
+  path: '/links',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -58,7 +70,9 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clinicas': typeof ClinicasRoute
   '/diagnostico': typeof DiagnosticoRoute
+  '/links': typeof LinksRoute
   '/mcp': typeof McpRoute
   '/privacidade': typeof PrivacidadeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -67,7 +81,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clinicas': typeof ClinicasRoute
   '/diagnostico': typeof DiagnosticoRoute
+  '/links': typeof LinksRoute
   '/mcp': typeof McpRoute
   '/privacidade': typeof PrivacidadeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -77,7 +93,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/clinicas': typeof ClinicasRoute
   '/diagnostico': typeof DiagnosticoRoute
+  '/links': typeof LinksRoute
   '/mcp': typeof McpRoute
   '/privacidade': typeof PrivacidadeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -88,7 +106,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/clinicas'
     | '/diagnostico'
+    | '/links'
     | '/mcp'
     | '/privacidade'
     | '/.mcp/list-tools'
@@ -97,7 +117,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/clinicas'
     | '/diagnostico'
+    | '/links'
     | '/mcp'
     | '/privacidade'
     | '/.mcp/list-tools'
@@ -106,7 +128,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/clinicas'
     | '/diagnostico'
+    | '/links'
     | '/mcp'
     | '/privacidade'
     | '/.mcp/list-tools'
@@ -116,7 +140,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClinicasRoute: typeof ClinicasRoute
   DiagnosticoRoute: typeof DiagnosticoRoute
+  LinksRoute: typeof LinksRoute
   McpRoute: typeof McpRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -133,11 +159,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clinicas': {
+      id: '/clinicas'
+      path: '/clinicas'
+      fullPath: '/clinicas'
+      preLoaderRoute: typeof ClinicasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/diagnostico': {
       id: '/diagnostico'
       path: '/diagnostico'
       fullPath: '/diagnostico'
       preLoaderRoute: typeof DiagnosticoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/links': {
+      id: '/links'
+      path: '/links'
+      fullPath: '/links'
+      preLoaderRoute: typeof LinksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -180,7 +220,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClinicasRoute: ClinicasRoute,
   DiagnosticoRoute: DiagnosticoRoute,
+  LinksRoute: LinksRoute,
   McpRoute: McpRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,

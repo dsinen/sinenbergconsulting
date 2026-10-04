@@ -74,7 +74,7 @@ const faqs = [
     a: "Atuo como consultor, não como interino. Isso significa orientar, estruturar processos, capacitar o time e acompanhar resultados, sempre transferindo conhecimento para que a operação se sustente quando o projeto encerrar. Você não cria dependência de mim.",
   },
 ];
-const INSTAGRAM = "https://www.instagram.com/dsinen";
+const INSTAGRAM = "https://www.instagram.com/danielsinenberg";
 const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 
 export const Route = createFileRoute("/")({
