@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
-import danielPhoto from "@/assets/daniel-about.jpg";
+import danielPhoto from "@/assets/daniel-links.jpg";
 
 export const Route = createFileRoute("/links")({
   head: () => ({
@@ -53,14 +53,14 @@ const botoes: Botao[] = [
     href: WHATSAPP,
   },
   {
-    titulo: "Conheça a consultoria",
-    detalhe: "Para empresas tech B2B que dependem do fundador em vendas",
+    titulo: "Conheça a consultoria para empresas Tech",
+    detalhe: "Crescimento estruturado. Receita previsível",
     icone: "solar:compass-outline",
     to: "/",
   },
   {
-    titulo: "Para clínicas",
-    detalhe: "Clínica Estruturada, a clínica que não depende do médico para tudo girar",
+    titulo: "Para clínicas médicas",
+    detalhe: "",
     icone: "solar:stethoscope-outline",
     to: "/clinicas",
   },
@@ -93,13 +93,15 @@ function LinksPage() {
                 <Icon icon={b.icone} className="shrink-0 text-2xl" />
                 <span className="flex flex-col">
                   <span className="font-serif text-[17px] font-medium leading-snug">{b.titulo}</span>
-                  <span
-                    className={`mt-0.5 text-[13px] leading-snug ${
-                      b.destaque ? "text-[#0B2A5B]/75" : "text-white/65"
-                    }`}
-                  >
-                    {b.detalhe}
-                  </span>
+                  {b.detalhe && (
+                    <span
+                      className={`mt-0.5 text-[13px] leading-snug ${
+                        b.destaque ? "text-[#0B2A5B]/75" : "text-white/65"
+                      }`}
+                    >
+                      {b.detalhe}
+                    </span>
+                  )}
                 </span>
               </>
             );
