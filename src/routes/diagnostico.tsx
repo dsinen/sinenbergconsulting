@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 import iconMark from "@/assets/icon.png";
+import { registrarDiagnostico } from "@/lib/leads";
 
 export const Route = createFileRoute("/diagnostico")({
   head: () => ({
@@ -150,6 +151,8 @@ interface FormData {
   empresa: string;
   faturamento: string;
   papel: string;
+  consentimento: boolean;
+  website: string; // campo isca contra robôs
 }
 
 type Step = "intro" | "question" | "loading" | "result";
@@ -167,6 +170,8 @@ function DiagnosticoPage() {
     empresa: "",
     faturamento: "",
     papel: "",
+    consentimento: false,
+    website: "",
   });
   const [answers, setAnswers] = useState<(Choice | null)[]>(
     Array(QUESTIONS.length).fill(null),
@@ -177,7 +182,8 @@ function DiagnosticoPage() {
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()) &&
     form.empresa.trim().length > 1 &&
     !!form.faturamento &&
-    !!form.papel;
+    !!form.papel &&
+    form.consentimento;
 
   const totalScore = useMemo(
     () =>
@@ -236,8 +242,34 @@ function DiagnosticoPage() {
     if (questionIdx < QUESTIONS.length - 1) {
       setQuestionIdx((i) => i + 1);
     } else {
+      enviarContato();
       setStep("loading");
     }
+  }
+
+  // Envia o contato e o resultado para o Notion e para o e-mail do Daniel.
+  // Não bloqueia a tela: se o envio falhar, a pessoa ainda vê o resultado.
+  function enviarContato() {
+    registrarDiagnostico({
+      data: {
+        nome: form.nome,
+        email: form.email,
+        empresa: form.empresa,
+        faturamento: form.faturamento,
+        papel: form.papel,
+        consentimento: true as const,
+        estagio: resultKey,
+        pontuacao: totalScore,
+        pontosCriticos,
+        respostas: answers.flatMap((letra, i) => {
+          const opt = letra ? QUESTIONS[i].opcoes.find((o) => o.letra === letra) : undefined;
+          return letra && opt
+            ? [{ n: QUESTIONS[i].n, titulo: QUESTIONS[i].categoriaTitulo, letra, texto: opt.texto, pontos: opt.pontos }]
+            : [];
+        }),
+        website: form.website,
+      },
+    }).catch((err) => console.error("Falha ao registrar o diagnóstico", err));
   }
 
   function handleBack() {
@@ -452,6 +484,39 @@ function IntroScreen({
           </Field>
         </div>
 
+        {/* Campo isca: invisível para pessoas, robôs costumam preencher */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+          <label>
+            Não preencha este campo
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={(e) => setForm({ ...form, website: e.target.value })}
+            />
+          </label>
+        </div>
+
+        <label className="flex items-start gap-3 pt-1 cursor-pointer">
+          <input
+            type="checkbox"
+            required
+            checked={form.consentimento}
+            onChange={(e) => setForm({ ...form, consentimento: e.target.checked })}
+            className="mt-0.5 h-5 w-5 shrink-0 accent-[#2EC4FF]"
+          />
+          <span className="text-[13px] leading-snug text-[#0B2A5B]/75">
+            Concordo em compartilhar meus dados e respostas com a Sinenberg Consulting para receber
+            o resultado e ser contatado sobre ele. Posso pedir a exclusão a qualquer momento.
+            Leia a{" "}
+            <Link to="/privacidade" target="_blank" className="underline hover:text-[#0B2A5B]">
+              política de privacidade
+            </Link>
+            .
+          </span>
+        </label>
+
         <button
           type="submit"
           disabled={!valid}
@@ -463,7 +528,7 @@ function IntroScreen({
         </button>
 
         <p className="text-xs text-[#0B2A5B]/55 text-center pt-1">
-          Suas respostas são confidenciais. Não compartilhamos com terceiros.
+          Usamos suas respostas só para te enviar o resultado e conversar sobre ele. Não vendemos nem divulgamos seus dados.
         </p>
       </form>
     </div>
