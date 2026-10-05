@@ -1038,6 +1038,10 @@ function HomePage() {
             © 2026 Sinenberg Consulting
             <br />
             Todos os direitos reservados.
+            <br />
+            <Link to="/privacidade" className="mt-2 inline-block underline hover:text-white/90">
+              Política de Privacidade
+            </Link>
           </p>
           <div className="flex items-center justify-center gap-5 order-1 md:order-2">
             <a
@@ -1065,7 +1069,7 @@ function HomePage() {
             </a>
           </div>
           <div className="flex justify-center md:justify-end order-3">
-            <img src={logoNoTagDark} alt="Sinenberg Consulting" className="h-16 md:h-20 w-auto" />
+            <img src={logoNoTagDark} alt="Sinenberg Consulting" className="h-28 md:h-36 w-auto" />
           </div>
         </div>
       </footer>

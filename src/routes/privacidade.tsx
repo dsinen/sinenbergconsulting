@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 import iconMark from "@/assets/icon.png";
+import { useDestinoVoltar } from "@/lib/voltar";
 
 export const Route = createFileRoute("/privacidade")({
   head: () => ({
@@ -30,21 +31,19 @@ function Bloco({ titulo, children }: { titulo: string; children: React.ReactNode
 }
 
 function PrivacidadePage() {
+  const destinoVoltar = useDestinoVoltar();
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F9FE] text-[#0B2A5B]">
       <header className="relative w-full border-b border-[#0B2A5B]/10 bg-white">
         <div className="mx-auto max-w-[1100px] px-4 md:px-6 h-16 md:h-20 flex items-center justify-center">
           <Link
-            to="/"
+            to={destinoVoltar}
             className="absolute left-3 md:left-6 inline-flex items-center gap-1.5 text-xs md:text-sm text-[#0B2A5B]/70 hover:text-[#0B2A5B] transition-colors"
           >
             <Icon icon="solar:arrow-left-outline" />
-            <span className="hidden sm:inline">Voltar para o site</span>
-            <span className="sm:hidden">Voltar</span>
+            Voltar
           </Link>
-          <Link to="/" aria-label="Sinenberg Consulting, início" className="inline-flex items-center">
-            <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
-          </Link>
+          <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
         </div>
       </header>
 
