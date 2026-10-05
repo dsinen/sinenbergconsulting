@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import logoDark from "@/assets/logo-dark.png";
 import iconMark from "@/assets/icon.png";
+import { useDestinoVoltar } from "@/lib/voltar";
 import { registrarDiagnostico } from "@/lib/leads";
 
 export const Route = createFileRoute("/diagnostico")({
@@ -162,6 +163,7 @@ type ResultKey = "A" | "B" | "C" | "D";
 // ─────────────────────────── Componente principal ───────────────────────────
 
 function DiagnosticoPage() {
+  const destinoVoltar = useDestinoVoltar();
   const [step, setStep] = useState<Step>("intro");
   const [questionIdx, setQuestionIdx] = useState(0);
   const [form, setForm] = useState<FormData>({
@@ -303,16 +305,13 @@ function DiagnosticoPage() {
       <header className="relative w-full border-b border-[#0B2A5B]/10 bg-white">
         <div className="mx-auto max-w-[1100px] px-4 md:px-6 h-16 md:h-20 flex items-center justify-center">
           <Link
-            to="/"
+            to={destinoVoltar}
             className="absolute left-3 md:left-6 inline-flex items-center gap-1.5 text-xs md:text-sm text-[#0B2A5B]/70 hover:text-[#0B2A5B] transition-colors"
           >
             <Icon icon="solar:arrow-left-outline" />
-            <span className="hidden sm:inline">Voltar para o site</span>
-            <span className="sm:hidden">Voltar</span>
+            Voltar
           </Link>
-          <Link to="/" aria-label="Sinenberg Consulting, início" className="inline-flex items-center">
-            <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
-          </Link>
+          <img src={iconMark} alt="Sinenberg Consulting" className="h-10 w-auto" />
         </div>
 
         {/* Barra de progresso */}
@@ -784,6 +783,7 @@ function ResultScreen({
   form: FormData;
   onRestart: () => void;
 }) {
+  const destinoVoltar = useDestinoVoltar();
   const meta = metaFor(resultKey);
   const showScore = meta.scoreVisivel !== false;
   const firstName = form.nome.trim().split(/\s+/)[0] || "";
@@ -887,11 +887,11 @@ function ResultScreen({
           WhatsApp
         </a>
         <Link
-          to="/"
+          to={destinoVoltar}
           className="inline-flex items-center gap-1.5 hover:text-[#0B2A5B] transition-colors"
         >
           <Icon icon="solar:home-2-outline" />
-          Voltar para o site
+          Voltar
         </Link>
         <button
           type="button"

@@ -228,12 +228,9 @@ function LinksPage() {
           })}
         </ul>
 
-        <div className="lk-up mt-12 flex flex-col items-center gap-8" style={Atraso(9)}>
+        <div className="lk-up mt-12 flex flex-col items-center" style={Atraso(9)}>
           <Link to="/" aria-label="Sinenberg Consulting, início">
             <img src={logoSemTag} alt="Sinenberg Consulting" className="h-24 w-auto opacity-95" />
-          </Link>
-          <Link to="/privacidade" className="text-xs text-white/50 underline hover:text-white/80">
-            Política de Privacidade
           </Link>
         </div>
       </main>
