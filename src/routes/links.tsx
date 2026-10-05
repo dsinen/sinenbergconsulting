@@ -35,7 +35,7 @@ export const Route = createFileRoute("/links")({
 
 const WHATSAPP =
   "https://wa.me/5511984083610?text=" +
-  encodeURIComponent("Olá Daniel, vi seu link e gostaria de agendar uma conversa de 30 minutos.");
+  encodeURIComponent("Olá Daniel, vi seu link e gostaria de agendar uma conversa.");
 const INSTAGRAM = "https://www.instagram.com/danielsinenberg";
 const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 
@@ -228,7 +228,7 @@ function LinksPage() {
           })}
         </ul>
 
-        <div className="lk-up mt-12 flex flex-col items-center gap-2" style={Atraso(9)}>
+        <div className="lk-up mt-12 flex flex-col items-center gap-8" style={Atraso(9)}>
           <Link to="/" aria-label="Sinenberg Consulting, início">
             <img src={logoSemTag} alt="Sinenberg Consulting" className="h-24 w-auto opacity-95" />
           </Link>
