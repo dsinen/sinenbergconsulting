@@ -40,7 +40,7 @@ export const Route = createFileRoute("/clinicas")({
 const WHATSAPP =
   "https://wa.me/5511984083610?text=" +
   encodeURIComponent(
-    "Olá Daniel, vi a página da Clínica Estruturada e gostaria de agendar uma conversa de 30 minutos.",
+    "Olá Daniel, vi a página da Clínica Estruturada e gostaria de agendar uma conversa.",
   );
 
 const desafios = [
@@ -188,7 +188,7 @@ function Botao({ className = "", escuro = false }: { className?: string; escuro?
       } ${className}`}
     >
       <MessageCircle size={20} strokeWidth={1.9} />
-      Conversar por 30 minutos
+      Vamos conversar
     </a>
   );
 }
@@ -207,14 +207,14 @@ function ClinicasPage() {
 
       <header className="sticky top-0 z-40 border-b border-[#0B2A5B]/10 bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-[72px] max-w-[1100px] items-center justify-between px-4 md:px-6">
-          <Link to="/" aria-label="Sinenberg Consulting, início" className="flex items-center gap-4">
+          <div className="flex items-center gap-4">
             <img src={logoClaro} alt="Sinenberg Consulting" className="h-14 w-auto" />
             <span className="hidden h-8 w-px bg-[#0B2A5B]/15 sm:block" />
             <span className="hidden items-center gap-2 text-sm font-medium text-[#12B5A6] sm:flex">
               <HeartPulse size={18} strokeWidth={2} />
               Clínica Estruturada
             </span>
-          </Link>
+          </div>
           <a
             href={WHATSAPP}
             target="_blank"

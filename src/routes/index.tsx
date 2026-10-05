@@ -12,7 +12,7 @@ import { Navbar } from "@/components/Navbar";
 import { useReveal } from "@/hooks/useReveal";
 import heroPhoto from "@/assets/daniel-hero.jpg";
 import aboutPhoto from "@/assets/daniel-about.jpg";
-import logoDark from "@/assets/logo-dark.png";
+import logoNoTagDark from "@/assets/logo-notag-dark.png";
 import logoLinx from "@/assets/logos/linx.png";
 import logoStone from "@/assets/logos/stone.png";
 import logoVivo from "@/assets/logos/vivo.png";
@@ -1065,7 +1065,7 @@ function HomePage() {
             </a>
           </div>
           <div className="flex justify-center md:justify-end order-3">
-            <img src={logoDark} alt="Sinenberg Consulting" className="h-16 md:h-20 w-auto" />
+            <img src={logoNoTagDark} alt="Sinenberg Consulting" className="h-16 md:h-20 w-auto" />
           </div>
         </div>
       </footer>
