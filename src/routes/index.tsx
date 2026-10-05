@@ -1069,7 +1069,7 @@ function HomePage() {
             </a>
           </div>
           <div className="flex justify-center md:justify-end order-3">
-            <img src={logoNoTagDark} alt="Sinenberg Consulting" className="h-28 md:h-36 w-auto" />
+            <img src={logoNoTagDark} alt="Sinenberg Consulting" className="h-[88px] md:h-28 w-auto" />
           </div>
         </div>
       </footer>
