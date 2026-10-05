@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
-import logoDark from "@/assets/logo-dark.png";
+import logoFooter from "@/assets/logo-notag-light.png";
 import iconMark from "@/assets/icon.png";
 import { useDestinoVoltar } from "@/lib/voltar";
 import { registrarDiagnostico } from "@/lib/leads";
@@ -368,10 +368,18 @@ function DiagnosticoPage() {
       {/* Footer minimalista */}
       <footer className="border-t border-[#0B2A5B]/10 bg-white">
         <div className="mx-auto max-w-[1100px] px-4 md:px-6 py-8 flex flex-col items-center justify-center gap-4">
-          <img src={logoDark} alt="Sinenberg Consulting" className="h-[60px] w-auto" />
+          <img src={logoFooter} alt="Sinenberg Consulting" className="h-24 w-auto" />
           <p className="text-[11px] md:text-xs text-[#0B2A5B]/55 text-center">
             © {new Date().getFullYear()} Sinenberg Consulting. Todos os direitos reservados.
           </p>
+          <Link
+            to="/privacidade"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] md:text-xs text-[#0B2A5B]/55 underline hover:text-[#0B2A5B]"
+          >
+            Política de Privacidade
+          </Link>
         </div>
       </footer>
     </div>
@@ -793,16 +801,6 @@ function ResultScreen({
     [resultKey, meta, score, pontosCriticos, form],
   );
 
-  const shareText = encodeURIComponent(
-    `Acabei de fazer o Diagnóstico Rápido da Sinenberg Consulting e descobri o estágio de maturidade da minha operação. Vale o teste!`,
-  );
-  const shareUrl = encodeURIComponent(
-    typeof window !== "undefined"
-      ? window.location.origin + "/diagnostico"
-      : "https://www.sinenbergconsulting.com.br/diagnostico",
-  );
-  const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
-  const whatsappShare = `https://wa.me/?text=${shareText}%20${shareUrl}`;
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -865,27 +863,8 @@ function ResultScreen({
         </a>
       </div>
 
-      {/* Compartilhar + refazer */}
+      {/* Voltar + refazer */}
       <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-[#0B2A5B]/60">
-        <span>Compartilhar:</span>
-        <a
-          href={linkedinShare}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 hover:text-[#0B2A5B] transition-colors"
-        >
-          <Icon icon="mdi:linkedin" />
-          LinkedIn
-        </a>
-        <a
-          href={whatsappShare}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 hover:text-[#0B2A5B] transition-colors"
-        >
-          <Icon icon="mdi:whatsapp" />
-          WhatsApp
-        </a>
         <Link
           to={destinoVoltar}
           className="inline-flex items-center gap-1.5 hover:text-[#0B2A5B] transition-colors"

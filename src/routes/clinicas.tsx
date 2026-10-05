@@ -206,9 +206,9 @@ function ClinicasPage() {
       <style>{estilos}</style>
 
       <header className="sticky top-0 z-40 border-b border-[#0B2A5B]/10 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex h-[72px] max-w-[1100px] items-center justify-between px-4 md:px-6">
+        <div className="mx-auto flex h-[84px] md:h-[124px] max-w-[1100px] items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-4">
-            <img src={logoClaro} alt="Sinenberg Consulting" className="h-14 w-auto" />
+            <img src={logoClaro} alt="Sinenberg Consulting" className="h-16 md:h-24 w-auto" />
             <span className="hidden h-8 w-px bg-[#0B2A5B]/15 sm:block" />
             <span className="hidden items-center gap-2 text-sm font-medium text-[#12B5A6] sm:flex">
               <HeartPulse size={18} strokeWidth={2} />
