@@ -9,7 +9,7 @@ import {
   MessageCircle,
   Stethoscope,
 } from "lucide-react";
-import logoDark from "@/assets/logo-dark.png";
+import logoSemTag from "@/assets/logo-notag-dark.png";
 import iconMark from "@/assets/icon.png";
 import danielPhoto from "@/assets/daniel-links.jpg";
 
@@ -59,7 +59,7 @@ const botoes: Botao[] = [
     href: WHATSAPP,
   },
   {
-    titulo: "Conheça a consultoria completa para empresas Tech",
+    titulo: "Conheça a consultoria para empresas de Tecnologia",
     detalhe: "Crescimento estruturado, receita previsível",
     Icone: Compass,
     to: "/",
@@ -230,7 +230,7 @@ function LinksPage() {
 
         <div className="lk-up mt-12 flex flex-col items-center gap-2" style={Atraso(9)}>
           <Link to="/" aria-label="Sinenberg Consulting, início">
-            <img src={logoDark} alt="Sinenberg Consulting" className="h-20 w-auto opacity-90" />
+            <img src={logoSemTag} alt="Sinenberg Consulting" className="h-24 w-auto opacity-95" />
           </Link>
           <Link to="/privacidade" className="text-xs text-white/50 underline hover:text-white/80">
             Política de Privacidade
