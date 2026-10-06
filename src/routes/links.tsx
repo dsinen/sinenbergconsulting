@@ -10,7 +10,6 @@ import {
   Stethoscope,
 } from "lucide-react";
 import logoSemTag from "@/assets/logo-notag-dark.png";
-import iconMark from "@/assets/icon.png";
 import danielPhoto from "@/assets/daniel-links.jpg";
 
 export const Route = createFileRoute("/links")({
@@ -82,7 +81,7 @@ const estilos = `
   @keyframes lk-drift1 { to { transform: translate3d(90px, 70px, 0) scale(1.15); } }
   @keyframes lk-drift2 { to { transform: translate3d(-110px, -60px, 0) scale(1.1); } }
 
-  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 98%); mask-image: linear-gradient(to bottom, #000 52%, transparent 98%); }
+  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
 
   @media (min-width: 520px) {
     .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); mask-composite: intersect; }
@@ -130,81 +129,65 @@ function LinksPage() {
       </div>
 
       <main className="relative mx-auto flex w-full max-w-[480px] flex-col items-center pb-12">
-        <div className="relative w-full">
+        <div className="relative mx-auto w-[70%]">
           <img
             src={danielPhoto}
             alt="Daniel Sinenberg"
-            className="lk-hero-img block aspect-[1/1.05] w-full object-cover object-[50%_18%]"
+            className="lk-hero-img block aspect-[1/0.72] w-full object-cover object-[50%_35%]"
             fetchPriority="high"
           />
-          <Link
-            to="/"
-            aria-label="Ir para o site Sinenberg Consulting"
-            className="lk-social absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full"
-          >
-            <img src={iconMark} alt="" className="h-6 w-6 object-contain" />
-          </Link>
         </div>
 
-        <div className="relative -mt-24 flex w-full flex-col items-center px-6 text-center">
-          <p className="lk-up text-[11px] font-medium uppercase tracking-[0.3em] text-[#2EC4FF]" style={Atraso(0)}>
-            Sinenberg Consulting
-          </p>
+        <div className="relative -mt-5 flex w-full flex-col items-center px-6 text-center">
           <h1
-            className="lk-up mt-2 font-serif text-[46px] font-medium leading-[1.02] tracking-tight"
+            className="lk-up mt-0 font-serif text-[38px] font-medium leading-[1.05] tracking-tight"
             style={{ ...Atraso(1), textShadow: "0 2px 24px rgba(6,20,58,.6)" }}
           >
-            Daniel
-            <br />
-            Sinenberg
+            Daniel Sinenberg
           </h1>
-          <p className="lk-up mt-4 max-w-[340px] text-[16px] leading-relaxed text-white/90" style={Atraso(2)}>
+          <p className="lk-up mt-2.5 max-w-[340px] text-[15px] leading-snug text-white/90" style={Atraso(2)}>
             Estruturo o crescimento de empresas que ainda dependem do dono para tudo.
           </p>
 
-          <div className="lk-up mt-6 flex items-center gap-3" style={Atraso(3)}>
-            <a
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn de Daniel Sinenberg"
-              className="lk-social flex h-12 w-12 items-center justify-center rounded-full"
-            >
-              <Linkedin size={21} strokeWidth={1.9} />
-            </a>
-            <a
-              href={INSTAGRAM}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram @danielsinenberg"
-              className="lk-social flex h-12 w-12 items-center justify-center rounded-full"
-            >
-              <Instagram size={21} strokeWidth={1.9} />
-            </a>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="lk-social flex h-12 w-12 items-center justify-center rounded-full"
-            >
-              <MessageCircle size={21} strokeWidth={1.9} />
-            </a>
+          <div className="lk-up mt-4 w-full" style={Atraso(3)}>
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/70">Me siga nas redes</p>
+            <div className="mt-2 grid grid-cols-2 gap-3">
+              <a
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn de Daniel Sinenberg"
+                className="lk-social flex h-11 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
+              >
+                <Linkedin size={20} strokeWidth={1.9} />
+                LinkedIn
+              </a>
+              <a
+                href={INSTAGRAM}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram @danielsinenberg"
+                className="lk-social flex h-11 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
+              >
+                <Instagram size={20} strokeWidth={1.9} />
+                Instagram
+              </a>
+            </div>
           </div>
         </div>
 
-        <ul className="mt-9 w-full space-y-3.5 px-5">
+        <ul className="mt-4 w-full space-y-3 px-5">
           {botoes.map((b, i) => {
-            const classe = `lk-card ${b.destaque ? "lk-main" : "text-white"} flex w-full items-center gap-4 rounded-[22px] px-4 py-4 text-left`;
+            const classe = `lk-card ${b.destaque ? "lk-main" : "text-white"} flex w-full items-center gap-3.5 rounded-[20px] px-4 py-3 text-left`;
             const conteudo = (
               <>
-                <span className="lk-ico flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
+                <span className="lk-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl">
                   <b.Icone size={24} strokeWidth={1.8} />
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="font-serif text-[17px] font-medium leading-snug">{b.titulo}</span>
+                  <span className="font-serif text-[16px] font-medium leading-snug">{b.titulo}</span>
                   {b.detalhe && (
-                    <span className={`mt-1 text-[13px] leading-snug ${b.destaque ? "opacity-75" : "text-white/70"}`}>
+                    <span className={`mt-0.5 text-[12.5px] leading-snug ${b.destaque ? "opacity-75" : "text-white/70"}`}>
                       {b.detalhe}
                     </span>
                   )}
@@ -228,9 +211,9 @@ function LinksPage() {
           })}
         </ul>
 
-        <div className="lk-up mt-12 flex flex-col items-center" style={Atraso(9)}>
+        <div className="lk-up mt-8 flex flex-col items-center" style={Atraso(9)}>
           <Link to="/" aria-label="Sinenberg Consulting, início">
-            <img src={logoSemTag} alt="Sinenberg Consulting" className="h-24 w-auto opacity-95" />
+            <img src={logoSemTag} alt="Sinenberg Consulting" className="h-20 w-auto opacity-95" />
           </Link>
         </div>
       </main>
