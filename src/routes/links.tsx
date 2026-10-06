@@ -81,7 +81,7 @@ const estilos = `
   @keyframes lk-drift1 { to { transform: translate3d(90px, 70px, 0) scale(1.15); } }
   @keyframes lk-drift2 { to { transform: translate3d(-110px, -60px, 0) scale(1.1); } }
 
-  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
+  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 68%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
 
   @media (min-width: 520px) {
     .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); mask-composite: intersect; }
@@ -129,11 +129,11 @@ function LinksPage() {
       </div>
 
       <main className="relative mx-auto flex w-full max-w-[480px] flex-col items-center pb-12">
-        <div className="relative w-full">
+        <div className="relative mx-auto w-[80%]">
           <img
             src={danielPhoto}
             alt="Daniel Sinenberg"
-            className="lk-hero-img block aspect-[1/0.72] w-full object-cover object-[50%_8%]"
+            className="lk-hero-img block aspect-[1/0.74] w-full object-cover object-[50%_8%]"
             fetchPriority="high"
           />
         </div>
