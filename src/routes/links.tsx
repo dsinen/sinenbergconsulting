@@ -81,11 +81,8 @@ const estilos = `
   @keyframes lk-drift1 { to { transform: translate3d(90px, 70px, 0) scale(1.15); } }
   @keyframes lk-drift2 { to { transform: translate3d(-110px, -60px, 0) scale(1.1); } }
 
-  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
+  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 91%, transparent 100%); mask-image: linear-gradient(to bottom, #000 91%, transparent 100%); }
 
-  @media (min-width: 520px) {
-    .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); mask-composite: intersect; }
-  }
 
   .lk-up { opacity: 0; transform: translateY(16px); animation: lk-up .7s cubic-bezier(.2,.7,.2,1) forwards; }
   @keyframes lk-up { to { opacity: 1; transform: none; } }
@@ -129,29 +126,28 @@ function LinksPage() {
       </div>
 
       <main className="relative mx-auto flex w-full max-w-[480px] flex-col items-center pb-12">
-        <div className="relative mx-auto w-[70%]">
+        <div className="relative w-full">
           <img
             src={danielPhoto}
             alt="Daniel Sinenberg"
-            className="lk-hero-img block aspect-[1/0.72] w-full object-cover object-[50%_35%]"
+            className="lk-hero-img block aspect-[1/0.64] w-full object-cover object-[50%_33%]"
             fetchPriority="high"
           />
         </div>
 
-        <div className="relative -mt-5 flex w-full flex-col items-center px-6 text-center">
+        <div className="relative -mt-8 flex w-full flex-col items-center px-6 text-center">
           <h1
-            className="lk-up mt-0 font-serif text-[38px] font-medium leading-[1.05] tracking-tight"
+            className="lk-up mt-0 font-serif text-[36px] font-medium leading-[1.05] tracking-tight"
             style={{ ...Atraso(1), textShadow: "0 2px 24px rgba(6,20,58,.6)" }}
           >
             Daniel Sinenberg
           </h1>
-          <p className="lk-up mt-2.5 max-w-[340px] text-[15px] leading-snug text-white/90" style={Atraso(2)}>
+          <p className="lk-up mt-2 max-w-[340px] text-[14.5px] leading-snug text-white/90" style={Atraso(2)}>
             Estruturo o crescimento de empresas que ainda dependem do dono para tudo.
           </p>
 
-          <div className="lk-up mt-4 w-full" style={Atraso(3)}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/70">Me siga nas redes</p>
-            <div className="mt-2 grid grid-cols-2 gap-3">
+          <div className="lk-up mt-3 w-full" style={Atraso(3)}>
+            <div className="grid grid-cols-2 gap-3">
               <a
                 href={LINKEDIN}
                 target="_blank"
@@ -176,18 +172,18 @@ function LinksPage() {
           </div>
         </div>
 
-        <ul className="mt-4 w-full space-y-3 px-5">
+        <ul className="mt-3 w-full space-y-2.5 px-5">
           {botoes.map((b, i) => {
-            const classe = `lk-card ${b.destaque ? "lk-main" : "text-white"} flex w-full items-center gap-3.5 rounded-[20px] px-4 py-3 text-left`;
+            const classe = `lk-card ${b.destaque ? "lk-main" : "text-white"} flex w-full items-center gap-3 rounded-[18px] px-3.5 py-2.5 text-left`;
             const conteudo = (
               <>
-                <span className="lk-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl">
-                  <b.Icone size={24} strokeWidth={1.8} />
+                <span className="lk-ico flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl">
+                  <b.Icone size={22} strokeWidth={1.8} />
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="font-serif text-[16px] font-medium leading-snug">{b.titulo}</span>
+                  <span className="font-serif text-[15px] font-medium leading-snug">{b.titulo}</span>
                   {b.detalhe && (
-                    <span className={`mt-0.5 text-[12.5px] leading-snug ${b.destaque ? "opacity-75" : "text-white/70"}`}>
+                    <span className={`mt-0.5 text-[12px] leading-snug ${b.destaque ? "opacity-75" : "text-white/70"}`}>
                       {b.detalhe}
                     </span>
                   )}
@@ -211,7 +207,7 @@ function LinksPage() {
           })}
         </ul>
 
-        <div className="lk-up mt-8 flex flex-col items-center" style={Atraso(9)}>
+        <div className="lk-up mt-6 flex flex-col items-center" style={Atraso(9)}>
           <Link to="/" aria-label="Sinenberg Consulting, início">
             <img src={logoSemTag} alt="Sinenberg Consulting" className="h-20 w-auto opacity-95" />
           </Link>
