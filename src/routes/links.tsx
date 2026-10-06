@@ -10,7 +10,6 @@ import {
   Stethoscope,
 } from "lucide-react";
 import logoSemTag from "@/assets/logo-notag-dark.png";
-import iconMark from "@/assets/icon.png";
 import danielPhoto from "@/assets/daniel-links.jpg";
 
 export const Route = createFileRoute("/links")({
@@ -137,42 +136,6 @@ function LinksPage() {
             className="lk-hero-img block aspect-[1/0.72] w-full object-cover object-[50%_8%]"
             fetchPriority="high"
           />
-          <Link
-            to="/"
-            aria-label="Ir para o site Sinenberg Consulting"
-            className="lk-social absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full"
-          >
-            <img src={iconMark} alt="" className="h-6 w-6 object-contain" />
-          </Link>
-          <div className="lk-up absolute right-4 top-4 flex items-center gap-2" style={Atraso(3)}>
-            <a
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn de Daniel Sinenberg"
-              className="lk-social flex h-11 w-11 items-center justify-center rounded-full"
-            >
-              <Linkedin size={21} strokeWidth={1.9} />
-            </a>
-            <a
-              href={INSTAGRAM}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram @danielsinenberg"
-              className="lk-social flex h-11 w-11 items-center justify-center rounded-full"
-            >
-              <Instagram size={21} strokeWidth={1.9} />
-            </a>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="lk-social flex h-11 w-11 items-center justify-center rounded-full"
-            >
-              <MessageCircle size={21} strokeWidth={1.9} />
-            </a>
-          </div>
         </div>
 
         <div className="relative -mt-10 flex w-full flex-col items-center px-6 text-center">
@@ -188,6 +151,32 @@ function LinksPage() {
           <p className="lk-up mt-2.5 max-w-[340px] text-[15px] leading-snug text-white/90" style={Atraso(2)}>
             Estruturo o crescimento de empresas que ainda dependem do dono para tudo.
           </p>
+
+          <div className="lk-up mt-5 w-full" style={Atraso(3)}>
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/70">Me siga nas redes</p>
+            <div className="mt-2.5 grid grid-cols-2 gap-3">
+              <a
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn de Daniel Sinenberg"
+                className="lk-social flex h-12 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
+              >
+                <Linkedin size={20} strokeWidth={1.9} />
+                LinkedIn
+              </a>
+              <a
+                href={INSTAGRAM}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram @danielsinenberg"
+                className="lk-social flex h-12 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
+              >
+                <Instagram size={20} strokeWidth={1.9} />
+                Instagram
+              </a>
+            </div>
+          </div>
         </div>
 
         <ul className="mt-5 w-full space-y-3 px-5">
