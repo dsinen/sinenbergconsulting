@@ -81,7 +81,7 @@ const estilos = `
   @keyframes lk-drift1 { to { transform: translate3d(90px, 70px, 0) scale(1.15); } }
   @keyframes lk-drift2 { to { transform: translate3d(-110px, -60px, 0) scale(1.1); } }
 
-  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 68%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
+  .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
 
   @media (min-width: 520px) {
     .lk-hero-img { -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 52%, transparent 98%), linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); mask-composite: intersect; }
@@ -129,21 +129,18 @@ function LinksPage() {
       </div>
 
       <main className="relative mx-auto flex w-full max-w-[480px] flex-col items-center pb-12">
-        <div className="relative mx-auto w-[80%]">
+        <div className="relative mx-auto w-[70%]">
           <img
             src={danielPhoto}
             alt="Daniel Sinenberg"
-            className="lk-hero-img block aspect-[1/0.74] w-full object-cover object-[50%_8%]"
+            className="lk-hero-img block aspect-[1/0.72] w-full object-cover object-[50%_35%]"
             fetchPriority="high"
           />
         </div>
 
-        <div className="relative -mt-10 flex w-full flex-col items-center px-6 text-center">
-          <p className="lk-up text-[11px] font-medium uppercase tracking-[0.3em] text-[#2EC4FF]" style={Atraso(0)}>
-            Sinenberg Consulting
-          </p>
+        <div className="relative -mt-5 flex w-full flex-col items-center px-6 text-center">
           <h1
-            className="lk-up mt-1.5 font-serif text-[38px] font-medium leading-[1.05] tracking-tight"
+            className="lk-up mt-0 font-serif text-[38px] font-medium leading-[1.05] tracking-tight"
             style={{ ...Atraso(1), textShadow: "0 2px 24px rgba(6,20,58,.6)" }}
           >
             Daniel Sinenberg
@@ -152,15 +149,15 @@ function LinksPage() {
             Estruturo o crescimento de empresas que ainda dependem do dono para tudo.
           </p>
 
-          <div className="lk-up mt-5 w-full" style={Atraso(3)}>
+          <div className="lk-up mt-4 w-full" style={Atraso(3)}>
             <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/70">Me siga nas redes</p>
-            <div className="mt-2.5 grid grid-cols-2 gap-3">
+            <div className="mt-2 grid grid-cols-2 gap-3">
               <a
                 href={LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn de Daniel Sinenberg"
-                className="lk-social flex h-12 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
+                className="lk-social flex h-11 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
               >
                 <Linkedin size={20} strokeWidth={1.9} />
                 LinkedIn
@@ -170,7 +167,7 @@ function LinksPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram @danielsinenberg"
-                className="lk-social flex h-12 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
+                className="lk-social flex h-11 items-center justify-center gap-2 rounded-full text-[15px] font-medium"
               >
                 <Instagram size={20} strokeWidth={1.9} />
                 Instagram
@@ -179,7 +176,7 @@ function LinksPage() {
           </div>
         </div>
 
-        <ul className="mt-5 w-full space-y-3 px-5">
+        <ul className="mt-4 w-full space-y-3 px-5">
           {botoes.map((b, i) => {
             const classe = `lk-card ${b.destaque ? "lk-main" : "text-white"} flex w-full items-center gap-3.5 rounded-[20px] px-4 py-3 text-left`;
             const conteudo = (
