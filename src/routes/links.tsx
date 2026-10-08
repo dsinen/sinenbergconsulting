@@ -7,10 +7,12 @@ import {
   Instagram,
   Linkedin,
   MessageCircle,
+  Play,
   Stethoscope,
 } from "lucide-react";
 import logoSemTag from "@/assets/logo-notag-dark.png";
 import danielPhoto from "@/assets/daniel-links.jpg";
+import podcastThumb from "@/assets/podcast-estacio.jpg";
 
 export const Route = createFileRoute("/links")({
   head: () => ({
@@ -35,6 +37,7 @@ export const Route = createFileRoute("/links")({
 const WHATSAPP =
   "https://wa.me/5511984083610?text=" +
   encodeURIComponent("Olá Daniel, vi seu link e gostaria de agendar uma conversa.");
+const PODCAST = "https://www.youtube.com/watch?v=ReIgJhQc6ew&t=1591s";
 const INSTAGRAM = "https://www.instagram.com/danielsinenberg";
 const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 
@@ -207,7 +210,39 @@ function LinksPage() {
           })}
         </ul>
 
-        <div className="lk-up mt-6 flex flex-col items-center" style={Atraso(9)}>
+        <section className="lk-up mt-7 w-full px-5" style={Atraso(9)}>
+          <p className="mb-2.5 text-center text-[11px] font-medium uppercase tracking-[0.28em] text-white/60">Na mídia</p>
+          <a
+            href={PODCAST}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lk-card block overflow-hidden rounded-[18px] text-white"
+          >
+            <span className="relative block">
+              <img
+                src={podcastThumb}
+                alt="Daniel Sinenberg e Kaique gravando o podcast Você é Seu Negócio"
+                className="block aspect-video w-full object-cover"
+                loading="lazy"
+              />
+              <span className="absolute inset-0 flex items-center justify-center bg-[#06143A]/25">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#2EC4FF] text-[#06143A] shadow-[0_8px_30px_-6px_rgba(46,196,255,.8)]">
+                  <Play size={24} strokeWidth={2} fill="currentColor" className="ml-0.5" />
+                </span>
+              </span>
+            </span>
+            <span className="block px-4 py-3.5 text-left">
+              <span className="block font-serif text-[15.5px] font-medium leading-snug">
+                Minha conversa no podcast Você é Seu Negócio, da Estácio
+              </span>
+              <span className="mt-0.5 block text-[12px] leading-snug text-white/70">
+                Posicionamento, nicho e vendas em empresas de tecnologia
+              </span>
+            </span>
+          </a>
+        </section>
+
+        <div className="lk-up mt-8 flex flex-col items-center" style={Atraso(10)}>
           <Link to="/" aria-label="Sinenberg Consulting, início">
             <img src={logoSemTag} alt="Sinenberg Consulting" className="h-20 w-auto opacity-95" />
           </Link>
