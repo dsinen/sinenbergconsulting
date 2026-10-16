@@ -17,13 +17,6 @@ export const INTERESSES = [
   "Receber conteúdos como esse",
 ] as const;
 
-const pitchSchema = z.object({
-  problema: z.string().trim().max(600),
-  solucao: z.string().trim().max(600),
-  ja: z.string().trim().max(600),
-  garantia: z.string().trim().max(600),
-});
-
 export const leadSebraeSchema = z.object({
   nome: z.string().trim().min(2).max(120),
   whatsapp: z
@@ -33,10 +26,9 @@ export const leadSebraeSchema = z.object({
     .refine((v) => v.replace(/\D/g, "").length >= 10, "WhatsApp com DDD"),
   email: z.union([z.literal(""), z.string().trim().toLowerCase().email().max(160)]),
   negocio: z.string().trim().max(160),
-  ramo: z.string().trim().max(160),
   fase: z.enum(FASES),
   interesses: z.array(z.enum(INTERESSES)).max(3),
-  pitch: pitchSchema,
+  pitch: z.string().trim().max(1800),
   consentimento: z.literal(true),
   // Campo isca para robôs: pessoas reais nunca preenchem
   website: z.string().max(200).optional(),
@@ -57,17 +49,8 @@ function hojeEmSaoPaulo(): string {
   }).format(new Date());
 }
 
-function linhasDoPitch(p: LeadSebrae["pitch"]): string[] {
-  return [
-    `1. Problema: ${p.problema || "(em branco)"}`,
-    `2. Como resolve: ${p.solucao || "(em branco)"}`,
-    `3. Já: ${p.ja || "(em branco)"}`,
-    `4. E se não der certo: ${p.garantia || "(em branco)"}`,
-  ];
-}
-
-function temPitch(p: LeadSebrae["pitch"]): boolean {
-  return Boolean(p.problema || p.solucao || p.ja || p.garantia);
+function temPitch(lead: LeadSebrae): boolean {
+  return lead.pitch.trim().length > 0;
 }
 
 export function resumoDoLeadSebrae(lead: LeadSebrae): string {
@@ -75,7 +58,7 @@ export function resumoDoLeadSebrae(lead: LeadSebrae): string {
     "Palestra Sebrae FE26 (20/10/2026)",
     `Fase: ${lead.fase}`,
     `Interesse: ${lead.interesses.join("; ") || "não marcou"}`,
-    `Pitch: ${temPitch(lead.pitch) ? "enviado, ver corpo da página" : "não preencheu"}`,
+    `Pitch: ${temPitch(lead) ? "enviado, ver corpo da página" : "não mandou"}`,
   ].join(" | ");
 }
 
@@ -87,12 +70,11 @@ export function textoDoEmailSebrae(lead: LeadSebrae): string {
     `WhatsApp: ${lead.whatsapp}`,
     `E-mail: ${lead.email || "não informado"}`,
     `Negócio: ${lead.negocio || "não informado"}`,
-    `O que vende: ${lead.ramo || "não informado"}`,
     `Fase: ${lead.fase}`,
     `Interesse: ${lead.interesses.join("; ") || "não marcou"}`,
     "",
     "Pitch:",
-    ...(temPitch(lead.pitch) ? linhasDoPitch(lead.pitch) : ["não preencheu"]),
+    temPitch(lead) ? lead.pitch : "não mandou",
     "",
     `Consentimento LGPD registrado em ${new Date().toISOString()}.`,
   ].join("\n");
@@ -124,7 +106,6 @@ export function paginaNotionSebrae(lead: LeadSebrae, dataSourceId: string) {
     Histórico: { rich_text: texto(resumoDoLeadSebrae(lead)) },
   };
   if (lead.negocio) properties.Empresa = { rich_text: texto(lead.negocio) };
-  if (lead.ramo) properties["Ramo/Profissão"] = { rich_text: texto(lead.ramo) };
   if (lead.email) properties["Qual seu e-mail?"] = { email: lead.email };
 
   return {
@@ -141,9 +122,13 @@ export function paginaNotionSebrae(lead: LeadSebrae, dataSourceId: string) {
       {
         object: "block",
         type: "heading_3",
-        heading_3: { rich_text: texto("Pitch que a pessoa montou") },
+        heading_3: { rich_text: texto("Pitch que a pessoa mandou") },
       },
-      ...(temPitch(lead.pitch) ? linhasDoPitch(lead.pitch) : ["Não preencheu o guia."]).map(item),
+      {
+        object: "block",
+        type: "quote",
+        quote: { rich_text: texto(temPitch(lead) ? lead.pitch : "Não mandou pitch.") },
+      },
       {
         object: "block",
         type: "paragraph",
