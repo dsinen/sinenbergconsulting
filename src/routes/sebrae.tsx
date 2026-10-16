@@ -808,9 +808,11 @@ function Exemplos() {
         </div>
 
         <div id={`painel-${ex.id}`} role="tabpanel" className="mt-6">
-          <div className="flex items-baseline justify-between gap-3">
-            <h3 className="font-serif text-[23px] font-semibold text-[#0B2A5B]">{ex.nome}</h3>
-            <span className="text-right text-[13px] text-[#4a5b73]">{ex.descricao}</span>
+          <div>
+            <h3 className="font-serif text-[23px] font-semibold leading-tight text-[#0B2A5B]">
+              {ex.nome}
+            </h3>
+            <p className="mt-0.5 text-[14px] text-[#4a5b73]">{ex.descricao}</p>
           </div>
           <p className="mt-2 rounded-xl bg-[#e8f3ff] px-3.5 py-2.5 text-[14px] leading-snug text-[#0B2A5B]">
             {ex.prova}
