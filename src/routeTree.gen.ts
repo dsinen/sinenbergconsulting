@@ -15,6 +15,7 @@ import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
 import { Route as LinksRouteImport } from './routes/links'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as SebraeRouteImport } from './routes/sebrae'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
@@ -49,6 +50,11 @@ const PrivacidadeRoute = PrivacidadeRouteImport.update({
   path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SebraeRoute = SebraeRouteImport.update({
+  id: '/sebrae',
+  path: '/sebrae',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93ListToolsRoute =
   Char91DotmcpChar93ListToolsRouteImport.update({
     id: '/.mcp/list-tools',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/links': typeof LinksRoute
   '/mcp': typeof McpRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/sebrae': typeof SebraeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/links': typeof LinksRoute
   '/mcp': typeof McpRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/sebrae': typeof SebraeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/links': typeof LinksRoute
   '/mcp': typeof McpRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/sebrae': typeof SebraeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/links'
     | '/mcp'
     | '/privacidade'
+    | '/sebrae'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/links'
     | '/mcp'
     | '/privacidade'
+    | '/sebrae'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/links'
     | '/mcp'
     | '/privacidade'
+    | '/sebrae'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   LinksRoute: typeof LinksRoute
   McpRoute: typeof McpRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
+  SebraeRoute: typeof SebraeRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -194,6 +207,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sebrae': {
+      id: '/sebrae'
+      path: '/sebrae'
+      fullPath: '/sebrae'
+      preLoaderRoute: typeof SebraeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.mcp/list-tools': {
       id: '/.mcp/list-tools'
       path: '/.mcp/list-tools'
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   LinksRoute: LinksRoute,
   McpRoute: McpRoute,
   PrivacidadeRoute: PrivacidadeRoute,
+  SebraeRoute: SebraeRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,

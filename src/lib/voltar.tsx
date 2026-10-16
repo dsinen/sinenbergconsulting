@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
 // Páginas para as quais faz sentido voltar. Qualquer outra coisa cai na home.
-export type Destino = "/" | "/links" | "/clinicas" | "/diagnostico";
-const VALIDOS: Destino[] = ["/", "/links", "/clinicas", "/diagnostico"];
+export type Destino = "/" | "/links" | "/clinicas" | "/diagnostico" | "/sebrae";
+const VALIDOS: Destino[] = ["/", "/links", "/clinicas", "/diagnostico", "/sebrae"];
 const CHAVE = "sc_pagina_anterior";
 
 function normalizar(caminho: string | null | undefined): Destino | null {
