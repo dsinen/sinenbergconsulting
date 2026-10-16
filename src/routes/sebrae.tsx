@@ -222,7 +222,7 @@ function Material() {
         Baixar o material (PDF)
       </a>
       <p className="mt-2 text-center text-[12.5px] text-white/55">
-        9 páginas · abre no celular e dá pra imprimir
+        10 páginas · abre no celular e dá pra imprimir
       </p>
     </section>
   );
@@ -263,6 +263,9 @@ function Conversa() {
   const querPitch = form.interesses.includes(INTERESSE_PITCH);
   const querSessao = form.interesses.includes(INTERESSE_SESSAO);
   const empresaObrigatoria = form.estagio !== AINDA_NAO_ABRI;
+  // As duas últimas faixas ficam no corte do diagnóstico do site (a partir de R$ 1 milhão).
+  const faturaUmMilhaoOuMais =
+    FATURAMENTOS.indexOf(form.faturamento as (typeof FATURAMENTOS)[number]) >= 3;
 
   const valido =
     form.nome.trim().split(/\s+/).length >= 2 &&
@@ -343,6 +346,15 @@ function Conversa() {
             <p className="mx-auto mt-2 max-w-[380px] text-[15px] leading-relaxed text-white/80">
               {retorno}
             </p>
+            {faturaUmMilhaoOuMais && (
+              <Link
+                to="/diagnostico"
+                className="sb-cta mx-auto mt-6 flex min-h-12 max-w-[380px] items-center justify-center gap-2 rounded-xl px-4 text-[15px] font-semibold"
+              >
+                Enquanto isso, descubra em 3 minutos o estágio de maturidade da sua empresa
+                <ArrowUpRight size={18} className="shrink-0" />
+              </Link>
+            )}
           </div>
         ) : (
           <form onSubmit={enviar} noValidate>
