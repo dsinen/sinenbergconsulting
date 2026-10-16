@@ -49,7 +49,9 @@ const NUMERO = "5511984083610";
 const WHATSAPP =
   `https://wa.me/${NUMERO}?text=` +
   encodeURIComponent("Oi Daniel, assisti sua palestra na Feira do Empreendedor do Sebrae.");
-const INSTAGRAM = "https://www.instagram.com/danielsinenberg";
+// Links abertos na mesma aba: no iPhone e no Android, é assim que o sistema
+// entrega o link ao app instalado (Instagram, LinkedIn, WhatsApp) em vez do site.
+const INSTAGRAM = "https://www.instagram.com/danielsinenberg/";
 const LINKEDIN = "https://www.linkedin.com/in/danielsinenberg/";
 const PDF = "/evidencia-vence-carisma.pdf";
 const PDF_NOME = "Evidencia-vence-carisma-Daniel-Sinenberg.pdf";
@@ -151,12 +153,7 @@ function Topo() {
       </div>
 
       <div className="sb-up mt-4 grid gap-2.5" style={atraso(1)}>
-        <a
-          href={INSTAGRAM}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="sb-ig flex min-h-[56px] items-center gap-3 rounded-2xl px-4"
-        >
+        <a href={INSTAGRAM} className="sb-ig flex min-h-[56px] items-center gap-3 rounded-2xl px-4">
           <Instagram size={24} strokeWidth={1.9} />
           <span className="flex-1">
             <span className="block font-serif text-[16.5px] font-semibold leading-tight">
@@ -169,16 +166,12 @@ function Topo() {
         <div className="grid grid-cols-2 gap-2.5">
           <a
             href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
             className="sb-social flex min-h-[52px] items-center justify-center gap-2 rounded-2xl px-2 text-[15px] font-semibold"
           >
             <MessageCircle size={20} strokeWidth={1.9} /> WhatsApp
           </a>
           <a
             href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
             aria-label="LinkedIn de Daniel Sinenberg"
             className="sb-social flex min-h-[52px] items-center justify-center gap-2 rounded-2xl px-2 text-[15px] font-semibold"
           >
