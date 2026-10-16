@@ -56,8 +56,8 @@ const PDF_NOME = "Evidencia-vence-carisma-Daniel-Sinenberg.pdf";
 
 const promessas = [
   "Guia com as quatro perguntas, pra preencher",
-  "Exemplos completos pra quem vende pra empresa e pra consumidor final",
-  "Meus contatos: WhatsApp, LinkedIn e Instagram",
+  "Exemplos completos: venda pra empresa e pra consumidor final",
+  "Meus contatos: WhatsApp, LinkedIn e Instagram, aqui em cima",
 ];
 
 const meusJa = [
@@ -124,8 +124,8 @@ function SebraePage() {
 
       <main className="relative mx-auto w-full max-w-[520px] px-5 pb-10 pt-7">
         <Topo />
-        <Material />
         <Avaliacao />
+        <Material />
         <Conversa />
         <QuemSou />
         <Rodape />
@@ -141,18 +141,16 @@ function Topo() {
         <img
           src={danielPhoto}
           alt="Daniel Sinenberg"
-          className="h-16 w-16 rounded-full object-cover object-[50%_30%] ring-2 ring-white/25"
+          className="h-14 w-14 rounded-full object-cover object-[50%_30%] ring-2 ring-white/25"
           fetchPriority="high"
         />
         <div className="min-w-0">
-          <h1 className="font-serif text-[25px] font-semibold leading-tight">Daniel Sinenberg</h1>
-          <p className="text-[13px] leading-snug text-white/70">
-            Consultor estratégico · Sinenberg Consulting
-          </p>
+          <h1 className="font-serif text-[24px] font-semibold leading-tight">Daniel Sinenberg</h1>
+          <p className="text-[13px] leading-snug text-white/70">Fundador da Sinenberg Consulting</p>
         </div>
       </div>
 
-      <div className="sb-up mt-5 grid gap-2.5" style={atraso(1)}>
+      <div className="sb-up mt-4 grid gap-2.5" style={atraso(1)}>
         <a
           href={INSTAGRAM}
           target="_blank"
@@ -194,24 +192,24 @@ function Topo() {
 
 function Material() {
   return (
-    <section className="sb-up sb-glass mt-6 rounded-3xl p-5" style={atraso(2)}>
+    <section className="sb-up sb-glass mt-3 rounded-3xl p-4" style={atraso(3)}>
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#2EC4FF]">
         Feira do Empreendedor Sebrae 2026
       </p>
-      <h2 className="mt-1.5 font-serif text-[28px] font-semibold leading-[1.05] tracking-tight">
+      <h2 className="mt-1 font-serif text-[25px] font-semibold leading-[1.05] tracking-tight">
         Evidência vence carisma
       </h2>
-      <p className="mt-1.5 text-[14px] leading-snug text-white/75">
+      <p className="mt-1 text-[13.5px] leading-snug text-white/70">
         O material da palestra, como prometido:
       </p>
 
-      <ul className="mt-4 space-y-3">
+      <ul className="mt-3 space-y-2">
         {promessas.map((p) => (
-          <li key={p} className="flex items-start gap-3">
-            <span className="sb-check mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-              <Check size={14} strokeWidth={3.2} />
+          <li key={p} className="flex items-start gap-2.5">
+            <span className="sb-check mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
+              <Check size={12} strokeWidth={3.4} />
             </span>
-            <span className="text-[15px] font-medium leading-snug">{p}</span>
+            <span className="text-[14px] font-medium leading-snug">{p}</span>
           </li>
         ))}
       </ul>
@@ -219,12 +217,12 @@ function Material() {
       <a
         href={PDF}
         download={PDF_NOME}
-        className="sb-cta sb-sheen mt-5 flex min-h-[56px] items-center justify-center gap-2.5 rounded-2xl px-4 font-serif text-[17px] font-semibold"
+        className="sb-cta sb-sheen mt-4 flex min-h-[52px] items-center justify-center gap-2.5 rounded-2xl px-4 font-serif text-[17px] font-semibold"
       >
         <Download size={21} strokeWidth={2.2} />
         Baixar o material (PDF)
       </a>
-      <p className="mt-2 text-center text-[12.5px] text-white/55">
+      <p className="mt-1.5 text-center text-[12px] text-white/55">
         10 páginas · abre no celular e dá pra imprimir
       </p>
     </section>
@@ -637,54 +635,57 @@ function Avaliacao() {
   }
 
   return (
-    <section className="sb-up sb-glass mt-4 rounded-3xl p-5" style={atraso(3)} id="avaliacao">
+    <section
+      className="sb-up sb-glass mt-3 rounded-2xl px-4 py-3"
+      style={atraso(2)}
+      id="avaliacao"
+      aria-label="Avaliação da palestra"
+    >
       {etapa === "fim" ? (
-        <div className="py-2 text-center">
-          <p className="font-serif text-[20px] font-semibold">Valeu demais!</p>
-          <p className="mx-auto mt-1.5 max-w-[340px] text-[14px] leading-relaxed text-white/75">
-            A sua avaliação me ajuda a levar esse conteúdo pra mais empreendedores.
-          </p>
-        </div>
+        <p className="flex min-h-10 items-center justify-center gap-2 text-[14.5px] font-medium text-white/85">
+          <Check size={18} strokeWidth={2.6} className="text-[#2EC4FF]" />
+          Valeu pela avaliação!
+        </p>
       ) : (
         <>
-          <p className="font-serif text-[19px] font-semibold leading-tight">
-            Como foi a palestra pra você?
-          </p>
-          <div
-            className="mt-3 flex justify-between gap-1"
-            role="radiogroup"
-            aria-label="Nota da palestra"
-          >
-            {[1, 2, 3, 4, 5].map((n) => (
-              <button
-                key={n}
-                type="button"
-                role="radio"
-                aria-checked={nota === n}
-                aria-label={`${n} de 5, ${ROTULOS[n - 1]}`}
-                onClick={() => setNota(n)}
-                className="flex h-14 flex-1 items-center justify-center rounded-2xl transition-transform active:scale-90"
-              >
-                <Star
-                  size={38}
-                  strokeWidth={1.6}
-                  className={n <= nota ? "fill-[#FFC94D] text-[#FFC94D]" : "text-white/45"}
-                />
-              </button>
-            ))}
+          <div className="flex items-center justify-between gap-2">
+            <p className="font-serif text-[15.5px] font-semibold leading-tight">
+              Avalie a palestra
+            </p>
+            <div className="flex" role="radiogroup" aria-label="Nota da palestra">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  role="radio"
+                  aria-checked={nota === n}
+                  aria-label={`${n} de 5, ${ROTULOS[n - 1]}`}
+                  onClick={() => setNota(n)}
+                  className="flex h-10 w-9 items-center justify-center transition-transform active:scale-90"
+                >
+                  <Star
+                    size={27}
+                    strokeWidth={1.7}
+                    className={n <= nota ? "fill-[#FFC94D] text-[#FFC94D]" : "text-white/50"}
+                  />
+                </button>
+              ))}
+            </div>
           </div>
-          <p className="mt-1 text-center text-[13px] text-white/60">
-            {nota ? ROTULOS[nota - 1] : "Toque numa estrela"}
-          </p>
-          <button
-            type="button"
-            disabled={!nota || enviando}
-            onClick={enviar}
-            className="sb-cta mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl text-[16px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            {enviando ? <Loader2 size={18} className="animate-spin" /> : null}
-            Enviar
-          </button>
+          {nota > 0 && (
+            <div className="mt-2 flex items-center justify-between gap-3">
+              <span className="text-[13.5px] text-white/70">{ROTULOS[nota - 1]}</span>
+              <button
+                type="button"
+                disabled={enviando}
+                onClick={enviar}
+                className="sb-cta inline-flex h-10 items-center justify-center gap-2 rounded-xl px-6 text-[15px] font-semibold"
+              >
+                {enviando ? <Loader2 size={16} className="animate-spin" /> : null}
+                Enviar
+              </button>
+            </div>
+          )}
         </>
       )}
     </section>
