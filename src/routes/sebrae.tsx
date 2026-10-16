@@ -13,7 +13,14 @@ import {
 } from "lucide-react";
 import logoSemTag from "@/assets/logo-notag-dark.png";
 import danielPhoto from "@/assets/daniel-links.jpg";
-import { FASES, INTERESSES, registrarContatoSebrae } from "@/lib/leads-sebrae";
+import {
+  ESTAGIOS,
+  FATURAMENTOS,
+  INTERESSES,
+  INTERESSE_PITCH,
+  INTERESSE_SESSAO,
+  registrarContatoSebrae,
+} from "@/lib/leads-sebrae";
 
 export const Route = createFileRoute("/sebrae")({
   head: () => ({
@@ -225,10 +232,11 @@ type Formulario = {
   nome: string;
   whatsapp: string;
   email: string;
-  negocio: string;
-  pitch: string;
-  fase: string;
+  empresa: string;
+  estagio: string;
+  faturamento: string;
   interesses: string[];
+  pitch: string;
   consentimento: boolean;
   website: string;
 };
@@ -237,23 +245,32 @@ const FORM_VAZIO: Formulario = {
   nome: "",
   whatsapp: "",
   email: "",
-  negocio: "",
-  pitch: "",
-  fase: "",
+  empresa: "",
+  estagio: "",
+  faturamento: "",
   interesses: [],
+  pitch: "",
   consentimento: false,
   website: "",
 };
+
+const AINDA_NAO_ABRI = ESTAGIOS[0];
 
 function Conversa() {
   const [form, setForm] = useState<Formulario>(FORM_VAZIO);
   const [estado, setEstado] = useState<"aberto" | "enviando" | "ok" | "erro">("aberto");
 
+  const querPitch = form.interesses.includes(INTERESSE_PITCH);
+  const querSessao = form.interesses.includes(INTERESSE_SESSAO);
+  const empresaObrigatoria = form.estagio !== AINDA_NAO_ABRI;
+
   const valido =
-    form.nome.trim().length >= 2 &&
+    form.nome.trim().split(/\s+/).length >= 2 &&
     form.whatsapp.replace(/\D/g, "").length >= 10 &&
-    (form.email.trim() === "" || /\S+@\S+\.\S+/.test(form.email)) &&
-    form.fase !== "" &&
+    /^\S+@\S+\.\S+$/.test(form.email.trim()) &&
+    (!empresaObrigatoria || form.empresa.trim().length >= 2) &&
+    form.estagio !== "" &&
+    form.faturamento !== "" &&
     form.consentimento;
 
   function alternar(i: string) {
@@ -275,10 +292,11 @@ function Conversa() {
           nome: form.nome,
           whatsapp: form.whatsapp,
           email: form.email.trim(),
-          negocio: form.negocio,
-          pitch: form.pitch,
-          fase: form.fase as (typeof FASES)[number],
+          empresa: form.empresa,
+          estagio: form.estagio as (typeof ESTAGIOS)[number],
+          faturamento: form.faturamento as (typeof FATURAMENTOS)[number],
           interesses: form.interesses as (typeof INTERESSES)[number][],
+          pitch: querPitch ? form.pitch : "",
           consentimento: true as const,
           website: form.website,
         },
@@ -293,10 +311,16 @@ function Conversa() {
   const whatsComPitch =
     `https://wa.me/${NUMERO}?text=` +
     encodeURIComponent(
-      form.pitch.trim()
+      querPitch && form.pitch.trim()
         ? `Oi Daniel, assisti sua palestra no Sebrae. Esse é o meu pitch:\n\n${form.pitch.trim()}`
         : "Oi Daniel, assisti sua palestra na Feira do Empreendedor do Sebrae.",
     );
+
+  const retorno = querSessao
+    ? "As vagas da sessão são poucas. Vou olhar o momento do seu negócio e te chamo no WhatsApp."
+    : querPitch
+      ? "Vou ler o seu pitch com calma e te respondo no WhatsApp."
+      : "Vou ler com calma e te chamo no WhatsApp.";
 
   return (
     <section id="conversa" className="mt-12 scroll-mt-6">
@@ -317,31 +341,18 @@ function Conversa() {
               Recebi, {form.nome.trim().split(" ")[0]}.
             </p>
             <p className="mx-auto mt-2 max-w-[380px] text-[15px] leading-relaxed text-white/80">
-              Vou ler com calma e te chamo no WhatsApp. Enquanto isso, já dá pra trocar a sua bio.
+              {retorno}
             </p>
           </div>
         ) : (
           <form onSubmit={enviar} noValidate>
             <p className="text-[14.5px] leading-relaxed text-white/80">
-              Falei no palco e repito: quero ler a sua frase com “já”. Deixa seu contato que eu te
-              respondo pelo WhatsApp.
+              Falei no palco e repito: quero ler a sua frase com “já”. Me conta também em que
+              momento está o seu negócio, e eu te respondo pelo WhatsApp.
             </p>
 
-            <label className="mt-5 block">
-              <span className="mb-1.5 block text-[13.5px] font-semibold text-white/90">
-                Seu pitch ou a sua frase com “já”
-              </span>
-              <textarea
-                rows={4}
-                className="sb-input resize-y leading-relaxed"
-                placeholder="Ex.: Já atendi 40 clientes este ano, e 15 voltaram."
-                value={form.pitch}
-                onChange={(e) => setForm({ ...form, pitch: e.target.value })}
-              />
-            </label>
-
-            <div className="mt-3.5 grid gap-3.5 sm:grid-cols-2">
-              <Campo rotulo="Seu nome" obrigatorio>
+            <div className="mt-5 grid gap-3.5">
+              <Campo rotulo="Nome completo" obrigatorio>
                 <input
                   className="sb-input"
                   autoComplete="name"
@@ -360,43 +371,57 @@ function Conversa() {
                   onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
                 />
               </Campo>
-              <Campo rotulo="Nome do negócio">
-                <input
-                  className="sb-input"
-                  autoComplete="organization"
-                  value={form.negocio}
-                  onChange={(e) => setForm({ ...form, negocio: e.target.value })}
-                />
-              </Campo>
-              <Campo rotulo="E-mail">
+              <Campo rotulo="E-mail" obrigatorio>
                 <input
                   className="sb-input"
                   type="email"
                   inputMode="email"
                   autoComplete="email"
-                  placeholder="Opcional"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
               </Campo>
-              <div className="sm:col-span-2">
-                <Campo rotulo="Em que momento está o negócio" obrigatorio>
-                  <select
-                    className="sb-input"
-                    value={form.fase}
-                    onChange={(e) => setForm({ ...form, fase: e.target.value })}
-                  >
-                    <option value="" disabled>
-                      Escolha uma opção
+              <Campo rotulo="Em que momento está o negócio" obrigatorio>
+                <select
+                  className="sb-input"
+                  value={form.estagio}
+                  onChange={(e) => setForm({ ...form, estagio: e.target.value })}
+                >
+                  <option value="" disabled>
+                    Escolha uma opção
+                  </option>
+                  {ESTAGIOS.map((f) => (
+                    <option key={f} value={f}>
+                      {f}
                     </option>
-                    {FASES.map((f) => (
-                      <option key={f} value={f}>
-                        {f}
-                      </option>
-                    ))}
-                  </select>
-                </Campo>
-              </div>
+                  ))}
+                </select>
+              </Campo>
+              <Campo rotulo="Nome da empresa" obrigatorio={empresaObrigatoria}>
+                <input
+                  className="sb-input"
+                  autoComplete="organization"
+                  placeholder={empresaObrigatoria ? "" : "Se já tiver um nome em mente"}
+                  value={form.empresa}
+                  onChange={(e) => setForm({ ...form, empresa: e.target.value })}
+                />
+              </Campo>
+              <Campo rotulo="Faturamento aproximado" obrigatorio>
+                <select
+                  className="sb-input"
+                  value={form.faturamento}
+                  onChange={(e) => setForm({ ...form, faturamento: e.target.value })}
+                >
+                  <option value="" disabled>
+                    Escolha uma faixa
+                  </option>
+                  {FATURAMENTOS.map((f) => (
+                    <option key={f} value={f}>
+                      {f}
+                    </option>
+                  ))}
+                </select>
+              </Campo>
             </div>
 
             <fieldset className="mt-5">
@@ -405,18 +430,34 @@ function Conversa() {
               </legend>
               <div className="mt-2 grid gap-2">
                 {INTERESSES.map((i) => (
-                  <label
-                    key={i}
-                    className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/15 bg-white/[.04] px-3.5 py-3 text-[14.5px]"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={form.interesses.includes(i)}
-                      onChange={() => alternar(i)}
-                      className="h-5 w-5 shrink-0 accent-[#2EC4FF]"
-                    />
-                    {i}
-                  </label>
+                  <div key={i}>
+                    <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/15 bg-white/[.04] px-3.5 py-3 text-[14.5px] leading-snug">
+                      <input
+                        type="checkbox"
+                        checked={form.interesses.includes(i)}
+                        onChange={() => alternar(i)}
+                        className="h-5 w-5 shrink-0 accent-[#2EC4FF]"
+                      />
+                      <span className="flex-1">
+                        {i}
+                        {i === INTERESSE_SESSAO && (
+                          <span className="ml-2 inline-block rounded-full bg-[#2EC4FF]/15 px-2 py-0.5 align-middle text-[11px] font-semibold text-[#2EC4FF]">
+                            vagas limitadas
+                          </span>
+                        )}
+                      </span>
+                    </label>
+                    {i === INTERESSE_PITCH && querPitch && (
+                      <textarea
+                        rows={4}
+                        aria-label="Seu pitch ou a sua frase com já"
+                        className="sb-input mt-2 resize-y leading-relaxed"
+                        placeholder="Cola aqui o seu pitch ou a sua frase com “já”"
+                        value={form.pitch}
+                        onChange={(e) => setForm({ ...form, pitch: e.target.value })}
+                      />
+                    )}
+                  </div>
                 ))}
               </div>
             </fieldset>
@@ -443,7 +484,7 @@ function Conversa() {
               />
               <span className="text-[13px] leading-snug text-white/70">
                 Concordo em compartilhar meus dados com a Sinenberg Consulting para ser contatado
-                pelo WhatsApp. Posso pedir a exclusão a qualquer momento. Leia a{" "}
+                pelo WhatsApp e por e-mail. Posso pedir a exclusão a qualquer momento. Leia a{" "}
                 <Link to="/privacidade" target="_blank" className="underline hover:text-white">
                   política de privacidade
                 </Link>
