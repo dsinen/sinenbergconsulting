@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import {
   ArrowUpRight,
@@ -10,6 +10,7 @@ import {
   Loader2,
   MessageCircle,
   Send,
+  Star,
 } from "lucide-react";
 import logoSemTag from "@/assets/logo-notag-dark.png";
 import danielPhoto from "@/assets/daniel-links.jpg";
@@ -21,6 +22,7 @@ import {
   INTERESSE_SESSAO,
   registrarContatoSebrae,
 } from "@/lib/leads-sebrae";
+import { completarAvaliacao, registrarNota } from "@/lib/avaliacoes-sebrae";
 
 export const Route = createFileRoute("/sebrae")({
   head: () => ({
@@ -123,6 +125,7 @@ function SebraePage() {
       <main className="relative mx-auto w-full max-w-[520px] px-5 pb-10 pt-7">
         <Topo />
         <Material />
+        <Avaliacao />
         <Conversa />
         <QuemSou />
         <Rodape />
@@ -596,5 +599,181 @@ function Rodape() {
         Política de Privacidade
       </Link>
     </footer>
+  );
+}
+
+const ROTULOS = ["Fraca", "Regular", "Boa", "Muito boa", "Excelente"];
+const CHAVE_AVALIOU = "sc_sebrae_avaliou";
+
+function Avaliacao() {
+  const [nota, setNota] = useState(0);
+  const [etapa, setEtapa] = useState<"nota" | "frase" | "fim">("nota");
+  const [frase, setFrase] = useState("");
+  const [nome, setNome] = useState("");
+  const [publicar, setPublicar] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+  const linha = useRef<{ id?: string; nota: number; pedido?: Promise<void> }>({ nota: 0 });
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(CHAVE_AVALIOU)) setEtapa("fim");
+    } catch {
+      /* navegação privada: segue normal */
+    }
+  }, []);
+
+  function marcarAvaliou() {
+    try {
+      localStorage.setItem(CHAVE_AVALIOU, "1");
+    } catch {
+      /* ignora */
+    }
+  }
+
+  function escolher(n: number) {
+    setNota(n);
+    setEtapa("frase");
+    // Grava a nota já no primeiro toque. Toques seguintes só ajustam no envio final.
+    if (!linha.current.pedido) {
+      linha.current.nota = n;
+      linha.current.pedido = registrarNota({ data: { nota: n } })
+        .then((r) => {
+          linha.current.id = r.id;
+        })
+        .catch((err) => console.error("Falha ao registrar a nota", err));
+      marcarAvaliou();
+    }
+  }
+
+  async function concluir(comComentario: boolean) {
+    if (enviando) return;
+    const mudouNota = nota !== linha.current.nota;
+    if (!comComentario && !mudouNota) {
+      setEtapa("fim");
+      return;
+    }
+    setEnviando(true);
+    try {
+      await linha.current.pedido;
+      await completarAvaliacao({
+        data: {
+          id: linha.current.id,
+          nota,
+          comentario: comComentario ? frase : "",
+          nome: comComentario ? nome : "",
+          publicar: comComentario && publicar,
+        },
+      });
+    } catch (err) {
+      console.error("Falha ao completar a avaliação", err);
+    } finally {
+      setEnviando(false);
+      setEtapa("fim");
+    }
+  }
+
+  return (
+    <section className="sb-up sb-glass mt-4 rounded-3xl p-5" style={atraso(3)} id="avaliacao">
+      {etapa === "fim" ? (
+        <div className="py-2 text-center">
+          <p className="font-serif text-[20px] font-semibold">Valeu demais!</p>
+          <p className="mx-auto mt-1.5 max-w-[340px] text-[14px] leading-relaxed text-white/75">
+            A sua avaliação me ajuda a levar esse conteúdo pra mais empreendedores.
+          </p>
+        </div>
+      ) : (
+        <>
+          <div className="flex items-baseline justify-between gap-3">
+            <p className="font-serif text-[19px] font-semibold leading-tight">
+              Como foi a palestra pra você?
+            </p>
+            {etapa === "nota" && (
+              <span className="shrink-0 text-[12px] text-white/55">1 toque</span>
+            )}
+          </div>
+          <div
+            className="mt-3 flex justify-between gap-1"
+            role="radiogroup"
+            aria-label="Nota da palestra"
+          >
+            {[1, 2, 3, 4, 5].map((n) => (
+              <button
+                key={n}
+                type="button"
+                role="radio"
+                aria-checked={nota === n}
+                aria-label={`${n} de 5, ${ROTULOS[n - 1]}`}
+                onClick={() => escolher(n)}
+                className="flex h-14 flex-1 items-center justify-center rounded-2xl transition-transform active:scale-90"
+              >
+                <Star
+                  size={38}
+                  strokeWidth={1.6}
+                  className={n <= nota ? "fill-[#FFC94D] text-[#FFC94D]" : "text-white/45"}
+                />
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-center text-[13px] text-white/60">
+            {nota ? `${ROTULOS[nota - 1]}. Recebido!` : "Toque numa estrela. Já ajuda muito."}
+          </p>
+
+          {etapa === "frase" && (
+            <div className="mt-4 border-t border-white/10 pt-4">
+              <label className="block text-[14.5px] font-semibold leading-snug">
+                Quer contar em uma frase o que você vai aplicar primeiro?
+                <span className="font-normal text-white/55"> (opcional)</span>
+                <textarea
+                  rows={2}
+                  className="sb-input mt-2 resize-y font-normal leading-relaxed"
+                  placeholder="Ex.: Vou trocar a bio do Instagram hoje à noite."
+                  value={frase}
+                  onChange={(e) => setFrase(e.target.value)}
+                />
+              </label>
+              {frase.trim() && (
+                <>
+                  <input
+                    className="sb-input mt-2.5"
+                    aria-label="Seu nome e negócio"
+                    placeholder="Seu nome e negócio (opcional)"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                  />
+                  <label className="mt-3 flex cursor-pointer items-start gap-3 text-[13.5px] leading-snug text-white/80">
+                    <input
+                      type="checkbox"
+                      checked={publicar}
+                      onChange={(e) => setPublicar(e.target.checked)}
+                      className="mt-0.5 h-5 w-5 shrink-0 accent-[#2EC4FF]"
+                    />
+                    Pode publicar o meu comentário com o meu nome
+                  </label>
+                </>
+              )}
+              <div className="mt-4 flex items-center gap-3">
+                <button
+                  type="button"
+                  disabled={enviando || !frase.trim()}
+                  onClick={() => concluir(true)}
+                  className="sb-cta inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl text-[15px] font-semibold disabled:opacity-40"
+                >
+                  {enviando ? <Loader2 size={17} className="animate-spin" /> : null}
+                  Enviar
+                </button>
+                <button
+                  type="button"
+                  disabled={enviando}
+                  onClick={() => concluir(false)}
+                  className="min-h-11 px-3 text-[14px] text-white/60 underline underline-offset-2"
+                >
+                  Pular
+                </button>
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </section>
   );
 }
