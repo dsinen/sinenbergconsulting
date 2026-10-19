@@ -65,9 +65,9 @@ const promessas = [
 
 const meusJa = [
   "Já conduzi, pela Stone, mais de R$ 50 milhões em negócios com Shell, Ipiranga, BR e OXXO.",
-  "Já estruturei o marketing da Linx: mais de 150 ações com ROI acima de 300%.",
+  "Já estruturei o marketing da Linx: mais de 150 ações com ROI superior a 300%.",
   "Já levei a retenção de clientes PME da Vivo de 55% para 70%.",
-  "Já mentorei mais de 50 startups da Estácio e da Wyden.",
+  "Já mentorei mais de 50 startups da Universidade Estácio.",
 ];
 
 const estilos = `
