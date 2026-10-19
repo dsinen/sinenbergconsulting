@@ -59,7 +59,8 @@ const PDF_NOME = "Evidencia-vence-carisma-Daniel-Sinenberg.pdf";
 const promessas = [
   "Guia com as quatro perguntas, pra preencher",
   "Exemplos completos: venda pra empresa e pra consumidor final",
-  "Meus contatos: WhatsApp, LinkedIn e Instagram, aqui em cima",
+  "As perguntas que sempre aparecem",
+  "Meus contatos, nos botões aqui em cima",
 ];
 
 const meusJa = [
@@ -187,14 +188,11 @@ function Material() {
   return (
     <section className="sb-up sb-glass mt-3 rounded-3xl p-4" style={atraso(3)}>
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#2EC4FF]">
-        Feira do Empreendedor Sebrae 2026
+        Material da palestra · Sebrae 2026
       </p>
       <h2 className="mt-1 font-serif text-[25px] font-semibold leading-[1.05] tracking-tight">
         Evidência vence carisma
       </h2>
-      <p className="mt-1 text-[13.5px] leading-snug text-white/70">
-        O material da palestra, como prometido:
-      </p>
 
       <ul className="mt-3 space-y-2">
         {promessas.map((p) => (
