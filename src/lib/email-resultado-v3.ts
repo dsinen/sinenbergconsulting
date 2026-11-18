@@ -7,6 +7,7 @@ import { ESTAGIOS, mensagemWhatsApp, type Resultado } from "./diagnostico-v3";
 const SITE = "https://www.sinenbergconsulting.com.br";
 const IMG_LOGO = `${SITE}/email/logo.png`;
 const IMG_DANIEL = `${SITE}/email/daniel.jpg`;
+const IMG_ASSINATURA = `${SITE}/email/assinatura-logo.png`;
 
 const FONTE = `'Helvetica Neue', Helvetica, Arial, sans-serif`;
 const ESCURO = "#0b1020";
@@ -15,6 +16,7 @@ const CIANO = "#2ec4ff";
 const AMARELO = "#ffe27a";
 const CREME = "#fdfbf4";
 const CINZA = "#5b6275";
+const MARINHO = "#0B2A5B";
 
 function esc(s: string): string {
   return s
@@ -66,6 +68,36 @@ function ponto(n: number, titulo: string, acao: string): string {
         </td>
       </tr></table>
     </td></tr>`;
+}
+
+const WHATSAPP_LINK = "https://wa.me/5511984083610";
+
+function iconeAssinatura(href: string, arquivo: string, nome: string): string {
+  return `<td style="padding:0 8px 0 0;"><a href="${href}"><img src="${SITE}/email/${arquivo}" width="26" height="26" alt="${nome}" style="display:block;border:0;"></a></td>`;
+}
+
+// Assinatura da marca: logo em quadrado azul-marinho, linha azul, nome, contatos e cinco ícones.
+function assinatura(): string {
+  const linhaTexto = `font-family:${FONTE};font-size:13px;line-height:1.7;color:#555555;`;
+  return `
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td valign="middle" style="padding:0 20px 0 0;border-right:2px solid ${CIANO};">
+          <img src="${IMG_ASSINATURA}" width="96" height="96" alt="Sinenberg Consulting" style="display:block;border:0;">
+        </td>
+        <td valign="middle" style="padding:0 0 0 20px;">
+          <div style="font-family:${FONTE};font-size:18px;font-weight:700;color:${MARINHO};line-height:1.2;padding:0 0 8px 0;">Daniel Sinenberg</div>
+          <div style="${linhaTexto}">+55 11 98408-3610</div>
+          <div style="${linhaTexto}"><a href="mailto:daniel@sinenberg.com.br" style="color:#555555;text-decoration:none;">daniel@sinenberg.com.br</a></div>
+          <div style="${linhaTexto}"><a href="${SITE}" style="color:#555555;text-decoration:none;">www.sinenbergconsulting.com.br</a></div>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;"><tr>
+            ${iconeAssinatura(SITE, "ic-site.png", "Site")}
+            ${iconeAssinatura(WHATSAPP_LINK, "ic-whatsapp.png", "WhatsApp")}
+            ${iconeAssinatura("mailto:daniel@sinenberg.com.br", "ic-email.png", "E-mail")}
+            ${iconeAssinatura("https://www.linkedin.com/in/danielsinenberg/", "ic-linkedin.png", "LinkedIn")}
+            ${iconeAssinatura("https://www.instagram.com/danielsinenberg/", "ic-instagram.png", "Instagram")}
+          </tr></table>
+        </td>
+      </tr></table>`;
 }
 
 export function htmlResultado(nome: string, empresa: string, r: Resultado): string {
@@ -142,10 +174,9 @@ export function htmlResultado(nome: string, empresa: string, r: Resultado): stri
       <div style="font-family:${FONTE};font-size:14px;line-height:1.6;color:#9aa3bd;padding:18px 0 0 0;">Se preferir, é só responder este e-mail.</div>
     </td></tr>
 
-    <tr><td style="padding:26px 32px 28px 32px;">
-      <div style="font-family:${FONTE};font-size:15px;font-weight:700;color:${ESCURO};">Daniel Sinenberg</div>
-      <div style="font-family:${FONTE};font-size:14px;color:${CINZA};line-height:1.6;">Sinenberg Consulting<br><a href="${SITE}" style="color:${AZUL};text-decoration:none;">sinenbergconsulting.com.br</a></div>
-      <div style="font-family:${FONTE};font-size:12px;color:#8a91a6;line-height:1.6;padding:16px 0 0 0;">Você recebeu este e-mail porque respondeu o diagnóstico em sinenbergconsulting.com.br. Se não quiser mais receber nada, responda pedindo a exclusão dos seus dados.</div>
+    <tr><td style="padding:28px 32px 28px 32px;">
+${assinatura()}
+      <div style="font-family:${FONTE};font-size:12px;color:#8a91a6;line-height:1.6;padding:22px 0 0 0;">Você recebeu este e-mail porque respondeu o diagnóstico em sinenbergconsulting.com.br. Se não quiser mais receber nada, responda pedindo a exclusão dos seus dados.</div>
     </td></tr>
 
   </table>
