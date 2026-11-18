@@ -73,7 +73,7 @@ function ponto(n: number, titulo: string, acao: string): string {
 const WHATSAPP_LINK = "https://wa.me/5511984083610";
 
 function iconeAssinatura(href: string, arquivo: string, nome: string): string {
-  return `<td style="padding:0 8px 0 0;"><a href="${href}"><img src="${SITE}/email/${arquivo}" width="26" height="26" alt="${nome}" style="display:block;border:0;"></a></td>`;
+  return `<td style="padding:0 8px 0 0;"><a href="${href}"><img src="${SITE}/email/${arquivo}" width="24" height="24" alt="${nome}" style="display:block;border:0;"></a></td>`;
 }
 
 // Assinatura da marca: logo em quadrado azul-marinho, linha azul, nome, contatos e cinco ícones.
