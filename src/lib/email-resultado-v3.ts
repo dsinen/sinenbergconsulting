@@ -86,7 +86,7 @@ function assinatura(): string {
         </td>
         <td valign="middle" style="padding:0 0 0 20px;">
           <div style="font-family:${FONTE};font-size:18px;font-weight:700;color:${MARINHO};line-height:1.2;padding:0 0 8px 0;">Daniel Sinenberg</div>
-          <div style="${linhaTexto}">+55 11 98408-3610</div>
+          <div style="${linhaTexto}"><a href="tel:+5511984083610" style="color:#555555;text-decoration:none;">+55 11 98408-3610</a></div>
           <div style="${linhaTexto}"><a href="mailto:daniel@sinenberg.com.br" style="color:#555555;text-decoration:none;">daniel@sinenberg.com.br</a></div>
           <div style="${linhaTexto}"><a href="${SITE}" style="color:#555555;text-decoration:none;">www.sinenbergconsulting.com.br</a></div>
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;"><tr>
