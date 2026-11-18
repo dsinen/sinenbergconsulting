@@ -181,10 +181,14 @@ async function avisarDaniel(lead: LeadV3, r: Resultado): Promise<void> {
   });
 }
 
-// Cópia do resultado para quem fez o diagnóstico. Só liga quando o domínio
-// estiver verificado na Resend e a variável ENVIAR_RESULTADO_AO_LEAD for "sim".
+// Cópia do resultado para quem fez o diagnóstico. Sai do e-mail do Daniel,
+// com o domínio sinenberg.com.br verificado na Resend em 18/11/2026.
+// Para desligar sem mexer no código: variável ENVIAR_RESULTADO_AO_LEAD = "nao".
+const REMETENTE_RESULTADO = "Daniel Sinenberg <daniel@sinenberg.com.br>";
+const RESPONDER_PARA = "daniel@sinenberg.com.br";
+
 function copiaLigada(): boolean {
-  return env("ENVIAR_RESULTADO_AO_LEAD") === "sim" && !remetente().includes("resend.dev");
+  return env("ENVIAR_RESULTADO_AO_LEAD") !== "nao";
 }
 
 async function enviarCopiaAoLead(lead: LeadV3, r: Resultado): Promise<void> {
@@ -214,9 +218,9 @@ async function enviarCopiaAoLead(lead: LeadV3, r: Resultado): Promise<void> {
     `sinenbergconsulting.com.br`,
   );
   await enviarResend({
-    from: remetente(),
+    from: REMETENTE_RESULTADO,
     to: [lead.email],
-    reply_to: env("LEAD_EMAIL_TO") ?? "daniel@sinenberg.com.br",
+    reply_to: RESPONDER_PARA,
     subject: `${nome}, o resultado do seu diagnóstico`,
     text: linhas.join("\n"),
   });
