@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { htmlResultado } from "./email-resultado-v3";
 import {
   CARGOS,
   ESTAGIOS,
@@ -222,6 +223,7 @@ async function enviarCopiaAoLead(lead: LeadV3, r: Resultado): Promise<void> {
     to: [lead.email],
     reply_to: RESPONDER_PARA,
     subject: `${nome}, o resultado do seu diagnóstico`,
+    html: htmlResultado(nome, lead.empresa, r),
     text: linhas.join("\n"),
   });
 }
