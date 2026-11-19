@@ -28,7 +28,7 @@ export function HomeV3() {
 <div style={{ position: "relative", maxWidth: "1240px", margin: "0 auto", padding: "clamp(48px, 6vw, 96px) clamp(20px, 4vw, 40px) 100px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(480px, 100%), 1fr))", gap: "60px", alignItems: "center" }}>
 <div style={{ display: "flex", flexDirection: "column", gap: "26px" }}>
 <div style={{ display: "flex", gap: "10px", alignItems: "center" }}><svg width="30" height="12" viewBox="0 0 48 20" aria-hidden="true"><polyline points="3,17 24,4 45,17" fill="none" stroke="#2EC4FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></polyline></svg><span style={{ fontSize: "16px", color: "#B9C6E6" }}>Consultoria estratégica para empresas de tecnologia</span></div>
-<h1 className="t" style={{ margin: "0", fontWeight: "800", fontSize: "clamp(46px, 6vw, 84px)", lineHeight: "1", letterSpacing: "-0.04em", color: "#FFFFFF", textWrap: "balance" }}>Sua empresa de tech cresceu, mas ainda <span className="mk">depende demais de você.</span></h1>
+<h1 className="t" style={{ margin: "0", fontWeight: "800", fontSize: "clamp(38px, 4.5vw, 64px)", lineHeight: "1", letterSpacing: "-0.04em", color: "#FFFFFF", textWrap: "balance" }}>Sua empresa de tech cresceu, mas ainda <span className="mk">depende demais de você, especialmente em vendas.</span></h1>
 <p style={{ margin: "0", fontSize: "20px", color: "#C3CBE0", maxWidth: "560px" }}>Eu levo o que as grandes empresas fazem de melhor em gestão para o tamanho da sua, de um jeito simples de entender e de colocar em prática. O objetivo é crescer com previsibilidade, sem tudo passar pela sua agenda.</p>
 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
 <a className="btn" href="https://wa.me/5511984083610?text=Oi%2C%20Daniel.%20Vim%20pelo%20site%20e%20quero%20marcar%20a%20conversa%20de%2030%20minutos." style={{ background: "#2EC4FF", color: "#0B1020", padding: "16px 26px", borderRadius: "8px", fontWeight: "600", textDecoration: "none" }} target="_blank" rel="noopener">Marcar conversa de 30 min</a>
@@ -42,7 +42,7 @@ export function HomeV3() {
 <span style={{ fontSize: "13px", color: "#9FB0D6" }}>Onde trabalhei</span>
 <span className="t" style={{ fontSize: "19px", fontWeight: "800", color: "#FFFFFF", letterSpacing: "-0.01em" }}>Vivo · Fast Shop · Linx · Stone</span>
 </div>
-<span className="m" style={{ position: "absolute", right: "6px", top: "-30px", fontSize: "26px", fontWeight: "600", color: "#FFE27A", transform: "rotate(-3deg)" }}>20 anos por dentro</span>
+<span className="m" style={{ position: "absolute", right: "6px", top: "-64px", maxWidth: "430px", textAlign: "right", lineHeight: "1.15", fontSize: "26px", fontWeight: "600", color: "#FFE27A", transform: "rotate(-3deg)" }}>Mais de 20 anos fazendo as empresas crescerem</span>
 </div>
 </div>
 </section>

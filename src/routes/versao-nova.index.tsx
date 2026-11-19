@@ -11,7 +11,7 @@ export const Route = createFileRoute("/versao-nova/")({
       {
         name: "description",
         content:
-          "Sua empresa de tech cresceu, mas ainda depende demais de você. Consultoria estratégica para crescer com previsibilidade.",
+          "Sua empresa de tech cresceu, mas ainda depende demais de você, especialmente em vendas. Consultoria estratégica para crescer com previsibilidade.",
       },
       { name: "robots", content: "noindex,nofollow" },
     ],
