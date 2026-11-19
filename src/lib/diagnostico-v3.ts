@@ -80,7 +80,7 @@ export const PERGUNTAS: Pergunta[] = [
       C: "Sim, e o número costuma bater.",
     },
     ponto: "Previsão de vendas",
-    acao: "Liste as negociações abertas, com valor e chance real de fechar. Revisar essa lista toda semana, sempre no mesmo dia, já melhora muito o seu forecast.",
+    acao: "Liste as negociações abertas, com valor e chance real de fechar. Revisar essa lista toda semana, sempre no mesmo dia, já melhora muito a sua previsão de vendas.",
   },
   {
     n: 6,
@@ -101,10 +101,10 @@ export const PERGUNTAS: Pergunta[] = [
     opcoes: {
       A: "Vou pelo sentimento. Não temos números confiáveis.",
       B: "Olho alguns números, mas o sentimento ainda pesa muito.",
-      C: "Olho os números. Sei quais indicadores acompanhar.",
+      C: "Olho os números. Sei quais acompanhar.",
     },
     ponto: "Números",
-    acao: "Escolha no máximo cinco indicadores para olhar toda semana, como propostas enviadas, vendas fechadas e clientes perdidos. Poucos e confiáveis valem mais do que muitos.",
+    acao: "Escolha no máximo cinco números para olhar toda semana, como propostas enviadas, vendas fechadas e clientes perdidos. Poucos e confiáveis valem mais do que muitos.",
   },
   {
     n: 8,
