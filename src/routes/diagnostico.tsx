@@ -22,6 +22,7 @@ export const Route = createFileRoute("/diagnostico")({
           "Responda 7 perguntas e receba um diagnóstico personalizado da maturidade da sua operação.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/diagnostico" }],
   }),
   component: DiagnosticoPage,
 });

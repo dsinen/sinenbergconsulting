@@ -15,6 +15,7 @@ export const Route = createFileRoute("/privacidade")({
       },
       { name: "robots", content: "index,follow" },
     ],
+    links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/privacidade" }],
   }),
   component: PrivacidadePage,
 });

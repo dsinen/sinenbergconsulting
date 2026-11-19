@@ -15,6 +15,7 @@ export const Route = createFileRoute("/versao-nova/diagnostico")({
       { name: "robots", content: "noindex,nofollow" },
     ],
     links: [
+      { rel: "canonical", href: "https://www.sinenbergconsulting.com.br/versao-nova/diagnostico" },
       { rel: "preload", href: "/fonts/v3/ApfelGrotezk-Fett.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: v3Css },
     ],
