@@ -4,7 +4,7 @@ import fotoTopo from "@/assets/daniel-links.jpg";
 import fotoSobre from "@/assets/v3/daniel-sobre.jpg";
 import fotoPodcast from "@/assets/v3/podcast.jpg";
 import fotoQr from "@/assets/v3/fe26-qr.jpg";
-import fotoPalco from "@/assets/v3/fe26-palco.jpg";
+import fotoPalco from "@/assets/v3/fe26-plateia.jpg";
 
 export function HomeV3() {
   return (
@@ -75,17 +75,18 @@ export function HomeV3() {
 <p className="t" aria-hidden="true" style={{ margin: "0", fontWeight: "800", fontSize: "min(14.5vw, 214px)", lineHeight: "0.82", letterSpacing: "-0.055em", color: "#2450FF", whiteSpace: "nowrap" }}>EVIDÊNCIA</p>
 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(440px, 100%), 1fr))", gap: "56px", alignItems: "center" }}>
 <div style={{ position: "relative" }}>
-<img src={fotoPalco} alt="Daniel falando ao microfone no palco da Feira do Empreendedor do Sebrae" style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "cover", objectPosition: "40% 30%", borderRadius: "14px", display: "block" }} />
+<img src={fotoPalco} alt="Daniel palestrando para a plateia lotada na Feira do Empreendedor do Sebrae-SP" style={{ width: "100%", aspectRatio: "4 / 3", objectFit: "cover", objectPosition: "45% 50%", borderRadius: "14px", display: "block" }} />
 <span className="m" style={{ position: "absolute", left: "18px", bottom: "-18px", background: "#FFE27A", color: "#0B1020", fontSize: "22px", fontWeight: "600", padding: "4px 14px", borderRadius: "6px", transform: "rotate(-2.5deg)" }}>Feira do Empreendedor, Sebrae-SP</span>
 </div>
 <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
 <h2 className="t" style={{ margin: "0", fontWeight: "800", fontSize: "clamp(40px, 4.8vw, 68px)", lineHeight: "0.98", letterSpacing: "-0.04em", color: "#FFFFFF" }}>Carisma ajuda.<br />Evidência convence.</h2>
-<p style={{ margin: "0", color: "#C3CBE0" }}>Na maioria das empresas de tecnologia que cresceram bem, quem vende é o dono. Ninguém conhece o produto como ele, o cliente confia nele e o negócio fecha no olho no olho. Funciona até o dia em que não cabe mais na agenda.</p>
-<p style={{ margin: "0", color: "#C3CBE0" }}>Carisma é difícil de passar adiante. Prova e processo dá para ensinar ao time. Quando a empresa sabe dizer quem é o cliente certo, como resolve o problema dele e o que já entregou para gente parecida, a venda deixa de depender de uma pessoa só.</p>
-<div style={{ display: "flex", flexDirection: "column", gap: "0", borderTop: "1px solid rgba(255,255,255,.16)" }}>
-<p className="t" style={{ margin: "0", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.16)", fontSize: "22px", fontWeight: "600", color: "#FFFFFF", letterSpacing: "-0.015em" }}>Promessa começa com vou. Prova começa com <span className="mk">já.</span></p>
-<p className="t" style={{ margin: "0", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.16)", fontSize: "22px", fontWeight: "600", color: "#FFFFFF", letterSpacing: "-0.015em" }}>Estratégia sem venda é slide bonito.</p>
-<p className="t" style={{ margin: "0", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.16)", fontSize: "22px", fontWeight: "600", color: "#FFFFFF", letterSpacing: "-0.015em" }}>Quem tenta falar com todo mundo não é lembrado por ninguém.</p>
+<p style={{ margin: "0", color: "#C3CBE0" }}>Na maioria das empresas de tecnologia que cresceram bem, quem vende é o dono. Ele conhece o produto como ninguém, o cliente confia nele e o negócio fecha no olho no olho. <strong style={{ color: "#FFFFFF" }}>Funciona até o dia em que não cabe mais na agenda.</strong></p>
+<p style={{ margin: "0", color: "#C3CBE0" }}>Carisma não dá para passar adiante. <span className="mk" style={{ fontWeight: "600" }}>Prova e processo, sim.</span> Quando o time tem as respostas certas na mão, a venda deixa de depender de uma pessoa só.</p>
+<div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+<span style={{ fontSize: "15px", color: "#9FB0D6", padding: "0 0 10px 0", borderBottom: "1px solid rgba(255,255,255,.16)" }}>O que o time precisa ter na mão para vender sem você</span>
+<div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "6px", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.16)" }}><span className="t mk" style={{ fontSize: "21px", fontWeight: "700", letterSpacing: "-0.01em" }}>Quem é o cliente certo</span><span style={{ fontSize: "17px", color: "#C3CBE0" }}>escrito, e não só na sua cabeça</span></div>
+<div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "6px", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.16)" }}><span className="t mk" style={{ fontSize: "21px", fontWeight: "700", letterSpacing: "-0.01em" }}>Como a empresa resolve o problema</span><span style={{ fontSize: "17px", color: "#C3CBE0" }}>numa frase que todo mundo repete igual</span></div>
+<div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "6px", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.16)" }}><span className="t mk" style={{ fontSize: "21px", fontWeight: "700", letterSpacing: "-0.01em" }}>O que já entregou</span><span style={{ fontSize: "17px", color: "#C3CBE0" }}>casos e números que qualquer vendedor consegue mostrar</span></div>
 </div>
 </div>
 </div>
