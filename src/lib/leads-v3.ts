@@ -131,7 +131,7 @@ function paginaNotion(lead: LeadV3, r: Resultado, dataSourceId: string, comCampo
       },
     },
     children: [
-      h3("Diagnóstico rápido (versão nova do site)"),
+      h3("Diagnóstico rápido do site"),
       ...linhasDoResultado(lead, r).map(bullet),
       h3("Respostas"),
       ...linhasDasRespostas(lead).map(bullet),
@@ -193,7 +193,7 @@ async function avisarDaniel(lead: LeadV3, r: Resultado): Promise<void> {
     reply_to: lead.email,
     subject: `Diagnóstico do site: ${lead.nome} (${lead.empresa}) · ${ESTAGIOS[r.estagio].nome}`,
     text: [
-      `Novo diagnóstico respondido na versão nova do site.`,
+      `Novo diagnóstico respondido no site.`,
       ``,
       `Nome: ${lead.nome}`,
       `E-mail: ${lead.email}`,
