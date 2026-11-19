@@ -426,8 +426,8 @@ export function DiagnosticoV3() {
               <p style={{ margin: 0, fontSize: 15, color: "#C3CBE0" }}>
                 Um guia para montar um pitch que prova que o seu negócio funciona. Ajuda a vender melhor desde já.
               </p>
-              <a className="cta btn" href="/sebrae" style={{ background: "#2EC4FF", color: NAVY, fontSize: 17, padding: 15 }}>
-                Baixar o material
+              <a className="cta btn" href="https://wa.me/5511984083610?text=Oi%2C%20Daniel.%20Fiz%20o%20diagn%C3%B3stico%20no%20site%20e%20quero%20receber%20o%20material%20da%20palestra%20%22Evid%C3%AAncia%20vence%20carisma%22." target="_blank" rel="noopener" style={{ background: "#2EC4FF", color: NAVY, fontSize: 17, padding: 15 }}>
+                Quero o material da palestra
               </a>
             </div>
           </>

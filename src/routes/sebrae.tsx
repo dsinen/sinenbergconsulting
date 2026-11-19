@@ -39,7 +39,7 @@ export const Route = createFileRoute("/sebrae")({
         content:
           "Monte o pitch que prova que o seu negócio funciona, com as quatro perguntas que todo cliente faz.",
       },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: "noindex,nofollow" },
     ],
     links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/sebrae" }],
   }),
