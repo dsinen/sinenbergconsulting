@@ -34,7 +34,7 @@ export function HomeV3() {
 <p style={{ margin: "0", fontSize: "20px", color: "#C3CBE0", maxWidth: "560px" }}>Eu levo o que as grandes empresas fazem de melhor em gestão para o tamanho da sua, de um jeito simples de entender e de colocar em prática. O objetivo é crescer com previsibilidade, sem tudo passar pela sua agenda.</p>
 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
 <a className="btn" href="https://wa.me/5511984083610?text=Oi%2C%20Daniel.%20Vim%20pelo%20site%20e%20quero%20marcar%20a%20conversa%20de%2030%20minutos." style={{ background: "#2EC4FF", color: "#0B1020", padding: "16px 26px", borderRadius: "8px", fontWeight: "600", textDecoration: "none" }} target="_blank" rel="noopener">Marcar conversa de 30 min</a>
-<a className="btn" href="/versao-nova/diagnostico" style={{ color: "#FFFFFF", padding: "15px 24px", borderRadius: "8px", fontWeight: "600", textDecoration: "none", border: "1.5px solid rgba(255,255,255,.35)" }}>Fazer o diagnóstico (3 min)</a>
+<a className="btn" href="/diagnostico" style={{ color: "#FFFFFF", padding: "15px 24px", borderRadius: "8px", fontWeight: "600", textDecoration: "none", border: "1.5px solid rgba(255,255,255,.35)" }}>Fazer o diagnóstico (3 min)</a>
 </div>
 <p style={{ margin: "0", fontSize: "15px", color: "#9FB0D6" }}>Mentor de mais de 50 startups na Estácio e na Wyden · Palestrante na Feira do Empreendedor Sebrae-SP 2026</p>
 </div>
@@ -141,7 +141,7 @@ export function HomeV3() {
 <span style={{ fontSize: "16px", color: "#DCE4FF" }}>Diagnóstico rápido</span>
 <h2 className="t" style={{ margin: "0", fontWeight: "800", fontSize: "clamp(38px, 4.6vw, 62px)", lineHeight: "1", letterSpacing: "-0.035em" }}>Em que estágio está a sua empresa?</h2>
 <p style={{ margin: "0", fontSize: "19px", color: "#E4E9FF" }}>São só 8 perguntas, simples e diretas. Em menos de 3 minutos você descobre em que estágio está a sua empresa e o que mais trava o crescimento hoje.</p>
-<a className="btn" href="/versao-nova/diagnostico" style={{ alignSelf: "flex-start", background: "#FFE27A", color: "#0B1020", padding: "16px 28px", borderRadius: "8px", fontWeight: "600", textDecoration: "none" }}>Fazer o diagnóstico</a>
+<a className="btn" href="/diagnostico" style={{ alignSelf: "flex-start", background: "#FFE27A", color: "#0B1020", padding: "16px 28px", borderRadius: "8px", fontWeight: "600", textDecoration: "none" }}>Fazer o diagnóstico</a>
 </div>
 <div style={{ background: "#FFFDF8", color: "#0B1020", borderRadius: "14px", padding: "28px", display: "flex", flexDirection: "column", gap: "16px", boxShadow: "0 30px 60px -30px rgba(11,16,32,.6)" }}>
 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", color: "#5A6275" }}><span>Pergunta 8 de 8</span><span style={{ color: "#2450FF" }}>Escala com Previsibilidade</span></div>
@@ -262,7 +262,7 @@ export function HomeV3() {
 <p style={{ margin: "0", fontSize: "20px", color: "#C3CBE0", maxWidth: "580px" }}>Em 30 minutos dá para saber se faz sentido trabalharmos juntos. Sem apresentação longa e sem compromisso.</p>
 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
 <a className="btn" href="https://wa.me/5511984083610?text=Oi%2C%20Daniel.%20Vim%20pelo%20site%20e%20quero%20marcar%20a%20conversa%20de%2030%20minutos." style={{ background: "#2EC4FF", color: "#0B1020", padding: "18px 30px", borderRadius: "8px", fontWeight: "600", textDecoration: "none" }} target="_blank" rel="noopener">Marcar conversa de 30 min</a>
-<a className="btn" href="/versao-nova/diagnostico" style={{ color: "#FFFFFF", padding: "17px 28px", borderRadius: "8px", fontWeight: "600", textDecoration: "none", border: "1.5px solid rgba(255,255,255,.35)" }}>Prefiro fazer o diagnóstico antes</a>
+<a className="btn" href="/diagnostico" style={{ color: "#FFFFFF", padding: "17px 28px", borderRadius: "8px", fontWeight: "600", textDecoration: "none", border: "1.5px solid rgba(255,255,255,.35)" }}>Prefiro fazer o diagnóstico antes</a>
 </div>
 </div>
 </section>
@@ -276,7 +276,7 @@ export function HomeV3() {
 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}><div style={{ display: "flex", gap: "10px", alignItems: "center" }}><img src={icone} alt="" style={{ width: "30px", height: "30px" }} /><span className="t" style={{ fontWeight: "800", fontSize: "18px", color: "#FFFFFF" }}>Sinenberg Consulting</span></div><span>Crescimento estruturado para empresas de tecnologia.</span></div>
 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}><span style={{ color: "#FFE27A" }}>Contato</span><a href="https://wa.me/5511984083610" style={{ color: "#E8ECF6" }}>WhatsApp (11) 98408-3610</a><a href="mailto:daniel@sinenberg.com.br" style={{ color: "#E8ECF6" }}>daniel@sinenberg.com.br</a></div>
 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}><span style={{ color: "#FFE27A" }}>Redes</span><a href="https://www.linkedin.com/in/danielsinenberg/" style={{ color: "#E8ECF6" }}>LinkedIn</a><a href="https://www.instagram.com/danielsinenberg" style={{ color: "#E8ECF6" }}>Instagram @danielsinenberg</a></div>
-<div style={{ display: "flex", flexDirection: "column", gap: "6px" }}><span style={{ color: "#FFE27A" }}>Páginas</span><a href="/versao-nova/diagnostico" style={{ color: "#E8ECF6" }}>Diagnóstico rápido</a><a href="/sebrae" style={{ color: "#E8ECF6" }}>Material da palestra</a><a href="/clinicas" style={{ color: "#9FB0D6" }}>Clínicas</a></div>
+<div style={{ display: "flex", flexDirection: "column", gap: "6px" }}><span style={{ color: "#FFE27A" }}>Páginas</span><a href="/diagnostico" style={{ color: "#E8ECF6" }}>Diagnóstico rápido</a><a href="/sebrae" style={{ color: "#E8ECF6" }}>Material da palestra</a><a href="/clinicas" style={{ color: "#9FB0D6" }}>Clínicas</a></div>
 </div>
 <div style={{ display: "flex", justifyContent: "space-between", gap: "16px", flexWrap: "wrap", borderTop: "1px solid rgba(255,255,255,.1)", paddingTop: "20px", fontSize: "13px" }}><span>© 2026 Sinenberg Consulting · <a href="/privacidade" style={{ color: "#9FB0D6" }}>Política de Privacidade</a></span><span>Fontes: Apfel Grotezk (Luigi Gorlero) e Ronzino, da Collletttivo, licença OFL. Shantell Sans, licença OFL.</span></div>
 </div>
