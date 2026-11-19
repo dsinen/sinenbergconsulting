@@ -101,10 +101,10 @@ export const PERGUNTAS: Pergunta[] = [
     opcoes: {
       A: "Vou pelo sentimento. Não temos números confiáveis.",
       B: "Olho alguns números, mas o sentimento ainda pesa muito.",
-      C: "Olho os números. Sei quais acompanhar.",
+      C: "Olho os números. Sei quais indicadores acompanhar.",
     },
     ponto: "Números",
-    acao: "Escolha no máximo cinco números para olhar toda semana, como propostas enviadas, vendas fechadas e clientes perdidos. Poucos e confiáveis valem mais do que muitos.",
+    acao: "Escolha no máximo cinco indicadores para olhar toda semana, como propostas enviadas, vendas fechadas e clientes perdidos. Poucos e confiáveis valem mais do que muitos.",
   },
   {
     n: 8,
