@@ -41,6 +41,7 @@ export const Route = createFileRoute("/sebrae")({
       },
       { name: "robots", content: "index,follow" },
     ],
+    links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/sebrae" }],
   }),
   component: SebraePage,
 });

@@ -1,4 +1,5 @@
 
+import { schemaHomeAtual } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Icon } from "@iconify/react";
 import {
@@ -88,7 +89,10 @@ export const Route = createFileRoute("/")({
         content: "Transforme crescimento desorganizado em crescimento estruturado e previsível.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.sinenbergconsulting.com.br/" },
+      { "script:ld+json": schemaHomeAtual },
     ],
+    links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/" }],
   }),
   component: HomePage,
 });

@@ -30,6 +30,7 @@ export const Route = createFileRoute("/links")({
       },
       { name: "robots", content: "index,follow" },
     ],
+    links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/links" }],
   }),
   component: LinksPage,
 });

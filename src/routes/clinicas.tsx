@@ -33,6 +33,7 @@ export const Route = createFileRoute("/clinicas")({
         content: "A clínica funcionando como empresa, sem depender do médico para tudo girar.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.sinenbergconsulting.com.br/clinicas" }],
   }),
   component: ClinicasPage,
 });
