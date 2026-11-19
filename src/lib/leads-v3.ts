@@ -14,8 +14,10 @@ import {
 } from "./diagnostico-v3";
 
 // Lead do diagnóstico da versão nova do site (/versao-nova/diagnostico).
-// Grava no mesmo CRM do Notion e com as mesmas propriedades do diagnóstico atual,
-// sem criar campo novo. O que não tem campo vai para o corpo do card.
+// Grava no mesmo CRM do Notion. Usa as propriedades que já existiam (nome, empresa, e-mail,
+// cargo, WhatsApp) e os campos "Diagnóstico: ..." criados em 19/11/2026 para estágio,
+// pontuação, pilares e faturamento. Se o Notion recusar os campos novos (por exemplo,
+// se alguém renomear um deles), o card é criado só com os campos antigos, para não perder o lead.
 
 export const leadV3Schema = z.object({
   nome: z.string().trim().min(2).max(120),
@@ -88,7 +90,22 @@ function linhasDasRespostas(lead: LeadV3): string[] {
   });
 }
 
-function paginaNotion(lead: LeadV3, r: Resultado, dataSourceId: string) {
+// Campos que só entram no card quando o Notion aceita: o WhatsApp no campo de telefone e os
+// campos próprios do diagnóstico. Os nomes das opções são iguais aos do site.
+function camposDoDiagnostico(lead: LeadV3, r: Resultado) {
+  const campos: Record<string, unknown> = {
+    "Qual seu número de Telefone com DDD (WhatsApp)?": { phone_number: lead.whatsapp },
+    "Diagnóstico: Estágio": { select: { name: ESTAGIOS[r.estagio].nome } },
+    "Diagnóstico: Pontuação": { number: r.pontuacao },
+    "Diagnóstico: Faturamento": { select: { name: lead.faturamento } },
+  };
+  for (const p of r.pilares) {
+    campos[`Diagnóstico: ${p.nome}`] = { select: { name: p.etiqueta } };
+  }
+  return campos;
+}
+
+function paginaNotion(lead: LeadV3, r: Resultado, dataSourceId: string, comCamposDoDiagnostico = true) {
   const bullet = (t: string) => ({
     object: "block",
     type: "bulleted_list_item",
@@ -106,6 +123,7 @@ function paginaNotion(lead: LeadV3, r: Resultado, dataSourceId: string) {
       // O nome desta propriedade tem um espaço no final no CRM.
       "Qual seu cargo na empresa? ": { multi_select: [{ name: CARGO_NO_CRM[lead.cargo] }] },
       "Primeiro Ctt": { date: { start: hojeEmSaoPaulo() } },
+      ...(comCamposDoDiagnostico ? camposDoDiagnostico(lead, r) : {}),
       Histórico: {
         rich_text: texto(
           [MARCA_VERSAO, ...linhasDoResultado(lead, r)].join(" | "),
@@ -126,19 +144,28 @@ function paginaNotion(lead: LeadV3, r: Resultado, dataSourceId: string) {
   };
 }
 
-async function salvarNoNotion(lead: LeadV3, r: Resultado): Promise<void> {
-  const token = env("NOTION_TOKEN");
-  if (!token) throw new Error("NOTION_TOKEN não configurado");
-  const dataSourceId = env("NOTION_DATA_SOURCE_ID") ?? NOTION_DATA_SOURCE_DEFAULT;
-  const res = await fetch("https://api.notion.com/v1/pages", {
+async function criarPaginaNotion(token: string, corpo: unknown): Promise<Response> {
+  return fetch("https://api.notion.com/v1/pages", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
       "Notion-Version": "2025-09-03",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(paginaNotion(lead, r, dataSourceId)),
+    body: JSON.stringify(corpo),
   });
+}
+
+async function salvarNoNotion(lead: LeadV3, r: Resultado): Promise<void> {
+  const token = env("NOTION_TOKEN");
+  if (!token) throw new Error("NOTION_TOKEN não configurado");
+  const dataSourceId = env("NOTION_DATA_SOURCE_ID") ?? NOTION_DATA_SOURCE_DEFAULT;
+  let res = await criarPaginaNotion(token, paginaNotion(lead, r, dataSourceId));
+  if (res.status === 400) {
+    // Provável campo novo renomeado ou apagado no CRM. Salva o lead só com os campos antigos.
+    console.error("[lead v3] Notion recusou os campos do diagnóstico:", (await res.text()).slice(0, 300));
+    res = await criarPaginaNotion(token, paginaNotion(lead, r, dataSourceId, false));
+  }
   if (!res.ok) throw new Error(`Notion respondeu ${res.status}: ${(await res.text()).slice(0, 300)}`);
 }
 
