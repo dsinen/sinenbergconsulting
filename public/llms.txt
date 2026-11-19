@@ -28,7 +28,6 @@
 - [Home](https://www.sinenbergconsulting.com.br/): apresentação da consultoria.
 - [Diagnóstico rápido](https://www.sinenbergconsulting.com.br/diagnostico): 8 perguntas para saber em que estágio está a empresa.
 - [Clínicas](https://www.sinenbergconsulting.com.br/clinicas): trabalho para clínicas médicas.
-- [Material da palestra](https://www.sinenbergconsulting.com.br/sebrae): guia "Evidência vence carisma", da palestra no Sebrae-SP.
 
 ## Contato
 
