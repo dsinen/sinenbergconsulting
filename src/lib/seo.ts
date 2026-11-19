@@ -56,10 +56,7 @@ const sprint = {
     "Projeto de 12 semanas, com escopo, prazo e preço fechados. Entrega Mapa de Foco, Plano Comercial e Painel do Plano para a empresa crescer sem depender do fundador.",
 };
 
-// Home atual: empresa e Daniel.
-export const schemaHomeAtual = { "@context": "https://schema.org", "@graph": [empresa, daniel] };
-
-// Versão nova: empresa, Daniel, serviço e perguntas frequentes.
+// Home: empresa, Daniel, serviço e perguntas frequentes.
 export const schemaHomeNova = {
   "@context": "https://schema.org",
   "@graph": [

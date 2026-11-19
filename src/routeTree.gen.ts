@@ -18,6 +18,8 @@ import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as SebraeRouteImport } from './routes/sebrae'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as VersaoAnteriorIndexRouteImport } from './routes/versao-anterior.index'
+import { Route as VersaoAnteriorDiagnosticoRouteImport } from './routes/versao-anterior.diagnostico'
 import { Route as VersaoNovaIndexRouteImport } from './routes/versao-nova.index'
 import { Route as VersaoNovaDiagnosticoRouteImport } from './routes/versao-nova.diagnostico'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
@@ -69,6 +71,17 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const VersaoAnteriorIndexRoute = VersaoAnteriorIndexRouteImport.update({
+  id: '/versao-anterior/',
+  path: '/versao-anterior/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VersaoAnteriorDiagnosticoRoute =
+  VersaoAnteriorDiagnosticoRouteImport.update({
+    id: '/versao-anterior/diagnostico',
+    path: '/versao-anterior/diagnostico',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const VersaoNovaIndexRoute = VersaoNovaIndexRouteImport.update({
   id: '/versao-nova/',
   path: '/versao-nova/',
@@ -96,7 +109,9 @@ export interface FileRoutesByFullPath {
   '/sebrae': typeof SebraeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/versao-anterior/diagnostico': typeof VersaoAnteriorDiagnosticoRoute
   '/versao-nova/diagnostico': typeof VersaoNovaDiagnosticoRoute
+  '/versao-anterior/': typeof VersaoAnteriorIndexRoute
   '/versao-nova/': typeof VersaoNovaIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -110,7 +125,9 @@ export interface FileRoutesByTo {
   '/sebrae': typeof SebraeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/versao-anterior/diagnostico': typeof VersaoAnteriorDiagnosticoRoute
   '/versao-nova/diagnostico': typeof VersaoNovaDiagnosticoRoute
+  '/versao-anterior': typeof VersaoAnteriorIndexRoute
   '/versao-nova': typeof VersaoNovaIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -125,7 +142,9 @@ export interface FileRoutesById {
   '/sebrae': typeof SebraeRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/versao-anterior/diagnostico': typeof VersaoAnteriorDiagnosticoRoute
   '/versao-nova/diagnostico': typeof VersaoNovaDiagnosticoRoute
+  '/versao-anterior/': typeof VersaoAnteriorIndexRoute
   '/versao-nova/': typeof VersaoNovaIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -141,7 +160,9 @@ export interface FileRouteTypes {
     | '/sebrae'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/versao-anterior/diagnostico'
     | '/versao-nova/diagnostico'
+    | '/versao-anterior/'
     | '/versao-nova/'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
@@ -155,7 +176,9 @@ export interface FileRouteTypes {
     | '/sebrae'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/versao-anterior/diagnostico'
     | '/versao-nova/diagnostico'
+    | '/versao-anterior'
     | '/versao-nova'
     | '/.mcp/invoke-tool/$tool'
   id:
@@ -169,7 +192,9 @@ export interface FileRouteTypes {
     | '/sebrae'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/versao-anterior/diagnostico'
     | '/versao-nova/diagnostico'
+    | '/versao-anterior/'
     | '/versao-nova/'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
@@ -184,7 +209,9 @@ export interface RootRouteChildren {
   SebraeRoute: typeof SebraeRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  VersaoAnteriorDiagnosticoRoute: typeof VersaoAnteriorDiagnosticoRoute
   VersaoNovaDiagnosticoRoute: typeof VersaoNovaDiagnosticoRoute
+  VersaoAnteriorIndexRoute: typeof VersaoAnteriorIndexRoute
   VersaoNovaIndexRoute: typeof VersaoNovaIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -254,6 +281,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/versao-anterior/': {
+      id: '/versao-anterior/'
+      path: '/versao-anterior'
+      fullPath: '/versao-anterior/'
+      preLoaderRoute: typeof VersaoAnteriorIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/versao-anterior/diagnostico': {
+      id: '/versao-anterior/diagnostico'
+      path: '/versao-anterior/diagnostico'
+      fullPath: '/versao-anterior/diagnostico'
+      preLoaderRoute: typeof VersaoAnteriorDiagnosticoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/versao-nova/': {
       id: '/versao-nova/'
       path: '/versao-nova'
@@ -289,7 +330,9 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  VersaoAnteriorDiagnosticoRoute: VersaoAnteriorDiagnosticoRoute,
   VersaoNovaDiagnosticoRoute: VersaoNovaDiagnosticoRoute,
+  VersaoAnteriorIndexRoute: VersaoAnteriorIndexRoute,
   VersaoNovaIndexRoute: VersaoNovaIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }

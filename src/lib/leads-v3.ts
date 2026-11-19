@@ -13,7 +13,7 @@ import {
   type Resultado,
 } from "./diagnostico-v3";
 
-// Lead do diagnóstico da versão nova do site (/versao-nova/diagnostico).
+// Lead do diagnóstico do site (/diagnostico, versão nova).
 // Grava no mesmo CRM do Notion. Usa as propriedades que já existiam (nome, empresa, e-mail,
 // cargo, WhatsApp) e os campos "Diagnóstico: ..." criados em 19/11/2026 para estágio,
 // pontuação, pilares e faturamento. Se o Notion recusar os campos novos (por exemplo,
@@ -41,7 +41,7 @@ export type LeadV3 = z.infer<typeof leadV3Schema>;
 const NOTION_DATA_SOURCE_DEFAULT = "2be33411-76f0-8103-8c7e-000bad402db2";
 const TAG_ORIGEM = "Diagnóstico Site";
 const STATUS_INICIAL = "Novo lead (site)";
-const MARCA_VERSAO = "Versão nova do site (/versao-nova)";
+const MARCA_VERSAO = "Diagnóstico do site";
 
 // O CRM usa outras opções de cargo que o formulário do site.
 const CARGO_NO_CRM: Record<LeadV3["cargo"], string> = {
@@ -191,7 +191,7 @@ async function avisarDaniel(lead: LeadV3, r: Resultado): Promise<void> {
     from: remetente(),
     to: [para],
     reply_to: lead.email,
-    subject: `[Versão nova] Diagnóstico: ${lead.nome} (${lead.empresa}) · ${ESTAGIOS[r.estagio].nome}`,
+    subject: `Diagnóstico do site: ${lead.nome} (${lead.empresa}) · ${ESTAGIOS[r.estagio].nome}`,
     text: [
       `Novo diagnóstico respondido na versão nova do site.`,
       ``,

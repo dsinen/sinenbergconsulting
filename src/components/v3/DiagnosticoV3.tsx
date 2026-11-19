@@ -44,7 +44,7 @@ function GrandeS({ style, cor = "#2EC4FF" }: { style: CSSProperties; cor?: strin
 
 function Marca({ claro }: { claro?: boolean }) {
   return (
-    <a href="/versao-nova" style={{ display: "flex", gap: 9, alignItems: "center", textDecoration: "none" }}>
+    <a href="/" style={{ display: "flex", gap: 9, alignItems: "center", textDecoration: "none" }}>
       <img src={icone} alt="" style={{ width: 26, height: 26 }} />
       <span className="t" style={{ fontWeight: 800, fontSize: 16, letterSpacing: "-0.02em", color: claro ? "#FFFFFF" : NAVY }}>
         Sinenberg Consulting
@@ -465,7 +465,7 @@ export function DiagnosticoV3() {
               <a className="cta btn" href={whats} target="_blank" rel="noopener" style={{ background: "#FFE27A", color: NAVY, fontSize: 17, padding: 16, position: "relative" }}>
                 Conversar no WhatsApp
               </a>
-              <a href="/versao-nova#comeco" style={{ textAlign: "center", fontSize: 15, color: "#FFFFFF", textDecoration: "underline", position: "relative" }}>
+              <a href="/#comeco" style={{ textAlign: "center", fontSize: 15, color: "#FFFFFF", textDecoration: "underline", position: "relative" }}>
                 Ver como funciona o Sprint de Direção
               </a>
             </div>
