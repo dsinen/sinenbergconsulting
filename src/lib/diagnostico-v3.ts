@@ -80,7 +80,7 @@ export const PERGUNTAS: Pergunta[] = [
       C: "Sim, e o número costuma bater.",
     },
     ponto: "Previsão de vendas",
-    acao: "Liste as negociações abertas, com valor e chance real de fechar. Revisar essa lista toda semana, sempre no mesmo dia, já melhora muito o seu forecast.",
+    acao: "Liste as negociações abertas, com valor e chance real de fechar. Revisar essa lista toda semana, sempre no mesmo dia, já melhora muito a sua previsão de vendas.",
   },
   {
     n: 6,

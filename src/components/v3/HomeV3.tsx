@@ -115,7 +115,7 @@ export function HomeV3() {
 <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
 <h2 className="t" style={{ margin: "0", fontWeight: "800", fontSize: "clamp(36px, 4.2vw, 56px)", lineHeight: "1.02", letterSpacing: "-0.035em" }}>Gestão de empresa grande, do tamanho da sua</h2>
 <p style={{ margin: "0", color: "#3A4152" }}>Passei mais de 20 anos em grandes empresas, algumas delas multinacionais, com metas, prioridades e números acompanhados toda semana. Muito do que se aprende lá vem pronto de fora e não serve do jeito que está para uma empresa brasileira de 10 ou de 100 pessoas.</p>
-<p style={{ margin: "0", color: "#3A4152" }}>Eu trago o que funciona, <strong style={{ color: "#0B1020" }}>adaptado à realidade de quem vende no Brasil</strong>, e <span className="mk">sem corporativês</span>: sem sigla em inglês, sem apresentação de 80 slides e sem burocracia.</p>
+<p style={{ margin: "0", color: "#3A4152" }}>Eu trago o que funciona, <strong style={{ color: "#0B1020" }}>adaptado à realidade de quem vende no Brasil</strong>, e <span className="mk">sem corporativês</span>: sem termo desnecessário, em português ou em inglês, sem apresentação de 80 slides e sem burocracia.</p>
 <p className="m" style={{ margin: "0", fontSize: "28px", fontWeight: "600", color: "#2450FF" }}>Meu trabalho é fazer essa tradução.</p>
 </div>
 <div style={{ position: "relative", background: "#FFFDF8", border: "1px solid #DDD7C8", borderRadius: "14px", padding: "6px 28px" }}>
