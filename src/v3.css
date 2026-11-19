@@ -58,3 +58,25 @@ body:has(.v3) { background: #0b1020; }
   .v3 .dq-col { padding: 0 40px; }
   .v3 .dq-q { font-size: 38px !important; }
 }
+
+/* Leitura em tablet e celular (19/11/2026) */
+.v3 .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.v3 .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+@media (max-width: 1100px) {
+  .v3 .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .v3 .g4 > div:nth-child(odd) { padding: 26px 26px 26px 0 !important; border-right: 1px solid #e8e4da !important; }
+  .v3 .g4 > div:nth-child(even) { padding: 26px 0 26px 26px !important; border-right: none !important; }
+  .v3 .g4 > div:nth-child(-n+2) { border-bottom: 1px solid #e8e4da; }
+  .v3 .rodape a { display: inline-block; padding: 9px 0; }
+}
+@media (max-width: 900px) {
+  .v3 .g3 { grid-template-columns: 1fr !important; }
+}
+@media (min-width: 700px) and (max-width: 1100px) {
+  .v3 .foto-topo { aspect-ratio: 4 / 3 !important; object-position: 50% 28% !important; }
+}
+@media (max-width: 600px) {
+  .v3 .g4 { grid-template-columns: 1fr !important; }
+  .v3 .g4 > div { padding: 22px 0 !important; border-right: none !important; border-bottom: 1px solid #e8e4da; }
+  .v3 .selo-trab { left: 12px !important; }
+}

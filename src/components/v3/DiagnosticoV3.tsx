@@ -212,7 +212,7 @@ export function DiagnosticoV3() {
         <div style={{ display: "flex", flexDirection: "column", minHeight: "100dvh" }}>
           <div className="dq-col" style={{ maxWidth: 720, flex: 1, display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0 14px", fontSize: 15 }}>
-              <button type="button" onClick={voltar} style={{ background: "none", border: 0, padding: 0, color: AZUL, fontWeight: 600, cursor: "pointer", fontSize: 15 }}>
+              <button type="button" onClick={voltar} style={{ background: "none", border: 0, padding: "12px 18px 12px 0", margin: "-12px 0", color: AZUL, fontWeight: 600, cursor: "pointer", fontSize: 15 }}>
                 ‹ Voltar
               </button>
               <span className="t dq-mtop" style={{ fontWeight: 800, fontSize: 16 }}>
@@ -281,7 +281,7 @@ export function DiagnosticoV3() {
       <main className="v3" style={{ background: PAPEL, color: NAVY, minHeight: "100dvh" }}>
         <div className="dq-col">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0 14px", fontSize: 15 }}>
-            <button type="button" onClick={() => setEtapa({ tipo: "pergunta", i: PERGUNTAS.length - 1 })} style={{ background: "none", border: 0, padding: 0, color: AZUL, fontWeight: 600, cursor: "pointer", fontSize: 15 }}>
+            <button type="button" onClick={() => setEtapa({ tipo: "pergunta", i: PERGUNTAS.length - 1 })} style={{ background: "none", border: 0, padding: "12px 18px 12px 0", margin: "-12px 0", color: AZUL, fontWeight: 600, cursor: "pointer", fontSize: 15 }}>
               ‹ Voltar
             </button>
             <span style={{ color: "#5A6275" }}>Último passo</span>
@@ -313,7 +313,7 @@ export function DiagnosticoV3() {
               onChange={(e) => setForm({ ...form, website: e.target.value })}
               style={{ position: "absolute", left: -9999, width: 1, height: 1, opacity: 0 }}
             />
-            <label style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 13, lineHeight: 1.45, color: "#5A6275", marginTop: 4, cursor: "pointer" }}>
+            <label style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 14, lineHeight: 1.45, color: "#5A6275", marginTop: 4, cursor: "pointer" }}>
               <input
                 type="checkbox"
                 checked={form.consentimento}
